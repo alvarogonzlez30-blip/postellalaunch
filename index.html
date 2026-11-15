@@ -58,7 +58,6 @@ button{font:inherit;cursor:pointer}
 .cover-card-illustration:before{content:"";position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:#F5B0BD;right:15%;top:12%}
 .cover-card-name{font:32px Bagel;color:#A77A76}
 .cover-card-stamp{position:absolute;right:20px;top:20px;width:43px;height:53px;border:1px solid #D7B9B1;display:grid;place-items:center;color:#DF8FA2;font-size:23px}
-.cover-foot{position:absolute;left:var(--pad);bottom:clamp(22px,4vh,42px);font-size:14px;color:#9A8176}
 /* 02 idea */
 .idea{background:#F4DDE0}
 .idea-grid{height:100%;display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:5vw}
@@ -197,7 +196,6 @@ button{font:inherit;cursor:pointer}
  .cover-art{height:35vh;min-height:210px;margin-top:-2vh}
  .cover-halo{width:min(62vw,330px)}
  .cover-card{width:42vw;height:55vw;min-width:180px;min-height:220px;padding:16px;border-width:7px}
- .cover-foot{bottom:80px}
  .idea-grid,.product-layout,.identity-layout,.experience-layout,.management-layout,.abc-layout,.participate-main,.wall-layout{grid-template-columns:1fr;gap:14px;align-content:start}
  .idea-copy h2,.product-copy h2,.identity-copy h2,.experience-copy h2,.management-copy h2,.abc-copy h2,.wall-copy h2{font-size:clamp(42px,10vw,64px)}
  .idea-orbit{height:38vh;min-height:210px}
@@ -256,6 +254,41 @@ button{font:inherit;cursor:pointer}
  .swatch b{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Full-screen branded postcard transition between every slide */
+.postcard-wipe{
+ position:absolute;inset:0;z-index:50;pointer-events:none;
+ display:grid;place-items:center;overflow:hidden;
+ background:linear-gradient(115deg,#F8EDE8 0%,#EFEAE7 48%,#F5B0BD 100%);
+ transform:translate3d(-102%,0,0);will-change:transform;
+ box-shadow:18px 0 55px #49332D20;
+}
+.postcard-wipe:before{
+ content:"";position:absolute;inset:clamp(12px,2vw,26px);
+ border:1px solid #AE877455;
+}
+.postcard-wipe:after{
+ content:"";position:absolute;right:clamp(34px,6vw,88px);top:clamp(34px,6vh,70px);
+ width:clamp(48px,6vw,76px);height:clamp(58px,7vw,88px);
+ border:1px solid #AE877477;
+ background:linear-gradient(135deg,#F5B0BD 0 50%,#EFEAE7 50%);
+ box-shadow:0 5px 18px #49332D12;
+}
+.postcard-wipe img{
+ position:relative;z-index:1;width:clamp(170px,22vw,290px);max-height:24vh;
+ object-fit:contain;filter:drop-shadow(0 14px 22px #6D4D4420);
+}
+.postcard-wipe.run{animation:postcardAcross 1.08s cubic-bezier(.72,0,.22,1) both}
+@keyframes postcardAcross{
+ 0%{transform:translate3d(-102%,0,0)}
+ 36%{transform:translate3d(0,0,0)}
+ 63%{transform:translate3d(0,0,0)}
+ 100%{transform:translate3d(102%,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ .postcard-wipe.run{animation-duration:.25s}
+}
+
 </style>
 </head>
 <body>
@@ -266,7 +299,6 @@ button{font:inherit;cursor:pointer}
   <div class="reveal"><div class="cover-title"><span>Las cosas</span><span>bonitas</span><span class="last">llegan.</span></div><div class="cover-tag">haz que llegue <span>💌</span></div></div>
   <div class="cover-art"><div class="cover-halo"></div><div class="cover-card"><div class="cover-card-top">UNA POSTAL PARA TI</div><div class="cover-card-illustration"></div><div class="cover-card-name">postella</div><div class="cover-card-stamp">♡</div></div></div>
  </div>
- <div class="cover-foot">Proyecto intermodular · 2026 / 27</div>
  <div class="bottom"><span>Desliza para entrar en el universo postella</span><div class="controls"><button data-next>→</button></div></div>
 </section>
 
@@ -376,13 +408,20 @@ button{font:inherit;cursor:pointer}
  </div>
  <div class="bottom"><span id="wallStatus">Mural conectado a las aportaciones de la comunidad</span><div class="controls"><button data-prev>←</button><button data-restart>↻</button></div></div>
 </section>
+<div class="postcard-wipe" id="postcardWipe" aria-hidden="true"><img src="logo-postella-transparent.png" alt=""></div>
 <div class="progress"><i id="progress"></i></div><div class="navhint">← →</div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (()=>{
  const slides=[...document.querySelectorAll('.slide')];let index=0,busy=false;const progress=document.getElementById('progress');
- function show(n){if(busy)return;const next=Math.max(0,Math.min(slides.length-1,n));if(next===index)return;busy=true;const old=slides[index];old.classList.remove('active');old.classList.add('leaving');index=next;slides[index].classList.remove('leaving');slides[index].classList.add('active');progress.style.width=((index+1)/slides.length*100)+'%';if(index===7)animateABC();setTimeout(()=>{old.classList.remove('leaving');busy=false},900)}
+ const wipe=document.getElementById('postcardWipe');
+ function show(n){if(busy)return;const next=Math.max(0,Math.min(slides.length-1,n));if(next===index)return;busy=true;
+  wipe.classList.remove('run');void wipe.offsetWidth;wipe.classList.add('run');
+  const old=slides[index];
+  setTimeout(()=>{old.classList.remove('active');old.classList.add('leaving');index=next;slides[index].classList.remove('leaving');slides[index].classList.add('active');progress.style.width=((index+1)/slides.length*100)+'%';if(index===7)animateABC()},390);
+  setTimeout(()=>{old.classList.remove('leaving');wipe.classList.remove('run');busy=false},1110)
+ }
  function animateABC(){document.querySelectorAll('.abc-track i').forEach(el=>{el.style.width='0';requestAnimationFrame(()=>el.style.width=el.dataset.width)})}
  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(index+1)));document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>show(index-1)));document.querySelectorAll('[data-restart]').forEach(b=>b.addEventListener('click',()=>show(0)));
  document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
