@@ -470,6 +470,30 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.luxury-stage *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
+
+
+/* PORTADA CINEMATOGRÁFICA — escena 3D prerenderizada + animación ligera por GPU */
+.cover-slide .render-stage{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:#efa7b7}
+.render-backdrop{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,#ffe7e8 0%,#f4b2c0 55%,#d9899e 100%)}
+.render-frame{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.render-scene{display:block;width:100%;height:100%;object-fit:cover;object-position:center 50%;transform:scale(1.025);animation:renderPush 16s cubic-bezier(.42,0,.58,1) infinite alternate;will-change:transform}
+.render-light-sweep{position:absolute;z-index:2;inset:-35% -55%;pointer-events:none;background:linear-gradient(108deg,transparent 38%,#fff0 43%,#fff9 49%,#fff2 52%,transparent 58%);transform:translate3d(-65%,0,0) rotate(-8deg);animation:lightSweep 9s 1.2s ease-in-out infinite;mix-blend-mode:screen;will-change:transform}
+.render-flare{position:absolute;z-index:3;pointer-events:none;border-radius:50%;background:radial-gradient(circle,#fff 0%,#fff9 5%,#fff4 15%,#fff0 66%);mix-blend-mode:screen;will-change:transform,opacity}
+.render-flare-a{width:clamp(90px,18vw,260px);aspect-ratio:1;left:8%;top:10%;opacity:.35;animation:flarePulse 5.5s ease-in-out infinite}
+.render-flare-b{width:clamp(70px,13vw,190px);aspect-ratio:1;right:10%;bottom:12%;opacity:.28;animation:flarePulse 6.5s 1.3s ease-in-out infinite reverse}
+.render-grain{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E")}
+.cover-slide footer{z-index:12}
+.cover-slide .nav button{background:#fffdf9dc;border:1px solid #fff9;color:#49332d;box-shadow:0 4px 22px #663c4a25;backdrop-filter:blur(8px)}
+@keyframes renderPush{0%{transform:scale(1.025) translate3d(0,0,0)}100%{transform:scale(1.075) translate3d(-.45%,.25%,0)}}
+@keyframes lightSweep{0%,18%{transform:translate3d(-65%,0,0) rotate(-8deg);opacity:0}30%{opacity:.72}55%{transform:translate3d(65%,0,0) rotate(-8deg);opacity:0}100%{transform:translate3d(65%,0,0) rotate(-8deg);opacity:0}}
+@keyframes flarePulse{0%,100%{transform:scale(.82);opacity:.18}50%{transform:scale(1.12);opacity:.58}}
+@media(max-width:760px){
+ .render-scene{object-fit:cover;object-position:center center;transform:scale(1.04);animation:renderPushMobile 18s ease-in-out infinite alternate}
+ .render-light-sweep{opacity:.55}
+}
+@keyframes renderPushMobile{0%{transform:scale(1.04) translate3d(0,0,0)}100%{transform:scale(1.11) translate3d(-.5%,0,0)}}
+@media(prefers-reduced-motion:reduce){.render-scene,.render-light-sweep,.render-flare{animation:none!important;transform:none!important}}
+
 </style><style id="final-polish">
 /* FINAL FIXES — responsive editorial typography and intentional motion */
 .slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
@@ -586,31 +610,15 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 <body>
 <div class="deck" id="deck">
 <section class="slide active cover-slide" data-title="Bienvenida" data-transition="postal">
-  <div class="cover-stage luxury-stage" aria-label="postella, trabajo 1 GPPPV">
-    <div class="luxury-halo"></div>
-    <div class="luxury-orbit orbit-one"></div>
-    <div class="luxury-orbit orbit-two"></div>
-    <div class="luxury-copy">
-      <img src="logo-postella-transparent.png" alt="postella" class="luxury-logo">
-      <div class="luxury-rule"></div>
-      <h1><span>TRABAJO 1</span><strong>GPPPV</strong></h1>
+  <div class="cover-stage render-stage" aria-label="postella, trabajo 1 GPPPV">
+    <div class="render-backdrop"></div>
+    <div class="render-frame">
+      <img class="render-scene" src="postella-cinematic-3d.webp" alt="Escena tridimensional de una postal de postella iluminada en un estudio rosa">
     </div>
-    <div class="luxury-envelope-wrap">
-      <div class="luxury-shadow"></div>
-      <div class="luxury-envelope">
-        <div class="luxury-back"></div>
-        <div class="luxury-card">
-          <div class="luxury-card-mark">postella</div>
-          <div class="luxury-card-line"></div>
-          <div class="luxury-card-type">TRABAJO 1<br><b>GPPPV</b></div>
-        </div>
-        <div class="luxury-pocket"></div>
-        <div class="luxury-flap"></div>
-      </div>
-    </div>
-    <div class="luxury-paper-ribbon ribbon-a"></div>
-    <div class="luxury-paper-ribbon ribbon-b"></div>
-    <div class="luxury-grain"></div>
+    <div class="render-light-sweep"></div>
+    <div class="render-flare render-flare-a"></div>
+    <div class="render-flare render-flare-b"></div>
+    <div class="render-grain"></div>
   </div>
   <footer><div class="nav"><button onclick="go(1)" aria-label="Continuar">→</button></div></footer>
 </section>
