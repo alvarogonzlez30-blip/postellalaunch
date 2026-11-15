@@ -170,6 +170,33 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 .slide h3{margin-top:0}
 .slide footer{justify-content:flex-end}
 
+
+.fest-hub{display:grid;grid-template-columns:.68fr 1.32fr;gap:22px;align-items:stretch;margin-top:12px;position:relative;z-index:2}
+.hub-left{background:#fffdf9;border:1px solid #e8d5cf;border-radius:24px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 15px 40px #49332d12}
+.hub-qr img{width:clamp(130px,15vw,190px);height:clamp(130px,15vw,190px);object-fit:contain;display:block;margin:auto auto 12px}
+.hub-qr b{font:24px Bagel;display:block}.hub-qr small{font-size:13px;color:#8d756b;display:block;max-width:200px}
+.hub-status{font-size:12px;color:#8d756b;margin-top:14px}
+.hub-results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hub-card{background:#fffdf9;border:1px solid #ead8d1;border-radius:20px;padding:14px;min-height:145px;overflow:hidden}
+.hub-card>span{font-size:10px;letter-spacing:.15em;color:#b07d7b}.hub-card h3{font:22px Bagel;margin:6px 0 10px;color:#49332d}
+.cloud-result{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.cloud-result i{font-style:normal;background:#f8e2e6;border-radius:999px;padding:5px 10px;animation:cloudPop .5s both}.cloud-result i:nth-child(2n){background:#efeae7}.cloud-result i:nth-child(3n){font-size:20px;color:#ae647b}
+@keyframes cloudPop{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:scale(1)}}
+.ideas-result{font-size:13px;line-height:1.35;color:#765d53;display:flex;flex-wrap:wrap;gap:6px}
+.idea-chip{background:#f5b0bd55;border:1px solid #e7c3c6;border-radius:9px;padding:6px 8px;animation:cloudPop .5s both}
+.vote-result{display:grid;gap:6px}.vote-line{font-size:11px}.vote-track{height:9px;border-radius:99px;background:#f0e7e3;overflow:hidden;margin-top:3px}.vote-fill{height:100%;background:linear-gradient(90deg,#f5b0bd,#ae8774);border-radius:99px;transition:width .7s}
+.pack-badges{display:flex;gap:6px;flex-wrap:wrap}.pack-badges span{font-size:12px;background:#efeae7;border-radius:9px;padding:6px 8px}
+.wall-title h2{font:clamp(40px,6vw,76px)/.96 Bagel;margin:0}.wall-title p{font-size:16px;color:#765d53}
+.wall-live-layout{display:grid;grid-template-columns:.5fr 1.5fr;gap:20px;align-items:start;margin-top:14px;position:relative;z-index:2}
+.wall-qr{display:flex;align-items:center;gap:10px;background:#fffdf9;border:1px solid #e5d2ca;border-radius:18px;padding:10px;box-shadow:0 12px 30px #72524512}
+.wall-qr img{width:clamp(100px,11vw,140px);height:clamp(100px,11vw,140px);object-fit:contain}.wall-qr b{font:19px Bagel;display:block}.wall-qr small{font-size:11px;display:block}
+.message-wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-height:46vh;overflow:auto;padding:8px}
+.message-card{background:linear-gradient(135deg,#fffdf9 0 72%,#f9e2e5 72%);padding:18px 15px 22px;border:1px solid #e4c9c3;border-radius:4px 13px 4px 13px;min-height:100px;box-shadow:0 9px 22px #49332d16;transform:rotate(var(--r));position:relative;animation:livePostcard .8s cubic-bezier(.16,1,.3,1) both;color:#49332d;font-size:15px;overflow-wrap:anywhere}
+.message-card:after{content:"♥";position:absolute;right:12px;bottom:5px;color:#d97891;font-size:13px}
+.message-card .postmark{position:absolute;right:9px;top:7px;border:1px dashed #d8a8ad;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;color:#d97891;font-size:12px}
+.message-card .message-date{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#a78b80;margin-top:9px}
+@keyframes livePostcard{0%{opacity:0;transform:translateY(70px) rotate(12deg) scale(.6)}65%{opacity:1;transform:translateY(-5px) rotate(-3deg) scale(1.04)}100%{transform:rotate(var(--r)) scale(1)}}
+@media(max-width:760px){.fest-hub{grid-template-columns:1fr}.hub-left{flex-direction:row;gap:15px}.hub-qr img{width:90px;height:90px}.hub-results{grid-template-columns:1fr 1fr}.wall-live-layout{grid-template-columns:1fr}.message-wall{grid-template-columns:1fr 1fr}.wall-qr img{width:75px;height:75px}}
+
 </style></head>
 <body>
 <div class="deck" id="deck">
@@ -246,44 +273,25 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <footer><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
 </section>
 <section class="slide" data-title="POSTELLA FEST" data-transition="confetti">
-<header><span>08 — POSTELLA FEST</span></header>
-<div class="menti-layout">
-  <div class="menti-copy">
-    <div class="kicker"></div>
-    <h2>¡Ahora<br><span style="color:var(--deep)">participas tú!</span></h2>
-    <p>Escanea el QR o entra en Mentimeter desde tu móvil. Vota, crea y decide con nosotros.</p>
-    <div class="menti-code">💌 POSTELLA FEST</div>
-<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
-
-    <p class="small">Las actividades y sus resultados aparecerán en esta pantalla. Para participar, utiliza el acceso de Mentimeter que se muestra en tu dispositivo o el QR de la presentación.</p>
-  </div>
-  <div class="menti-frame">
-    <div style="position:relative;padding-bottom:56.25%;padding-top:35px;height:0;overflow:hidden;border-radius:22px;">
-      <iframe title="Mentimeter — POSTELLA FEST" sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="true" allowtransparency="true" frameborder="0" height="315" src="https://www.mentimeter.com/app/presentation/al8auy1cr1v61vgaxi56c16jjpx32wbi/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;" width="420"></iframe>
-    </div>
-  </div>
+<header><span>08 — POSTELLA FEST</span><span></span></header>
+<div class="section-head"><h2>¡Ahora <span style="color:var(--deep)">participas tú!</span></h2><p>Escanea el QR, elige una dinámica y forma parte de postella.</p></div>
+<div class="fest-hub">
+ <div class="hub-left"><div class="hub-qr"><img src="postal-wall-qr.png" alt="QR para participar"><b>entra desde tu móvil</b><small>Una sola entrada para todas las experiencias</small></div>
+ <div class="hub-status" id="hubStatus">Conectando con la comunidad…</div></div>
+ <div class="hub-results">
+  <div class="hub-card"><span>01 · PALABRAS</span><h3>The Postella Cloud</h3><div id="cloudResult" class="cloud-result"><i>nostalgia</i><i>cariño</i><i>recuerdos</i></div></div>
+  <div class="hub-card"><span>02 · IDEAS</span><h3>Create the Next Collection</h3><div id="ideasResult" class="ideas-result">Las ideas de la clase aparecerán aquí.</div></div>
+  <div class="hub-card"><span>03 · VOTACIÓN</span><h3>You Are the Creative Director</h3><div id="voteResult" class="vote-result"></div></div>
+  <div class="hub-card"><span>04 · PACK</span><h3>Build Your Postella</h3><div id="packResult" class="ideas-result">El pack favorito se construirá entre todos.</div></div>
+ </div>
 </div>
-<footer><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer>
+<footer><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
 </section>
-<section class="slide" data-title="The Postcard Wall" data-transition="stamp">
-<header><span>09 — The postcard wall</span></header>
-<div class="kicker" style="margin-top:2vh">Deja algo bonito por aquí</div><h2>Una postal para<br><span style="color:var(--deep)">alguien.</span></h2>
-<div class="interact">
-<p style="margin-bottom:0">¿Qué frase te gustaría recibir? Escríbela y conviértela en una postal.</p>
-<div class="wall-live-layout">
-  <div class="wall-compose">
-    <div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para enviar una postal"><span><b>escanea y participa</b><small>envía tu frase desde el móvil</small></span></div>
-    <div class="qr-note" id="wallStatus">💌 las postales aparecerán aquí en directo.</div>
-  </div>
-  <div class="message-wall" id="messageWall" aria-live="polite">
-    <div class="message-card sample" style="--r:-2deg">que nunca falten los abrazos</div>
-    <div class="message-card sample" style="--r:2deg">hoy pensé en ti</div>
-    <div class="message-card sample" style="--r:-1deg">los pequeños momentos cuentan</div>
-  </div>
-</div>
-</div>
-<footer><div class="nav"><button onclick="go(7)">←</button><button onclick="go(9)">→</button></div></footer>
-</section>
+<section class="slide" data-title="The Postcard Wall" data-transition="postcard">
+<header><span>09 — THE POSTCARD WALL</span><span></span></header>
+<div class="wall-title"><h2>Deja algo bonito<br><span style="color:var(--deep)">por aquí.</span></h2><p>Las palabras de todos se convierten en postales.</p></div>
+<div class="wall-live-layout"><div class="wall-compose"><div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para participar"><span><b>escanea y participa</b><small>elige «Send a postcard» en tu móvil</small></span></div><div class="qr-note" id="wallStatus">💌 conectando el mural…</div></div><div class="message-wall" id="messageWall" aria-live="polite"></div></div>
+<footer><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer></section>
 <section class="slide" data-title="Gracias" data-transition="confetti">
 <header><span>postella · haz que llegue</span><span>Gracias por estar aquí</span></header>
 <div class="hero">
@@ -324,39 +332,42 @@ function tone(){if(!playing)return;let o=ctx.createOscillator(),g=ctx.createGain
 document.getElementById('soundBtn').onclick=async()=>{if(!playing){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();await ctx.resume();master=ctx.createGain();master.gain.value=.11;master.connect(ctx.destination);playing=true;tone();document.getElementById('soundBtn').textContent='♫ Silenciar'}else{playing=false;clearTimeout(timer);if(master)master.gain.setTargetAtTime(0,ctx.currentTime,.08);document.getElementById('soundBtn').textContent='♫ Activar ambiente'}};
 document.getElementById('progress').style.width=(1/slides.length*100)+'%';
 
-const postellaDb = window.supabase.createClient("https://yfdbljqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
-const liveWall=document.getElementById('messageWall');
-const liveStatus=document.getElementById('wallStatus');
-function addLivePostcard(row,isNew=false){
- if(!row||!row.message)return;
- if(row.id&&liveWall.querySelector('[data-post-id="'+CSS.escape(String(row.id))+'"]'))return;
- liveWall.querySelectorAll('.sample').forEach(n=>n.remove());
- const card=document.createElement('article');card.className='message-card'+(isNew?' live-new':'');
- card.style.setProperty('--r',(Math.random()*5-2.5)+'deg');
- card.innerHTML='<span class="postmark">♥</span><span class="message-text"></span><span class="message-date"></span>';
- card.querySelector('.message-text').textContent=row.message;
- const date=row.created_at?new Date(row.created_at):new Date();
- card.querySelector('.message-date').textContent='un mensaje que llega · '+date.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
- if(row.id)card.dataset.postId=row.id;
- liveWall.prepend(card);while(liveWall.children.length>40)liveWall.lastElementChild.remove();
+
+// POSTELLA FEST — live activities powered by Supabase
+const postellaDb=window.supabase.createClient("https://yfdbljqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
+const wall=document.getElementById('messageWall');
+const statusWall=document.getElementById('wallStatus');
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function addCard(row,isNew=false){
+ if(!row||!row.content)return;
+ if(row.id&&wall.querySelector('[data-id="'+row.id+'"]'))return;
+ const c=document.createElement('article');c.className='message-card';c.style.setProperty('--r',(Math.random()*5-2.5)+'deg');c.dataset.id=row.id||'';
+ c.innerHTML='<span class="postmark">♥</span><span class="message-text"></span><span class="message-date"></span>';
+ c.querySelector('.message-text').textContent=row.content;c.querySelector('.message-date').textContent='postella · '+new Date(row.created_at).toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+ wall.prepend(c);while(wall.children.length>45)wall.lastElementChild.remove();
 }
-async function initLiveWall(){
- if(!liveWall)return;
- const {data,error}=await postellaDb.from('postella_postcards').select('id,message,created_at').order('created_at',{ascending:false}).limit(30);
- if(error){liveStatus.textContent='No se pudo conectar el mural. Comprueba la conexión.';return;}
- liveWall.innerHTML='';(data||[]).reverse().forEach(row=>addLivePostcard(row));
- liveStatus.textContent='🟢 mural conectado · escanea el QR para enviar tu postal';
- const channel=postellaDb.channel('postella-live-wall')
-  .on('postgres_changes',{event:'INSERT',schema:'public',table:'postella_postcards'},payload=>addLivePostcard(payload.new,true))
-  .subscribe(status=>{
-   if(status==='SUBSCRIBED') liveStatus.textContent='🟢 mural conectado · las postales llegan en directo';
-   if(status==='CHANNEL_ERROR'||status==='TIMED_OUT') liveStatus.textContent='Conexión en directo inestable · actualizando automáticamente';
-  });
- // Backup refresh: even if a websocket is blocked, new postcards still appear.
- setInterval(async()=>{
-  const {data}=await postellaDb.from('postella_postcards').select('id,message,created_at').order('created_at',{ascending:false}).limit(30);
-  if(data) data.slice().reverse().forEach(row=>addLivePostcard(row));
- },5000);
+async function fetchAll(){
+ const {data,error}=await postellaDb.from('postella_activities').select('*').order('created_at',{ascending:false}).limit(250);
+ if(error){const s=document.getElementById('hubStatus');if(s)s.textContent='Revisa la configuración de actividades';return;}
+ const rows=data||[];
+ const words=rows.filter(x=>x.kind==='word').slice(0,24);
+ const ideas=rows.filter(x=>x.kind==='idea').slice(0,5);
+ const votes=rows.filter(x=>x.kind==='vote');
+ const packs=rows.filter(x=>x.kind==='pack');
+ const cloud=document.getElementById('cloudResult');if(cloud)cloud.innerHTML=words.length?words.map(x=>'<i>'+esc(x.content)+'</i>').join(''):'<i>nostalgia</i><i>cariño</i><i>recuerdos</i>';
+ const ideaBox=document.getElementById('ideasResult');if(ideaBox)ideaBox.innerHTML=ideas.length?ideas.map(x=>'<span class="idea-chip">'+esc(x.content)+'</span>').join(''):'Las ideas de la clase aparecerán aquí.';
+ const counts={'Summer Memories':0,'Little Things':0,'Love Notes':0,'Around the World':0};votes.forEach(x=>{if(counts[x.choice]!==undefined)counts[x.choice]++});
+ const vr=document.getElementById('voteResult');if(vr)vr.innerHTML=Object.entries(counts).map(([n,v])=>'<div class="vote-line">'+n+' · '+v+'<div class="vote-track"><div class="vote-fill" style="width:'+(votes.length?v/votes.length*100:0)+'%"></div></div></div>').join('');
+ const pc={Postal:0,Stickers:0,Notebook:0,Envelope:0,Gift:0};packs.forEach(x=>{if(pc[x.choice]!==undefined)pc[x.choice]++});
+ const pr=document.getElementById('packResult');if(pr)pr.innerHTML='<div class="pack-badges">'+Object.entries(pc).map(([n,v])=>'<span>'+n+' · '+v+'</span>').join('')+'</div>';
+ const st=document.getElementById('hubStatus');if(st)st.textContent='🟢 '+rows.length+' participaciones recibidas';
+ const cards=rows.filter(x=>x.kind==='postcard');if(wall){wall.innerHTML='';cards.slice().reverse().forEach(x=>addCard({id:x.id,content:x.content,created_at:x.created_at}));}
 }
-initLiveWall();
+async function initPostella(){
+ await fetchAll();
+ postellaDb.channel('postella-fest-all').on('postgres_changes',{event:'INSERT',schema:'public',table:'postella_activities'},()=>fetchAll()).subscribe();
+ setInterval(fetchAll,4000);
+}
+initPostella();
+
 </script></body></html>
