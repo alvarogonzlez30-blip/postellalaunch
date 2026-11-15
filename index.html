@@ -480,6 +480,46 @@ button{font:inherit;cursor:pointer}
 }
 @media(prefers-reduced-motion:reduce){.finale-slide:before,.finale-slide:after,.finale-card,.finale-eyebrow,.finale-headline,.finale-subtitle,.finale-wordmark,.finale-slogan,.finale-seal-wrap{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}}
 
+
+/* EPIC CAMPAIGN OUTRO — full-screen postcard vortex */
+.finale-slide{background:#2d211f!important}
+.finale-slide .topline,.finale-slide .bottom{transition:opacity .8s ease}
+.finale-slide:not(.finale-reveal) .topline,.finale-slide:not(.finale-reveal) .bottom{opacity:0}
+.finale-slide:not(.finale-reveal) .finale-copy{opacity:0;visibility:hidden;transform:scale(.94);filter:blur(12px)}
+.finale-slide.finale-reveal .finale-copy{opacity:1;visibility:visible;transform:scale(1);filter:blur(0);transition:opacity 1.1s ease,transform 1.2s cubic-bezier(.2,.8,.2,1),filter 1s ease}
+.finale-slide:not(.finale-reveal) .finale-card{opacity:0!important}
+.finale-slide.finale-reveal .finale-card{opacity:1}
+.finale-swarm{position:absolute;inset:-4%;z-index:6;overflow:hidden;pointer-events:none;perspective:1100px}
+.surge-card{position:absolute;left:50%;top:50%;width:clamp(105px,13vw,190px);aspect-ratio:1.48;background:linear-gradient(145deg,#fffdf8,#f4e7e2);border:1px solid #fff;box-shadow:0 20px 55px #10090888;color:#654c43;display:grid;place-content:center;text-align:center;padding:13px;font:clamp(13px,1.45vw,21px)/1.05 Bagel;opacity:0;backface-visibility:hidden;transform-style:preserve-3d}
+.surge-card:before{content:"";position:absolute;inset:7px;border:1px solid #ae877488}
+.surge-card:after{content:"postella · haz que llegue";font:8px Fredoka;letter-spacing:.12em;text-transform:uppercase;color:#ad7b80;margin-top:8px}
+.finale-slide.finale-run .surge-card{animation:postcardVortex 3.7s cubic-bezier(.18,.72,.22,1) var(--delay) both}
+@keyframes postcardVortex{
+ 0%{opacity:0;transform:translate3d(var(--sx),var(--sy),-500px) rotate(var(--spin)) rotateY(65deg) scale(.42)}
+ 16%{opacity:1}
+ 54%{opacity:1;transform:translate3d(calc(var(--sx)*.38),calc(var(--sy)*.38),180px) rotate(calc(var(--spin)*.45)) rotateY(-18deg) scale(1.05)}
+ 82%{opacity:1;transform:translate3d(calc(var(--sx)*-.08),calc(var(--sy)*-.08),280px) rotate(calc(var(--spin)*-.35)) rotateY(8deg) scale(.82)}
+ 100%{opacity:0;transform:translate3d(0,0,650px) rotate(calc(var(--spin)*-.8)) rotateY(0) scale(.12)}
+}
+.finale-flash{position:absolute;inset:0;z-index:5;pointer-events:none;background:radial-gradient(circle at 50% 50%,#fff4e9 0%,#f5b0bd88 12%,transparent 48%);opacity:0}
+.finale-slide.finale-reveal .finale-flash{animation:finaleFlash .95s ease-out both}
+@keyframes finaleFlash{0%{opacity:0;transform:scale(.35)}22%{opacity:.9}100%{opacity:0;transform:scale(1.8)}}
+.finale-slide.finale-reveal .finale-headline{animation:headlineImpact 1.15s cubic-bezier(.15,.9,.25,1.25) .08s both}
+@keyframes headlineImpact{0%{opacity:0;transform:translateY(65px) scale(.78);filter:blur(14px)}65%{opacity:1;transform:translateY(-5px) scale(1.035);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.finale-slide.finale-reveal .finale-wordmark{animation:wordmarkGlow 1.3s ease .8s both}
+@keyframes wordmarkGlow{0%{opacity:0;transform:scale(.72);filter:blur(10px)}65%{opacity:1;transform:scale(1.08);filter:drop-shadow(0 0 28px #f5b0bd88)}100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 12px #f5b0bd55)}}
+.finale-impact-seal{position:absolute;z-index:8;left:50%;top:50%;transform:translate(-50%,-50%) scale(3) rotate(-22deg);border:5px double #e28da2;color:#e28da2;padding:clamp(12px,2vw,22px) clamp(20px,3vw,36px);font:clamp(26px,4.2vw,58px) Bagel;letter-spacing:.12em;white-space:nowrap;opacity:0;pointer-events:none;text-shadow:0 3px 0 #49332d}
+.finale-slide.finale-stamped .finale-impact-seal{animation:impactStamp 1.05s cubic-bezier(.15,.9,.25,1.3) both}
+@keyframes impactStamp{0%{opacity:0;transform:translate(-50%,-50%) scale(3.4) rotate(-22deg);filter:blur(8px)}48%{opacity:1;transform:translate(-50%,-50%) scale(.88) rotate(-10deg);filter:blur(0);text-shadow:0 0 35px #f5b0bd99}68%{transform:translate(-50%,-50%) scale(1.08) rotate(-10deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-10deg)}}
+.finale-slide.finale-stamped .finale-seal-wrap{opacity:0;transition:opacity .35s}
+.finale-slide.finale-stamped .finale-footnote{animation:finalRise .7s .6s both}
+.finale-slide.finale-reveal .finale-subtitle,.finale-slide.finale-reveal .finale-slogan{animation:finalRise .9s .45s both}
+@media(prefers-reduced-motion:reduce){
+ .surge-card,.finale-flash,.finale-impact-seal{animation:none!important}
+ .finale-slide:not(.finale-reveal) .finale-copy{opacity:1;visibility:visible;transform:none;filter:none}
+ .finale-slide:not(.finale-reveal) .topline,.finale-slide:not(.finale-reveal) .bottom{opacity:1}
+}
+
 </style>
 </head>
 <body>
@@ -612,6 +652,7 @@ button{font:inherit;cursor:pointer}
 
 <section class="slide finale-slide" data-title="El final">
  <div class="topline"><span class="brand-mini">postella</span><span>10 — Un final para recordar</span></div>
+ <div class="finale-swarm" id="finaleSwarm" aria-hidden="true"></div><div class="finale-flash"></div><div class="finale-impact-seal" id="finaleImpactSeal">ENTREGADO</div>
  <div class="finale-stage">
   <div class="finale-card a">un detalle<br>que se queda<small>postella · 01</small></div>
   <div class="finale-card b">para alguien<br>especial<small>postella · 02</small></div>
@@ -637,15 +678,41 @@ button{font:inherit;cursor:pointer}
 (()=>{
  const slides=[...document.querySelectorAll('.slide')];let index=0,busy=false;const progress=document.getElementById('progress');
  const wipe=document.getElementById('postcardWipe');
+
+ let finaleTimer1=null,finaleTimer2=null;
+ const finaleSlide=document.querySelector('.finale-slide');
+ function runEpicFinale(){
+  if(!finaleSlide)return;
+  clearTimeout(finaleTimer1);clearTimeout(finaleTimer2);
+  finaleSlide.classList.remove('finale-run','finale-reveal','finale-stamped');
+  const swarm=document.getElementById('finaleSwarm');swarm.innerHTML='';
+  const words=['un detalle que se queda','para alguien especial','las cosas bonitas llegan','hecho para recordar','una palabra','un recuerdo','un mensaje','una pequeña historia','algo que llega','hecho con cariño'];
+  const count=30;
+  for(let i=0;i<count;i++){
+   const card=document.createElement('div');card.className='surge-card';
+   card.textContent=words[i%words.length];
+   const angle=(Math.PI*2*i/count)+(i%4)*.12;
+   const radius=42+(i%5)*8;
+   const sx=Math.cos(angle)*radius,sy=Math.sin(angle)*radius*.72;
+   card.style.setProperty('--sx',sx+'vw');
+   card.style.setProperty('--sy',sy+'vh');
+   card.style.setProperty('--spin',((i%2?1:-1)*(80+(i%7)*38))+'deg');
+   card.style.setProperty('--delay',(Math.floor(i/10)*.12+(i%10)*.035)+'s');
+   swarm.appendChild(card);
+  }
+  void finaleSlide.offsetWidth;
+  finaleSlide.classList.add('finale-run');
+  finaleTimer1=setTimeout(()=>{finaleSlide.classList.add('finale-reveal')},3900);
+  finaleTimer2=setTimeout(()=>{finaleSlide.classList.add('finale-stamped')},7900);
+ }
+
  function show(n){if(busy)return;const next=Math.max(0,Math.min(slides.length-1,n));if(next===index)return;busy=true;
   wipe.classList.remove('run');void wipe.offsetWidth;wipe.classList.add('run');
   const old=slides[index];
-  setTimeout(()=>{old.classList.remove('active');old.classList.add('leaving');index=next;slides[index].classList.remove('leaving','entering');slides[index].classList.add('active');progress.style.width=((index+1)/slides.length*100)+'%';if(index===7)animateABC()},390);
+  setTimeout(()=>{old.classList.remove('active');old.classList.add('leaving');index=next;slides[index].classList.remove('leaving','entering');slides[index].classList.add('active');progress.style.width=((index+1)/slides.length*100)+'%';if(index===7)animateABC();if(index===slides.length-1)runEpicFinale()},390);
   setTimeout(()=>{old.classList.remove('leaving');wipe.classList.remove('run');busy=false},1190)
  }
 
- const deckSeal=document.getElementById('deckFinaleSeal');
- if(deckSeal){deckSeal.addEventListener('click',()=>{deckSeal.classList.remove('stamped');void deckSeal.offsetWidth;deckSeal.classList.add('stamped');const stamp=document.getElementById('deckFinaleStamp');stamp.classList.remove('show');void stamp.offsetWidth;stamp.classList.add('show')})}
 
  function animateABC(){document.querySelectorAll('.abc-track i').forEach(el=>{el.style.width='0';requestAnimationFrame(()=>el.style.width=el.dataset.width)})}
  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(index+1)));document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>show(index-1)));document.querySelectorAll('[data-restart]').forEach(b=>b.addEventListener('click',()=>show(0)));
