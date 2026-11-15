@@ -521,71 +521,60 @@ button{font:inherit;cursor:pointer}
 }
 
 
-/* POSTELLA GRAND FINALE — cinematic 24-second sequence */
-.finale-slide{background:#170f13!important;overflow:hidden!important}
-.finale-slide.grand-active .topline,
-.finale-slide.grand-active .bottom,
-.finale-slide.grand-active .finale-stage,
-.finale-slide.grand-active:before,
+
+/* THE UNIVERSE IS YOURS — monumental 30s finale */
+.finale-slide{background:#09070a!important;overflow:hidden!important}
+.finale-slide.grand-active .topline,.finale-slide.grand-active .bottom,
+.finale-slide.grand-active .finale-stage,.finale-slide.grand-active:before,
 .finale-slide.grand-active:after{opacity:0!important;visibility:hidden!important}
 .finale-slide.grand-active .grand-finale{display:block}
-.grand-finale{display:none;position:absolute;inset:0;z-index:30;overflow:hidden;background:#170f13;color:#fffaf4;isolation:isolate}
-.gf-blackout{position:absolute;inset:0;background:#09080b;z-index:20;animation:gfBlackout 2.1s ease-out forwards;pointer-events:none}
-@keyframes gfBlackout{0%,58%{opacity:1}100%{opacity:0}}
-.gf-atmosphere{position:absolute;inset:-25%;background:radial-gradient(ellipse at 50% 54%,#79394c 0%,#3b202b 22%,#170f13 55%,#09080b 78%);opacity:0;animation:gfAtmos 6s ease 1.4s forwards}
-@keyframes gfAtmos{0%{opacity:0;transform:scale(.45)}45%{opacity:1}100%{opacity:.9;transform:scale(1.15)}}
-.gf-portal{position:absolute;left:50%;top:50%;width:min(62vw,75vh);aspect-ratio:1;transform:translate(-50%,-50%) scale(.08);opacity:0;border-radius:50%;z-index:2;filter:blur(.2px);animation:gfPortal 6.4s cubic-bezier(.16,.75,.2,1) 1.7s forwards}
-.gf-portal i{position:absolute;inset:0;border:1px solid #f5b0bd88;border-radius:50%;box-shadow:0 0 45px #f5b0bd33,inset 0 0 55px #f5b0bd22}
-.gf-portal i:nth-child(2){inset:9%;border-width:2px;animation:gfSpin 8s linear infinite}
-.gf-portal i:nth-child(3){inset:20%;border-style:dashed;animation:gfSpin 13s linear infinite reverse}
-@keyframes gfPortal{0%{opacity:0;transform:translate(-50%,-50%) scale(.08)}22%{opacity:.9}70%{opacity:.85;transform:translate(-50%,-50%) scale(1.12)}100%{opacity:.2;transform:translate(-50%,-50%) scale(1.45)}}
-@keyframes gfSpin{to{rotate:360deg}}
-.gf-particles{position:absolute;inset:0;z-index:3;pointer-events:none}
-.gf-particle{position:absolute;left:50%;top:50%;width:var(--size);height:var(--size);border-radius:50%;background:#f5b0bd;box-shadow:0 0 15px #f5b0bd;opacity:0;animation:gfParticle 7s ease-out var(--delay) both}
-@keyframes gfParticle{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}18%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}}
-.gf-paperstorm{position:absolute;inset:0;z-index:5;perspective:1200px;pointer-events:none}
-.gf-flying-paper{position:absolute;left:50%;top:50%;width:clamp(78px,10vw,148px);aspect-ratio:1.48;background:linear-gradient(145deg,#fffdf8,#eee4de);color:#5b4543;border:1px solid #fff;box-shadow:0 15px 48px #08060999;display:grid;place-items:center;text-align:center;padding:10px;font:clamp(10px,1.1vw,16px)/1.05 Bagel;opacity:0;backface-visibility:hidden}
-.gf-flying-paper:before{content:"";position:absolute;inset:6px;border:1px solid #d7b5b5}
-.gf-flying-paper:after{content:"postella · haz que llegue";position:absolute;bottom:11px;font:7px Fredoka;letter-spacing:.12em;color:#a77b7d}
-.gf-paperstorm.active .gf-flying-paper{animation:gfFly var(--dur) cubic-bezier(.18,.72,.2,1) var(--delay) both}
-@keyframes gfFly{
- 0%{opacity:0;transform:translate3d(var(--sx),var(--sy),-900px) rotateX(55deg) rotateY(90deg) rotateZ(var(--rot)) scale(.15)}
+.grand-finale{display:none;position:absolute;inset:0;z-index:40;overflow:hidden;background:#09070a;isolation:isolate;color:#fff}
+.gf-blackout{position:absolute;inset:0;z-index:30;background:#030204;animation:gfBlack 2.2s ease-out forwards}
+@keyframes gfBlack{0%,48%{opacity:1}100%{opacity:0}}
+.gf-cosmos{position:absolute;inset:-35%;background:radial-gradient(ellipse at 50% 50%,#f5b0bd 0%,#a94d70 5%,#522238 17%,#24121f 37%,#09070a 67%);opacity:0;transform:scale(.15);animation:gfCosmos 8s cubic-bezier(.16,.75,.2,1) 1.1s forwards}
+@keyframes gfCosmos{0%{opacity:0;transform:scale(.15)}20%{opacity:1}65%{transform:scale(1.1)}100%{opacity:.94;transform:scale(1.45)}}
+.gf-sun{position:absolute;left:50%;top:50%;width:min(28vw,38vh);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.001);opacity:0;background:radial-gradient(circle,#fff 0%,#ffdce6 7%,#f5b0bd 22%,#d75f8a 42%,#a22e60 55%,transparent 72%);filter:drop-shadow(0 0 90px #f5b0bd);animation:gfSun 8s cubic-bezier(.2,.7,.2,1) 1.8s forwards}
+@keyframes gfSun{0%{opacity:0;transform:translate(-50%,-50%) scale(.001)}22%{opacity:1}70%{transform:translate(-50%,-50%) scale(1.5)}100%{opacity:.8;transform:translate(-50%,-50%) scale(.65)}}
+.gf-rings{position:absolute;left:50%;top:50%;width:min(95vw,130vh);aspect-ratio:1;transform:translate(-50%,-50%) rotateX(68deg);opacity:0;animation:gfRingsIn 7s ease 2s forwards}
+.gf-rings i{position:absolute;inset:0;border:2px solid #f5b0bd88;border-radius:50%;box-shadow:0 0 35px #f5b0bd44,inset 0 0 35px #f5b0bd22;animation:gfOrbit 18s linear infinite}
+.gf-rings i:nth-child(2){inset:12%;border-width:1px;animation-duration:13s;animation-direction:reverse}
+.gf-rings i:nth-child(3){inset:25%;border-style:dashed;animation-duration:9s}
+.gf-rings i:nth-child(4){inset:38%;border-width:3px;animation-duration:22s;animation-direction:reverse}
+@keyframes gfRingsIn{0%{opacity:0;scale:.15}30%{opacity:1}100%{opacity:.35;scale:1.4}}
+@keyframes gfOrbit{to{rotate:360deg}}
+.gf-stars{position:absolute;inset:0;z-index:3;pointer-events:none}
+.gf-star{position:absolute;left:50%;top:50%;width:var(--s);height:var(--s);background:#fff;border-radius:50%;box-shadow:0 0 15px 3px #f5b0bd;opacity:0;animation:gfStarBurst var(--d) cubic-bezier(.1,.6,.15,1) var(--delay) both}
+@keyframes gfStarBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.1)}12%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}}
+.gf-world{position:absolute;inset:0;z-index:6;perspective:1000px;pointer-events:none}
+.gf-world-card{position:absolute;left:50%;top:50%;width:clamp(90px,13vw,190px);aspect-ratio:1.48;background:linear-gradient(145deg,#fffdf8,#eadbd6);border:1px solid white;box-shadow:0 25px 90px #000c;color:#573d43;display:grid;place-items:center;text-align:center;padding:12px;font:clamp(12px,1.45vw,21px) Bagel;opacity:0;backface-visibility:hidden}
+.gf-world-card:before{content:"";position:absolute;inset:7px;border:1px solid #c89da8}
+.gf-world-card:nth-child(3n){background:linear-gradient(145deg,#f5b0bd,#fff0f2)}
+.gf-world.active .gf-world-card{animation:gfWorldFly var(--duration) cubic-bezier(.14,.72,.2,1) var(--delay) both}
+@keyframes gfWorldFly{
+ 0%{opacity:0;transform:translate3d(var(--fromx),var(--fromy),-1300px) rotateX(90deg) rotateY(75deg) rotateZ(var(--spin)) scale(.08)}
  12%{opacity:1}
- 44%{opacity:1;transform:translate3d(var(--mx),var(--my),220px) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(calc(var(--rot)*-.45)) scale(1.05)}
- 76%{opacity:.95;transform:translate3d(var(--ex),var(--ey),420px) rotateX(0) rotateY(0) rotateZ(calc(var(--rot)*.35)) scale(.68)}
- 100%{opacity:0;transform:translate3d(0,0,850px) rotateZ(0) scale(.04)}
+ 42%{opacity:1;transform:translate3d(var(--midX),var(--midY),240px) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(calc(var(--spin)*-.4)) scale(1.25)}
+ 72%{opacity:.95;transform:translate3d(var(--toX),var(--toY),600px) rotateX(0) rotateY(0) rotateZ(calc(var(--spin)*.2)) scale(.55)}
+ 100%{opacity:0;transform:translate3d(0,0,1400px) rotateZ(0) scale(.01)}
 }
-.gf-single-card{position:absolute;left:50%;top:50%;width:min(54vw,760px);aspect-ratio:1.58;z-index:8;opacity:0;transform:translate(-50%,-50%) scale(.15) rotateY(75deg) rotateZ(-16deg);transform-style:preserve-3d;filter:drop-shadow(0 45px 80px #000b)}
-.gf-single-card.show{animation:gfCardArrival 3.4s cubic-bezier(.16,.8,.2,1) both}
-.gf-card-front,.gf-card-back{position:absolute;inset:0;backface-visibility:hidden;background:#f8f2eb;color:#4a3335;border:1px solid #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:inset 0 0 0 12px #f8f2eb,inset 0 0 0 13px #cfaeb0}
-.gf-card-front span,.gf-card-back span{font:clamp(9px,1vw,14px) Fredoka;letter-spacing:.22em;color:#a77b7d}
-.gf-card-front b{font:clamp(35px,6vw,82px)/.96 Bagel;margin:5% 0}
-.gf-card-front small{font:clamp(10px,1.2vw,16px) Fredoka;letter-spacing:.12em;color:#9e7777}
-.gf-card-back{transform:rotateY(180deg);background:#fffaf4}
-.gf-card-back b{font:clamp(24px,4.5vw,62px)/1 Bagel;color:#51383b;margin:6%}
-.gf-card-back i{font-style:normal;color:#ed9caf;font-size:clamp(20px,3vw,42px)}
-@keyframes gfCardArrival{0%{opacity:0;transform:translate(-50%,-50%) translateZ(-900px) rotateY(75deg) rotateZ(-16deg) scale(.15)}30%{opacity:1}65%{transform:translate(-50%,-50%) translateZ(80px) rotateY(0) rotateZ(4deg) scale(1.04)}100%{opacity:1;transform:translate(-50%,-50%) translateZ(0) rotateY(0) rotateZ(0) scale(1)}}
-.gf-single-card.flip{animation:gfCardFlip 1.6s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes gfCardFlip{0%{transform:translate(-50%,-50%) rotateY(0) scale(1)}100%{transform:translate(-50%,-50%) rotateY(180deg) scale(1)}}
-.gf-message{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:scale(.88);padding:5vw}
-.gf-message.show{animation:gfMessage 2s cubic-bezier(.15,.85,.2,1) forwards}
-.gf-message span{font:clamp(10px,1.1vw,15px) Fredoka;letter-spacing:.42em;color:#f5b0bd;margin-bottom:clamp(22px,4vh,48px)}
-.gf-message strong{font:clamp(45px,8.4vw,124px)/.92 Bagel;letter-spacing:-.035em;color:#fffaf4}
-.gf-message .gf-pink{color:#f5b0bd}
-@keyframes gfMessage{0%{opacity:0;transform:scale(.84);filter:blur(16px)}70%{opacity:1;transform:scale(1.035);filter:blur(0)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
-.gf-impact{position:absolute;left:50%;top:50%;z-index:12;transform:translate(-50%,-50%) scale(3) rotate(-13deg);border:7px double #f5b0bd;color:#f5b0bd;padding:clamp(15px,2.4vw,32px) clamp(25px,4vw,55px);font:clamp(40px,7vw,96px) Bagel;letter-spacing:.13em;white-space:nowrap;opacity:0;text-shadow:0 5px 0 #522c3c,0 0 45px #f5b0bd66}
-.gf-impact.show{animation:gfStamp 1.2s cubic-bezier(.12,.92,.22,1.3) both}
-@keyframes gfStamp{0%{opacity:0;transform:translate(-50%,-50%) scale(3.5) rotate(-22deg);filter:blur(12px)}48%{opacity:1;transform:translate(-50%,-50%) scale(.88) rotate(-13deg);filter:blur(0)}67%{transform:translate(-50%,-50%) scale(1.09) rotate(-13deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-13deg)}}
-.gf-brand{position:absolute;inset:0;z-index:14;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:scale(.82);background:radial-gradient(ellipse at center,#512938 0%,#21141b 48%,#100c10 100%)}
-.gf-brand.show{animation:gfBrand 2.1s cubic-bezier(.15,.8,.2,1) forwards}
-.gf-brand strong{font:clamp(90px,17vw,230px)/.9 Bagel;color:#f5b0bd;letter-spacing:-.055em;text-shadow:0 0 70px #f5b0bd55}
-.gf-brand span{font:clamp(13px,1.5vw,21px) Fredoka;letter-spacing:.42em;text-transform:lowercase;color:#fffaf4;margin-top:clamp(15px,3vh,30px)}
-@keyframes gfBrand{0%{opacity:0;transform:scale(.82);filter:blur(18px)}65%{opacity:1;transform:scale(1.025);filter:blur(0)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
-.gf-endline{position:absolute;bottom:4.5%;left:0;right:0;text-align:center;z-index:15;color:#d9bfc5;font:10px Fredoka;letter-spacing:.3em;opacity:0}
-.gf-brand.show~.gf-endline{animation:gfEndline 1s 1.2s forwards}
-@keyframes gfEndline{to{opacity:.7}}
-.finale-slide.grand-active .progress,.finale-slide.grand-active~.progress{opacity:0}
-@media(prefers-reduced-motion:reduce){.gf-blackout,.gf-atmosphere,.gf-portal,.gf-particle,.gf-flying-paper,.gf-single-card,.gf-message,.gf-impact,.gf-brand{animation-duration:.01ms!important;animation-delay:0ms!important}}
+.gf-supernova{position:absolute;inset:-30%;z-index:8;background:radial-gradient(circle,#fff 0%,#ffdce6 3%,#f5b0bd 8%,#e35b8a 15%,#9d2d61 25%,transparent 58%);opacity:0;transform:scale(.01);pointer-events:none}
+.gf-supernova.boom{animation:gfNova 2.2s cubic-bezier(.1,.65,.15,1) both}
+@keyframes gfNova{0%{opacity:0;transform:scale(.01)}22%{opacity:1}100%{opacity:0;transform:scale(2.2)}}
+.gf-title{position:absolute;inset:0;z-index:12;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1vh;opacity:0;transform:scale(.65);padding:3vw}
+.gf-title.show{animation:gfTitleIn 2.4s cubic-bezier(.12,.9,.2,1.15) forwards}
+.gf-title strong{font:clamp(58px,10vw,150px)/.9 Bagel;letter-spacing:-.045em;color:#fffaf4;text-shadow:0 10px 60px #0008}
+.gf-title strong+strong{color:#f5b0bd}
+@keyframes gfTitleIn{0%{opacity:0;transform:scale(.55);filter:blur(24px)}58%{opacity:1;transform:scale(1.06);filter:blur(0)}100%{opacity:1;transform:scale(1)}}
+.gf-colossal-stamp{position:absolute;z-index:15;left:50%;top:50%;transform:translate(-50%,-50%) scale(5) rotate(-15deg);border:clamp(5px,.8vw,12px) double #f5b0bd;color:#f5b0bd;padding:2vh 4vw;font:clamp(55px,11vw,165px)/.9 Bagel;letter-spacing:.04em;white-space:nowrap;opacity:0;text-shadow:0 8px 0 #542638,0 0 65px #f5b0bd99}
+.gf-colossal-stamp.show{animation:gfMonumentalStamp 1.5s cubic-bezier(.08,.95,.18,1.3) both}
+@keyframes gfMonumentalStamp{0%{opacity:0;transform:translate(-50%,-50%) scale(5) rotate(-22deg);filter:blur(18px)}42%{opacity:1;transform:translate(-50%,-50%) scale(.86) rotate(-12deg);filter:blur(0)}65%{transform:translate(-50%,-50%) scale(1.08) rotate(-12deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-12deg)}}
+.gf-final-logo{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#51283a 0%,#21131c 45%,#09070a 100%);opacity:0;transform:scale(.8)}
+.gf-final-logo.show{animation:gfLogoIn 2.6s cubic-bezier(.15,.8,.2,1) forwards}
+.gf-final-logo strong{font:clamp(115px,21vw,300px)/.82 Bagel;color:#f5b0bd;letter-spacing:-.065em;text-shadow:0 0 100px #f5b0bd88}
+.gf-final-logo span{font:clamp(17px,2vw,28px) Fredoka;color:#fffaf4;letter-spacing:.4em;margin-top:4vh}
+@keyframes gfLogoIn{0%{opacity:0;transform:scale(.7);filter:blur(25px)}55%{opacity:1;transform:scale(1.04);filter:blur(0)}100%{opacity:1;transform:scale(1)}}
+.finale-slide.grand-active .progress{opacity:0}
+@media(prefers-reduced-motion:reduce){.gf-blackout,.gf-cosmos,.gf-sun,.gf-rings,.gf-star,.gf-world-card,.gf-supernova,.gf-title,.gf-colossal-stamp,.gf-final-logo{animation-duration:.01ms!important;animation-delay:0ms!important}}
 
 </style>
 </head>
@@ -719,39 +708,19 @@ button{font:inherit;cursor:pointer}
 
 <section class="slide finale-slide" data-title="El final">
 
+
  <div class="grand-finale" id="grandFinale" aria-hidden="true">
   <div class="gf-blackout"></div>
-  <div class="gf-atmosphere"></div>
-  <div class="gf-portal"><i></i><i></i><i></i></div>
-  <div class="gf-particles" id="gfParticles"></div>
-  <div class="gf-paperstorm" id="gfPaperstorm"></div>
-  <div class="gf-single-card" id="gfSingleCard">
-   <div class="gf-card-front"><span>POSTELLA · CORREO BONITO</span><b>para todo<br>lo que merece<br>llegar.</b><small>una postal para quedarse.</small></div>
-   <div class="gf-card-back"><span>UNA ÚLTIMA POSTAL</span><b>TODO LO BONITO<br>MERECE LLEGAR.</b><i>♥</i></div>
-  </div>
-  <div class="gf-message" id="gfMessage"><span>UNA ÚLTIMA COSA</span><strong>TODO LO BONITO</strong><strong class="gf-pink">MERECE LLEGAR.</strong></div>
-  <div class="gf-impact" id="gfImpact">ENTREGADO</div>
-  <div class="gf-brand" id="gfBrand"><strong>postella</strong><span>haz que llegue.</span></div>
-  <div class="gf-endline" id="gfEndline">FIN · PERO QUE SIGA LLEGANDO.</div>
+  <div class="gf-cosmos"></div>
+  <div class="gf-sun" id="gfSun"></div>
+  <div class="gf-rings" id="gfRings"><i></i><i></i><i></i><i></i></div>
+  <div class="gf-stars" id="gfStars"></div>
+  <div class="gf-world" id="gfWorld"></div>
+  <div class="gf-supernova" id="gfSupernova"></div>
+  <div class="gf-title" id="gfTitle"><strong>TODO LO BONITO</strong><strong>MERECE LLEGAR.</strong></div>
+  <div class="gf-colossal-stamp" id="gfColossalStamp">ENTREGADO.</div>
+  <div class="gf-final-logo" id="gfFinalLogo"><strong>postella</strong><span>haz que llegue.</span></div>
  </div>
-
- <div class="topline"><span class="brand-mini">postella</span><span>10 — Un final para recordar</span></div>
- <div class="finale-swarm" id="finaleSwarm" aria-hidden="true"></div><div class="finale-flash"></div><div class="finale-impact-seal" id="finaleImpactSeal">ENTREGADO</div>
- <div class="finale-stage">
-  <div class="finale-card a">un detalle<br>que se queda<small>postella · 01</small></div>
-  <div class="finale-card b">para alguien<br>especial<small>postella · 02</small></div>
-  <div class="finale-card c">las cosas<br>bonitas llegan<small>postella · 03</small></div>
-  <div class="finale-card d">hecho para<br>recordar<small>postella · 04</small></div>
-  <div class="finale-copy">
-   <div class="finale-eyebrow">un pequeño universo · miles de historias</div>
-   <h2 class="finale-headline">Las pequeñas cosas <em>también dejan huella.</em></h2>
-   <p class="finale-subtitle">Gracias por formar parte de este pequeño universo. Cada palabra, cada idea y cada postal ya tiene un lugar aquí.</p>
-   <div class="finale-wordmark">postella</div>
-   <div class="finale-slogan">haz que llegue.</div>
-   <div class="finale-seal-wrap"><button class="finale-seal" id="deckFinaleSeal" type="button">SELLO<br>FINAL</button><div class="finale-stamp" id="deckFinaleStamp">ENTREGADO</div></div>
-  </div>
- </div>
- <div class="bottom"><span class="finale-footnote">gracias por dejar vuestra huella · postella</span><div class="controls"><button data-prev>←</button><button data-restart>↻</button></div></div>
 </section>
 
 <div class="postcard-wipe" id="postcardWipe" aria-hidden="true"><img src="logo-postella-transparent.png" alt=""></div>
@@ -764,60 +733,57 @@ button{font:inherit;cursor:pointer}
  const wipe=document.getElementById('postcardWipe');
 
 
+
  let finaleTimers=[];
  const finaleSlide=document.querySelector('.finale-slide');
  function runEpicFinale(){
   if(!finaleSlide)return;
   finaleTimers.forEach(clearTimeout);finaleTimers=[];
   const scene=document.getElementById('grandFinale');
-  const particles=document.getElementById('gfParticles');
-  const storm=document.getElementById('gfPaperstorm');
-  const card=document.getElementById('gfSingleCard');
-  const message=document.getElementById('gfMessage');
-  const impact=document.getElementById('gfImpact');
-  const brand=document.getElementById('gfBrand');
-  [particles,storm].forEach(el=>el.innerHTML='');
-  [card,message,impact,brand].forEach(el=>el.classList.remove('show','flip'));
+  const stars=document.getElementById('gfStars'),world=document.getElementById('gfWorld');
+  const nova=document.getElementById('gfSupernova'),title=document.getElementById('gfTitle');
+  const stamp=document.getElementById('gfColossalStamp'),logo=document.getElementById('gfFinalLogo');
+  [stars,world].forEach(el=>el.innerHTML='');
+  [world,nova,title,stamp,logo].forEach(el=>el.classList.remove('active','boom','show'));
   finaleSlide.classList.remove('grand-active');
   scene.setAttribute('aria-hidden','false');
-  void finaleSlide.offsetWidth;
-  finaleSlide.classList.add('grand-active');
+  void finaleSlide.offsetWidth;finaleSlide.classList.add('grand-active');
 
-  // A field of glowing paper-dust particles expands from the center.
+  // Hundreds of luminous particles burst outward.
+  for(let i=0;i<190;i++){
+   const s=document.createElement('i');s.className='gf-star';
+   const a=Math.random()*Math.PI*2,dist=25+Math.random()*90;
+   s.style.setProperty('--x',(Math.cos(a)*dist)+'vw');
+   s.style.setProperty('--y',(Math.sin(a)*dist)+'vh');
+   s.style.setProperty('--s',(1+Math.random()*5)+'px');
+   s.style.setProperty('--d',(2.5+Math.random()*3)+'s');
+   s.style.setProperty('--delay',(1.6+Math.random()*4)+'s');
+   stars.appendChild(s);
+  }
+  // 100 postcards at varied scales and depths, sweeping around the lens.
+  const phrases=['POSTELLA','PARA SIEMPRE','CON CARIÑO','UN RECUERDO','UNA HISTORIA','UN DETALLE'];
   for(let i=0;i<100;i++){
-   const dot=document.createElement('i');dot.className='gf-particle';
-   const a=Math.random()*Math.PI*2,dist=18+Math.random()*58;
-   dot.style.setProperty('--x',(Math.cos(a)*dist)+'vw');
-   dot.style.setProperty('--y',(Math.sin(a)*dist)+'vh');
-   dot.style.setProperty('--size',(2+Math.random()*5)+'px');
-   dot.style.setProperty('--delay',(1.4+Math.random()*3)+'s');
-   particles.appendChild(dot);
+   const c=document.createElement('div');c.className='gf-world-card';
+   c.textContent=phrases[i%phrases.length];
+   const angle=i*2.399963,rad=35+(i%9)*8;
+   c.style.setProperty('--fromx',(Math.cos(angle)*rad)+'vw');
+   c.style.setProperty('--fromy',(Math.sin(angle)*rad*.75)+'vh');
+   c.style.setProperty('--midX',(Math.cos(angle+2.3)*(10+(i%5)*8))+'vw');
+   c.style.setProperty('--midY',(Math.sin(angle+2.3)*(9+(i%6)*6))+'vh');
+   c.style.setProperty('--toX',(Math.cos(angle+4.1)*(15+(i%4)*9))+'vw');
+   c.style.setProperty('--toY',(Math.sin(angle+4.1)*(10+(i%5)*7))+'vh');
+   c.style.setProperty('--spin',((i%2?1:-1)*(80+(i%13)*32))+'deg');
+   c.style.setProperty('--rx',((i%2?1:-1)*(20+(i%6)*17))+'deg');
+   c.style.setProperty('--ry',((i%2?1:-1)*(25+(i%7)*15))+'deg');
+   c.style.setProperty('--delay',(3.4+(i%30)*.055)+'s');
+   c.style.setProperty('--duration',(5.2+(i%5)*.24)+'s');
+   world.appendChild(c);
   }
-  // Paper storm: a dense, multi-depth spiral passing the camera.
-  const phrases=['un recuerdo','una historia','un detalle','una palabra','para alguien','con cariño','un momento','algo especial','una postal','para quedarse'];
-  for(let i=0;i<64;i++){
-   const paper=document.createElement('div');paper.className='gf-flying-paper';
-   paper.textContent=phrases[i%phrases.length];
-   const a=(Math.PI*2*i/64)+(i%5)*.11,rad=36+(i%6)*8;
-   paper.style.setProperty('--sx',(Math.cos(a)*rad)+'vw');
-   paper.style.setProperty('--sy',(Math.sin(a)*rad*.7)+'vh');
-   paper.style.setProperty('--mx',(Math.cos(a+1.8)*(8+(i%4)*8))+'vw');
-   paper.style.setProperty('--my',(Math.sin(a+1.8)*(8+(i%4)*7))+'vh');
-   paper.style.setProperty('--ex',(Math.cos(a+3.2)*(12+(i%3)*8))+'vw');
-   paper.style.setProperty('--ey',(Math.sin(a+3.2)*(10+(i%3)*6))+'vh');
-   paper.style.setProperty('--rot',((i%2?1:-1)*(90+(i%9)*35))+'deg');
-   paper.style.setProperty('--rx',((i%2?1:-1)*(25+(i%5)*13))+'deg');
-   paper.style.setProperty('--ry',((i%2?1:-1)*(30+(i%7)*18))+'deg');
-   paper.style.setProperty('--delay',(3.8+(i%16)*.075)+'s');
-   paper.style.setProperty('--dur',(5.1+(i%5)*.22)+'s');
-   storm.appendChild(paper);
-  }
-  finaleTimers.push(setTimeout(()=>storm.classList.add('active'),0));
-  finaleTimers.push(setTimeout(()=>{card.classList.add('show')},9200));
-  finaleTimers.push(setTimeout(()=>{card.classList.add('flip')},12600));
-  finaleTimers.push(setTimeout(()=>{card.style.opacity='0';message.classList.add('show')},14300));
-  finaleTimers.push(setTimeout(()=>{impact.classList.add('show')},17800));
-  finaleTimers.push(setTimeout(()=>{message.style.opacity='0';impact.style.opacity='0';brand.classList.add('show')},20500));
+  finaleTimers.push(setTimeout(()=>world.classList.add('active'),0));
+  finaleTimers.push(setTimeout(()=>nova.classList.add('boom'),11500));
+  finaleTimers.push(setTimeout(()=>title.classList.add('show'),13900));
+  finaleTimers.push(setTimeout(()=>{title.style.opacity='0';stamp.classList.add('show')},19400));
+  finaleTimers.push(setTimeout(()=>{stamp.style.opacity='0';logo.classList.add('show')},22600));
  }
 
  function show(n){if(busy)return;const next=Math.max(0,Math.min(slides.length-1,n));if(next===index)return;busy=true;
