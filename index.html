@@ -74,7 +74,7 @@ small,.small{font-size:14px;line-height:1.4;color:#8f7165}
 .results{display:flex;gap:8px;align-items:end;height:110px;margin-top:20px}.result{flex:1;text-align:center;font-size:12px;color:#84685d}.result i{display:block;background:var(--pink);border-radius:12px 12px 3px 3px;min-height:5px;transition:height .6s}.result:nth-child(2) i{background:#d9b8aa}.result:nth-child(3) i{background:#c4a092}
 .msg-form{display:flex;gap:10px;margin-top:14px}.msg-form input{min-width:0;flex:1;border:1px solid #dcc7bd;border-radius:99px;padding:14px 18px;background:white;color:var(--ink)}
 .action{background:var(--ink);color:white;padding:14px 22px;border-radius:99px;font-weight:400}.action:hover{background:var(--deep)}
-.message-wall{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;min-height:54px}.message-card{background:var(--pink);padding:12px 16px;border-radius:5px 15px 5px 15px;max-width:220px;transform:rotate(var(--r));animation:pop .4s both;font-size:15px}
+.message-wall{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;min-height:54px}.message-card{background:linear-gradient(135deg,#fffdf9 0 72%,#f9e2e5 72%);padding:16px 17px 22px;border:1px solid #e4c9c3;border-radius:4px 13px 4px 13px;max-width:220px;min-height:86px;box-shadow:0 9px 22px #49332d16;transform:rotate(var(--r));animation:postcardIn .65s cubic-bezier(.2,.9,.2,1) both;font-size:15px;position:relative}.message-card:after{content:"♥";position:absolute;right:12px;bottom:5px;color:var(--deep);font-size:13px}@keyframes postcardIn{from{opacity:0;transform:translateY(35px) rotate(8deg) scale(.8)}to{opacity:1;transform:rotate(var(--r)) scale(1)}}
 .qr-note{border:1px dashed #c6a396;border-radius:16px;padding:14px;margin-top:16px;font-size:13px;color:#8b6b5e;background:#fff9f5}
 footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,5vw,76px);display:flex;justify-content:space-between;align-items:center;z-index:10;color:#92776b;font-size:13px}
 .nav{display:flex;align-items:center;gap:10px}.nav button{width:42px;height:42px;border-radius:50%;background:#fffdf9;border:1px solid #dfc9bf;color:var(--ink);font-size:20px}.nav button:hover{background:var(--pink)}
@@ -91,6 +91,42 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 .menti-frame{background:#fffdf9;border:8px solid #fffdf9;border-radius:28px;box-shadow:0 24px 70px #75534624;overflow:hidden;min-width:0}
 .menti-frame iframe{border:0}
 @media(max-width:760px){.menti-layout{grid-template-columns:1fr;overflow:auto;align-content:start}.menti-copy h2{font-size:clamp(38px,10vw,60px)}.menti-frame{margin-bottom:16px}.menti-copy .small{font-size:12px}}
+
+/* POSTELLA FEST — kinetic editorial layer */
+:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--paper:#fffdf9;--deep:#d97891}
+.slide.active h1,.slide.active h2{animation:headlineRise .85s cubic-bezier(.2,.8,.2,1) both}
+.slide.active .kicker{animation:fadeUp .6s .12s both}
+.slide.active p{animation:fadeUp .75s .22s both}
+.slide.active .tile{animation:tilePop .7s cubic-bezier(.2,.9,.2,1) both}
+.slide.active .tile:nth-child(2){animation-delay:.12s}
+.slide.active .tile:nth-child(3){animation-delay:.24s}
+@keyframes headlineRise{from{opacity:0;transform:translateY(42px) rotate(1deg);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes tilePop{from{opacity:0;transform:translateY(34px) scale(.94) rotate(-2deg)}to{opacity:1;transform:none}}
+.slide:before{content:"";position:absolute;inset:auto auto -22vw -15vw;width:42vw;height:42vw;border-radius:50%;background:radial-gradient(circle,#f5b0bd55,transparent 68%);pointer-events:none;animation:blobDrift 13s ease-in-out infinite alternate}
+@keyframes blobDrift{to{transform:translate(12vw,-7vh) scale(1.18)}}
+.kinetic-sticker{position:absolute;z-index:1;pointer-events:none;font-size:clamp(34px,5vw,70px);filter:drop-shadow(0 12px 12px #49332d20);animation:stickerBob 5s ease-in-out infinite}
+.kinetic-sticker.one{right:7%;top:19%;transform:rotate(12deg)}
+.kinetic-sticker.two{left:4%;bottom:18%;font-size:clamp(24px,3vw,44px);animation-delay:-2s}
+@keyframes stickerBob{0%,100%{translate:0 0;rotate:-8deg}50%{translate:10px -18px;rotate:9deg}}
+.qr-stage{display:flex;align-items:center;gap:14px;margin-top:18px;padding:12px 15px 12px 12px;background:#fffdf9;border:1px solid #e5d2ca;border-radius:22px;box-shadow:0 15px 36px #72524518;width:max-content;max-width:100%;position:relative;overflow:hidden}
+.qr-stage:after{content:"";position:absolute;inset:0 auto 0 -40%;width:30%;background:linear-gradient(90deg,transparent,#fff8,transparent);transform:skewX(-18deg);animation:qrShine 3.4s ease-in-out infinite}
+@keyframes qrShine{0%,40%{left:-40%}80%,100%{left:130%}}
+.qr-stage img{width:clamp(78px,9vw,116px);height:clamp(78px,9vw,116px);object-fit:contain;background:white;border-radius:10px;position:relative;z-index:1}
+.qr-stage strong{font:clamp(17px,2vw,24px) Bagel;display:block}
+.qr-stage small{display:block;max-width:190px;font-size:12px}
+.qr-pulse{position:absolute;inset:5px;border:1px solid #d9789166;border-radius:18px;animation:qrPulse 2.3s ease-out infinite;pointer-events:none}
+@keyframes qrPulse{0%{transform:scale(.96);opacity:.8}100%{transform:scale(1.08);opacity:0}}
+.menti-frame{transform:perspective(1200px) rotateY(-2deg);transition:transform .6s}
+.menti-frame:hover{transform:perspective(1200px) rotateY(0) translateY(-5px)}
+#postalWipe{border-radius:8px}
+#postalWipe:before{background:repeating-linear-gradient(135deg,transparent 0 16px,#f5b0bd33 16px 19px);inset:18px}
+#postalWipe:after{content:"postella";font:clamp(52px,11vw,150px) Bagel;color:var(--pink);text-shadow:4px 5px 0 #ae877455}
+#stampWipe span{background:var(--paper);box-shadow:0 18px 60px #49332d25}
+.slide.active .hero-stamp{animation:heroSpinIn 1s .15s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroSpinIn{from{opacity:0;transform:scale(.55) rotate(-35deg)}to{opacity:1;transform:none}}
+@media(max-width:760px){.qr-stage{gap:9px;padding:8px}.qr-stage img{width:76px;height:76px}.qr-stage small{font-size:10px}.kinetic-sticker.two{display:none}}
+
 </style></head>
 <body>
 <div class="deck" id="deck">
@@ -112,6 +148,8 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <section class="slide" data-title="Qué ofrecemos" data-transition="postal">
 <header><span>03 — El universo postella</span><span>Producto y colección</span></header>
 <div class="kicker" style="margin-top:5vh">El corazón de la marca</div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
+
+<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
 <div class="grid3">
 <article class="tile"><div class="n">01</div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
 <article class="tile"><div class="n">02</div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
@@ -131,6 +169,8 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <section class="slide" data-title="Experiencia" data-transition="stamp">
 <header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
 <div class="kicker" style="margin-top:6vh">No es solo una tienda</div><h2>Un lugar para<br><span style="color:var(--deep)">quedarse un ratito.</span></h2>
+
+<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
 <div class="timeline">
 <div class="step"><strong>Descubrir</strong><p class="small">Colecciones que invitan a mirar, explorar y encontrar algo propio.</p></div>
 <div class="step"><strong>Elegir</strong><p class="small">Un surtido cuidado, organizado por estilos, temas y ocasiones.</p></div>
@@ -170,6 +210,8 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
     <h2>¡Ahora<br><span style="color:var(--deep)">participas tú!</span></h2>
     <p>Escanea el QR o entra en Mentimeter desde tu móvil. Vota, crea y decide con nosotros.</p>
     <div class="menti-code">💌 POSTELLA FEST</div>
+<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
+
     <p class="small">Las actividades y sus resultados aparecerán en esta pantalla. Para participar, utiliza el acceso de Mentimeter que se muestra en tu dispositivo o el QR de la presentación.</p>
   </div>
   <div class="menti-frame">
@@ -184,10 +226,10 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <header><span>09 — The postcard wall</span><span>Un mensaje que se queda</span></header>
 <div class="kicker" style="margin-top:2vh">Deja algo bonito por aquí</div><h2>Una postal para<br><span style="color:var(--deep)">alguien.</span></h2>
 <div class="interact">
-<p style="margin-bottom:0">Escribe una palabra o un mensaje breve. Lo añadiremos al mural de postella.</p>
+<p style="margin-bottom:0">¿Qué frase te gustaría recibir? Escríbela y conviértela en una postal.</p>
 <div class="msg-form"><input id="message" maxlength="65" placeholder="Ej. para alguien que echo de menos…"><button class="action" id="addMessage">Enviar mi postal 💌</button></div>
 <div class="message-wall" id="messageWall"><div class="message-card" style="--r:-2deg">que nunca falten los abrazos</div><div class="message-card" style="--r:2deg">hoy pensé en ti</div><div class="message-card" style="--r:-1deg">los pequeños momentos cuentan</div></div>
-<div class="qr-note">En la versión conectada, cada persona podrá enviar su mensaje desde el móvil escaneando un QR y aparecerá aquí en tiempo real.</div>
+<div class="qr-note">Mural interactivo de demostración: las postales aparecen en esta pantalla. Para recibir aportaciones de todos los móviles en tiempo real, conectaremos un servicio de datos compartido.</div>
 </div>
 <footer><span>Las historias merecen llegar</span><div class="nav"><button onclick="go(7)">←</button><button onclick="go(9)">→</button></div></footer>
 </section>
