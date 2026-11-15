@@ -319,7 +319,7 @@ function tone(){if(!playing)return;let o=ctx.createOscillator(),g=ctx.createGain
 document.getElementById('soundBtn').onclick=async()=>{if(!playing){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();await ctx.resume();master=ctx.createGain();master.gain.value=.11;master.connect(ctx.destination);playing=true;tone();document.getElementById('soundBtn').textContent='♫ Silenciar'}else{playing=false;clearTimeout(timer);if(master)master.gain.setTargetAtTime(0,ctx.currentTime,.08);document.getElementById('soundBtn').textContent='♫ Activar ambiente'}};
 document.getElementById('progress').style.width=(1/slides.length*100)+'%';
 
-const postellaDb = window.supabase.createClient("https://yfdbjqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
+const postellaDb = window.supabase.createClient("https://yfdbliqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
 const liveWall=document.getElementById('messageWall');
 const liveStatus=document.getElementById('wallStatus');
 function addLivePostcard(row,isNew=false){
