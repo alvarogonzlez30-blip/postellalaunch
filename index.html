@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>postella — brand launch experience</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--white:#fffdfa;--hot:#ed7897}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif}
+button{font:inherit;cursor:pointer;border:0}.deck{height:100%;width:100%;position:relative}.slide{position:absolute;inset:0;padding:clamp(22px,5vw,76px);display:none;overflow:hidden;background:var(--cream)}
+.slide.active{display:flex;animation:appear .65s cubic-bezier(.2,.8,.2,1)}@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
+.slide:after{content:"";position:absolute;width:34vw;height:34vw;border-radius:50%;background:#f7cbd2;opacity:.45;right:-12vw;bottom:-19vw;pointer-events:none}
+.topline{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:3;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8b6b5e}
+.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9c7466;font-weight:800}
+h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Fredoka,sans-serif;font-weight:600;letter-spacing:-.035em}
+h1{font-size:clamp(54px,9vw,128px);line-height:.92;margin:22px 0;color:var(--ink)}h2{font-size:clamp(42px,6.5vw,86px);line-height:.98;margin:12px 0 22px}h3{font-size:clamp(24px,3vw,38px);margin-bottom:10px}
+p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;max-width:720px;color:#72594f}
+.logo{width:min(46vw,520px);height:auto;mix-blend-mode:multiply;display:block}.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3vw;flex:1;position:relative;z-index:2}.hero-art{position:relative;display:flex;align-items:center;justify-content:center;height:100%}.hero-art img{max-width:100%;max-height:70vh;object-fit:contain;filter:drop-shadow(0 24px 25px #8c5c4c22);animation:bob 5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-16px) rotate(2deg)}}
+.pill{display:inline-flex;border:1px solid #d5b8ac;border-radius:99px;padding:10px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8b6b5e}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;flex:1;position:relative;z-index:2}.visual{height:min(62vh,600px);border-radius:28px;background:#f8d6dc;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 20px 50px #815a4a18}.visual img{width:100%;height:100%;object-fit:contain;padding:18px}.visual.cover img{object-fit:cover;padding:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;position:relative;z-index:2}.card{background:#fffaf6;border:1px solid #ead8d0;border-radius:22px;padding:20px;min-height:170px;box-shadow:0 10px 25px #8b5e4b0d}.card b{font:600 24px Fredoka}.card small{display:block;color:#987c70;margin-top:9px;line-height:1.4}.number{font:600 44px Fredoka;color:var(--hot)}
+.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:2}.product{background:#fffaf6;border-radius:20px;padding:10px;box-shadow:0 12px 28px #704c3c12;transform:rotate(var(--r));transition:.3s}.product:hover{transform:translateY(-10px) rotate(0) scale(1.03)}.product img{width:100%;height:clamp(110px,19vh,190px);object-fit:contain;border-radius:14px;background:#f8e4e5}.product span{display:block;padding:10px 5px 4px;font:600 18px Fredoka}
+.hanging{display:flex;justify-content:center;gap:2vw;height:36vh;align-items:flex-start;position:relative}.hanging:before{content:"";position:absolute;top:0;left:5%;right:5%;height:2px;background:#c6a99b}.postcard{width:clamp(90px,13vw,170px);height:clamp(125px,22vh,230px);background:#fffdf9;border:8px solid white;box-shadow:0 12px 25px #6d4d3d22;position:relative;transform-origin:top center;animation:swing 4s ease-in-out infinite}.postcard:nth-child(2){animation-delay:-1s;margin-top:35px}.postcard:nth-child(3){animation-delay:-2s;margin-top:12px}.postcard:nth-child(4){animation-delay:-.5s;margin-top:48px}.postcard:before{content:"";position:absolute;left:50%;top:-40px;height:40px;width:1px;background:#9e8073}.postcard .sun{position:absolute;width:40%;aspect-ratio:1;border-radius:50%;background:var(--pink);left:30%;top:18%}.postcard .land{position:absolute;bottom:0;left:0;right:0;height:42%;background:#c9a28c;clip-path:polygon(0 45%,30% 10%,58% 58%,80% 20%,100% 45%,100% 100%,0 100%)}.postcard:nth-child(2) .sun{background:#f5a6b7}.postcard:nth-child(3) .land{background:#e6b7b6}.postcard:nth-child(4) .sun{background:#d3a48b}
+@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.wall{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:900px;margin:20px auto;position:relative;z-index:2}.note{background:#fffdf9;min-height:100px;padding:14px;box-shadow:0 8px 18px #7753461c;transform:rotate(var(--r));font:500 14px Fredoka;display:flex;align-items:center;justify-content:center;text-align:center;color:#8e665b}.note:nth-child(3n){background:#f9d8df}.note:nth-child(4n){background:#e8d7ce}
+.abc{display:flex;gap:14px;margin-top:28px;position:relative;z-index:2}.abc div{flex:1;padding:22px;border-radius:20px;background:#fffaf6}.abc strong{font:600 54px Fredoka;color:var(--hot)}.bar{height:12px;background:#eadbd4;border-radius:20px;margin-top:14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);border-radius:20px;animation:grow 1.5s ease both}@keyframes grow{from{width:0}}
+.footer{position:absolute;bottom:22px;left:clamp(22px,5vw,76px);right:clamp(22px,5vw,76px);display:flex;align-items:center;justify-content:space-between;z-index:10;color:#9a7d70;font-size:12px}.controls{display:flex;gap:8px;align-items:center}.ctrl{background:#fffaf6;border:1px solid #e4cfc5;border-radius:50%;width:42px;height:42px;color:#72594f;font-size:19px;box-shadow:0 5px 12px #7d5d4d12}.ctrl:hover{background:var(--pink)}.progress{height:3px;background:#e6d4cd;position:absolute;bottom:0;left:0;right:0;z-index:20}.progress i{height:100%;display:block;background:var(--hot);transition:width .4s}
+.sound{position:fixed;right:22px;top:18px;z-index:40;border-radius:99px;background:#fffaf6dd;padding:10px 14px;color:#7a5b50;font-size:12px;border:1px solid #ead8d0;backdrop-filter:blur(10px)}
+.floater{position:absolute;font-size:clamp(22px,3vw,42px);color:#d88a9a;animation:float 6s ease-in-out infinite;opacity:.7}@keyframes float{50%{transform:translateY(-24px) rotate(14deg)}}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s}.active .reveal{opacity:1;transform:none}.active .reveal:nth-child(2){transition-delay:.12s}.active .reveal:nth-child(3){transition-delay:.24s}
+@media(max-width:760px){.hero,.split{grid-template-columns:1fr;gap:12px}.hero-art{max-height:28vh}.hero-art img{max-height:26vh}.visual{height:28vh}.cards{grid-template-columns:1fr}.catalog{grid-template-columns:repeat(2,1fr)}.product img{height:110px}.wall{grid-template-columns:repeat(3,1fr)}.abc{gap:6px}.abc div{padding:10px}.abc strong{font-size:34px}.slide{padding:22px}.footer{left:22px;right:22px}.topline{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<button class="sound" id="soundBtn">♫ Activar ambiente</button>
+<div class="deck">
+<section class="slide active" data-title="Inicio">
+ <div class="topline"><span>Brand launch experience</span><span>01 / 08</span></div>
+ <div class="hero">
+  <div>
+   <div class="kicker reveal">Una nueva forma de hacer llegar emociones</div>
+   <img class="logo reveal" src="assets/logo-postella.png" alt="Logotipo original postella">
+   <h1 class="reveal">Un pequeño mundo<br>de detalles.</h1>
+   <p class="reveal">Una marca que convierte la ilustración, la papelería y los pequeños regalos en formas de conectar con los demás.</p>
+   <span class="pill reveal">Álvaro González · Eva de la Arena</span>
+  </div>
+  <div class="hero-art"><img src="assets/sticker-sheet.png" alt="Universo ilustrado de postella"></div>
+ </div>
+ <span class="floater" style="left:48%;top:16%">✦</span><span class="floater" style="right:8%;top:18%;animation-delay:-2s">♡</span>
+</section>
+<section class="slide" data-title="La idea">
+ <div class="topline"><span>02 — The idea</span><span>postella / brand story</span></div>
+ <div class="split">
+  <div><div class="kicker reveal">Volver a lo tangible</div><h2 class="reveal">Hay mensajes<br>que merecen<br>llegar en papel.</h2><p class="reveal">postella nace para recuperar el valor de la comunicación física a través de postales ilustradas originales, papelería creativa y pequeños regalos con personalidad.</p><p class="reveal">Nuestra propuesta une diseño, creatividad y emoción en productos que invitan a regalar, escribir y conservar recuerdos.</p></div>
+  <div class="visual reveal"><img src="assets/postcard-single.png" alt="Postal ilustrada de postella"></div>
+ </div>
+</section>
+<section class="slide" data-title="El universo">
+ <div class="topline"><span>03 — The universe</span><span>Un universo de productos</span></div>
+ <div class="kicker reveal">Nuestro surtido</div><h2 class="reveal">Pequeños objetos.<br>Grandes historias.</h2>
+ <div class="catalog">
+  <div class="product" style="--r:-2deg"><img src="assets/postcard-single.png"><span>Postales ilustradas</span></div>
+  <div class="product" style="--r:2deg"><img src="assets/sticker-sheet.png"><span>Papelería creativa</span></div>
+  <div class="product" style="--r:-1deg"><img src="assets/tote-sticker.png"><span>Pequeños regalos</span></div>
+  <div class="product" style="--r:2deg"><img src="assets/sticker-book.png"><span>Objetos de diseño</span></div>
+ </div>
+ <p class="reveal" style="margin-top:18px;font-size:14px">Las postales son el producto protagonista y el punto de partida de una selección complementaria de papelería, accesorios, regalos y objetos decorativos.</p>
+</section>
+<section class="slide" data-title="La marca">
+ <div class="topline"><span>04 — Brand identity</span><span>Identidad visual</span></div>
+ <div class="split">
+  <div><div class="kicker reveal">Una identidad reconocible</div><h2 class="reveal">Creativa.<br>Cercana.<br>Con personalidad.</h2><p class="reveal">La identidad de postella combina una estética nostálgica y contemporánea con una paleta cálida y una comunicación visual amable.</p><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Candy Pink</b><small>#F5B0BD</small></div><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Egg White</b><small>#EFEAE7</small></div><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Café au Lait</b><small>#AE8774</small></div></div></div>
+  <div class="visual reveal"><img src="assets/packaging.png" alt="Packaging de postella"></div>
+ </div>
+</section>
+<section class="slide" data-title="La experiencia">
+ <div class="topline"><span>05 — The experience</span><span>Visual merchandising</span></div>
+ <div class="kicker reveal">Así imaginamos el espacio</div><h2 class="reveal">Un escaparate que<br>invita a quedarse.</h2>
+ <div class="hanging reveal"><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div></div>
+ <div class="split" style="grid-template-columns:1fr 1fr;gap:20px;flex:0 0 auto"><p class="reveal">Postales suspendidas, peanas a diferentes alturas y zonas de producto que construyen una experiencia visual ordenada, cálida y atractiva.</p><div class="visual reveal" style="height:20vh"><img src="assets/store-window.png" alt="Propuesta de escaparate"></div></div>
+</section>
+<section class="slide" data-title="La gestión">
+ <div class="topline"><span>06 — Behind the brand</span><span>Gestión comercial</span></div>
+ <div class="kicker reveal">Detrás de la creatividad</div><h2 class="reveal">Una marca bonita<br>también necesita estrategia.</h2>
+ <div class="cards">
+  <div class="card reveal"><div class="number">01</div><b>El surtido</b><small>Organización por familias, subfamilias y referencias para facilitar la gestión y la compra.</small></div>
+  <div class="card reveal"><div class="number">02</div><b>El inventario</b><small>Control de existencias y seguimiento de los productos para mantener un surtido equilibrado.</small></div>
+  <div class="card reveal"><div class="number">03</div><b>La experiencia</b><small>Presentación, distribución y comunicación coherentes con la identidad de postella.</small></div>
+ </div>
+ <p class="reveal" style="margin-top:24px">El proyecto combina decisiones creativas con criterios comerciales: qué ofrecemos, cómo lo organizamos y cómo lo presentamos.</p>
+</section>
+<section class="slide" data-title="Análisis ABC">
+ <div class="topline"><span>07 — Inventory ABC</span><span>Ejercicio de clasificación ABC</span></div>
+ <div class="kicker reveal">El valor del inventario</div><h2 class="reveal">Decidir dónde<br>poner el foco.</h2>
+ <p class="reveal">En nuestro ejercicio de análisis ABC, las 16 referencias se distribuyen según su aportación al valor total del inventario.</p>
+ <div class="abc">
+  <div class="reveal"><strong>A</strong><h3>80,61%</h3><small>Mayor prioridad de control</small><div class="bar"><i style="width:80.61%"></i></div></div>
+  <div class="reveal"><strong>B</strong><h3>14,74%</h3><small>Seguimiento intermedio</small><div class="bar"><i style="width:14.74%"></i></div></div>
+  <div class="reveal"><strong>C</strong><h3>4,65%</h3><small>Control más sencillo</small><div class="bar"><i style="width:4.65%"></i></div></div>
+ </div>
+ <p class="reveal" style="margin-top:22px;font-size:14px">Valor total del inventario del ejercicio: <b>2.083,53 €</b> · 16 referencias. Datos del supuesto de trabajo.</p>
+</section>
+<section class="slide" data-title="The Postcard Wall">
+ <div class="topline"><span>08 — The postcard wall</span><span>Una experiencia para compartir</span></div>
+ <div class="kicker reveal">Un lugar para dejar algo de ti</div><h2 class="reveal">The Postcard Wall.</h2>
+ <p class="reveal">Imaginamos un espacio donde cada persona pueda dejar un mensaje, compartir un recuerdo o dedicar unas palabras. Una pared que crece con las historias de quienes pasan por postella.</p>
+ <div class="wall" id="wall">
+  <div class="note" style="--r:-3deg">Para alguien<br>que echo de menos ♡</div><div class="note" style="--r:2deg">Los pequeños<br>momentos cuentan</div><div class="note" style="--r:-2deg">Un abrazo<br>en forma de postal</div><div class="note" style="--r:3deg">Hoy pensé<br>en ti ✦</div><div class="note" style="--r:-1deg">Que nunca falten<br>las sorpresas</div>
+ </div>
+ <div style="display:flex;gap:10px;align-items:center;position:relative;z-index:2"><input id="message" maxlength="65" placeholder="Escribe un mensaje para el muro…" style="flex:1;min-width:0;padding:14px 18px;border-radius:99px;border:1px solid #ddc5ba;background:#fffaf6;font:inherit;color:#49332d"><button id="addNote" style="background:#49332d;color:white;padding:14px 20px;border-radius:99px;font-weight:700">Añadir postal +</button></div>
+ <p style="font-size:12px;margin-top:12px">Prueba a escribir un mensaje: aparecerá en el muro durante la presentación.</p>
+</section>
+<section class="slide" data-title="Gracias">
+ <div class="topline"><span>Thank you for being here</span><span>postella</span></div>
+ <div class="hero">
+  <div><div class="kicker reveal">Esto es solo el principio</div><h1 class="reveal">Las historias<br>merecen<br>llegar.</h1><p class="reveal">Gracias por descubrir postella con nosotros.</p><img src="assets/logo-postella.png" class="logo reveal" style="width:min(30vw,330px)" alt="postella"></div>
+  <div class="hero-art"><img src="assets/sticker-sheet.png" alt="Universo postella"></div>
+ </div>
+</section>
+<div class="footer"><span id="sectionLabel">01 — Inicio</span><div class="controls"><button class="ctrl" id="prev" aria-label="Anterior">←</button><span id="counter">1 / 9</span><button class="ctrl" id="next" aria-label="Siguiente">→</button></div></div>
+<div class="progress"><i id="progress" style="width:11.11%"></i></div>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;
+const label=document.getElementById('sectionLabel'),counter=document.getElementById('counter'),progress=document.getElementById('progress');
+function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));label.textContent=String(index+1).padStart(2,'0')+' — '+slides[index].dataset.title;counter.textContent=(index+1)+' / '+slides.length;progress.style.width=((index+1)/slides.length*100)+'%';}
+document.getElementById('next').onclick=()=>show(index+1);document.getElementById('prev').onclick=()=>show(index-1);
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.getElementById('addNote').onclick=()=>{const input=document.getElementById('message');const v=input.value.trim();if(!v)return;const n=document.createElement('div');n.className='note';n.style.setProperty('--r',(Math.random()*6-3)+'deg');n.textContent=v;document.getElementById('wall').appendChild(n);input.value='';};
+document.getElementById('message').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addNote').click()});
+// Ambient original synthesized music: starts only after an explicit click.
+let audioCtx=null,oscillators=[],master=null,playing=false;
+function startMusic(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;audioCtx=audioCtx||new AC();audioCtx.resume();master=audioCtx.createGain();master.gain.value=.035;master.connect(audioCtx.destination);
+const notes=[261.63,329.63,392,493.88,392,329.63,293.66,349.23];let step=0;
+function play(){if(!playing)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=notes[step%notes.length];g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.25,audioCtx.currentTime+.25);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+1.5);o.connect(g);g.connect(master);o.start();o.stop(audioCtx.currentTime+1.6);oscillators.push(o);step++;setTimeout(play,850)}
+playing=true;play();document.getElementById('soundBtn').textContent='♫ Silenciar ambiente';}
+function stopMusic(){playing=false;if(master)master.gain.setTargetAtTime(0,audioCtx.currentTime,.1);document.getElementById('soundBtn').textContent='♫ Activar ambiente';}
+document.getElementById('soundBtn').onclick=()=>{if(!playing)startMusic();else stopMusic()};
+show(0);
+</script></body></html>
