@@ -377,14 +377,126 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
-</style></head>
+</style><style id="final-polish">
+/* FINAL FIXES — responsive editorial typography and intentional motion */
+.slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
+.slide h1{font-size:clamp(52px,8.2vw,122px);line-height:.98;letter-spacing:-.04em}
+.slide h2{font-size:clamp(42px,6.1vw,82px);line-height:1.02;margin-bottom:clamp(14px,2.5vh,28px)}
+.slide p{font-size:clamp(17px,1.55vw,22px);line-height:1.42}
+.slide .small,.slide small{font-size:clamp(14px,1.15vw,17px);line-height:1.4}
+.slide .split,.slide .hero{min-height:0}
+.slide:nth-of-type(2) h2,.slide:nth-of-type(4) h2,.slide:nth-of-type(5) h2,.slide:nth-of-type(6) h2,.slide:nth-of-type(7) h2,.slide:nth-of-type(8) h2,.slide:nth-of-type(9) h2,.slide:nth-of-type(10) h1{max-width:13ch}
+.slide:nth-of-type(8) .section-head h2{font-size:clamp(40px,5.5vw,74px);max-width:100%;line-height:1.04}
+.slide:nth-of-type(9) .wall-title h2{font-size:clamp(42px,5.8vw,78px);max-width:100%;line-height:1.04}
+.slide:nth-of-type(10) .hero-copy h1{font-size:clamp(48px,7.1vw,104px);line-height:1.02;max-width:9ch}
+.slide:first-of-type .hero-copy h1{font-size:clamp(64px,9.4vw,138px);line-height:.96;max-width:7ch}
+@media(min-width:761px){
+ .slide{padding:clamp(42px,5.3vw,82px)}
+ .slide:nth-of-type(2) .split{grid-template-columns:1fr 1fr;align-items:center}
+ .slide:nth-of-type(3) .grid3{margin-top:auto;margin-bottom:7vh}
+ .slide:nth-of-type(5) .timeline{margin-bottom:9vh}
+}
+@media(max-width:760px){
+ .slide h1{font-size:clamp(46px,11vw,72px);line-height:1}
+ .slide h2{font-size:clamp(38px,9vw,60px);line-height:1.04}
+ .slide:nth-of-type(2) .split>div:last-child{min-height:210px!important}
+ .slide:nth-of-type(2) .split>div:last-child>div:first-child{font-size:clamp(95px,24vw,150px)!important}
+ .slide:nth-of-type(8) .section-head h2{font-size:clamp(38px,8vw,54px)}
+ .slide:nth-of-type(9) .wall-title h2{font-size:clamp(38px,8vw,54px)}
+}
+
+/* Cover: a single oversized, dimensional postcard instead of a generic badge */
+.slide:first-of-type .hero{grid-template-columns:1fr 1fr;align-items:center}
+.slide:first-of-type .hero-copy{padding-left:2vw}
+.slide:first-of-type .hero-copy h1{max-width:7ch}
+.slide:first-of-type .hero-copy:after{content:"";display:block;width:110px;height:3px;background:var(--ink);margin-top:28px;transform-origin:left;animation:lineDraw 1.2s .8s both}
+@keyframes lineDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.slide:first-of-type .cover-art{width:min(38vw,480px);height:min(48vw,520px);position:relative;display:grid;place-items:center;perspective:1200px}
+.cover-card{position:relative;width:72%;height:82%;background:#fffdfb;border-radius:3px;box-shadow:0 35px 70px #6e3e4c35;transform:rotate(7deg);animation:cardHover 6s ease-in-out infinite;overflow:hidden}
+.cover-card:before{content:"";position:absolute;inset:14px;border:1px solid #e9d7d2}
+.cover-card-logo{position:absolute;left:13%;right:13%;top:32%;display:grid;place-items:center}
+.cover-card-logo img{width:100%;height:auto;object-fit:contain}
+.cover-card-line{position:absolute;left:18%;right:18%;bottom:22%;height:1px;background:#e4c9c2}
+.cover-card-stamp{position:absolute;right:17%;top:12%;width:42px;height:42px;border:1px solid #d99aaa;border-radius:50%}
+.cover-ribbon{position:absolute;width:100%;height:1px;background:#fff9;transform:rotate(-35deg) scaleX(1.4);opacity:.65}
+@keyframes cardHover{0%,100%{transform:rotate(7deg) translateY(0) rotateY(-8deg)}50%{transform:rotate(3deg) translateY(-18px) rotateY(8deg)}}
+.slide:first-of-type .hero-stamp:before{content:"";position:absolute;width:90%;height:90%;border:1px solid #fff8;border-radius:50%;transform:rotate(-18deg) scaleX(.72);animation:slowOrbit 18s linear infinite}
+@keyframes slowOrbit{to{transform:rotate(342deg) scaleX(.72)}}
+.slide:first-of-type .hero-stamp:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:white;top:10%;right:12%;box-shadow:0 0 24px #fff}
+.slide:first-of-type .cover-logo{width:100%;max-height:none}
+
+/* Purposeful illustration details */
+.product-icon{width:58px;height:58px;margin-bottom:24px;color:var(--deep);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.product-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.slide:nth-of-type(3) .tile:hover .product-icon{transform:translateY(-5px) rotate(-5deg) scale(1.06)}
+.hello-scene{position:relative;min-height:300px;display:grid;place-items:center;isolation:isolate}
+.hello-word{font:clamp(120px,19vw,240px)/.9 Bagel;color:#e8c4c8;transform:rotate(-8deg);animation:helloFloat 5.5s ease-in-out infinite}
+.hello-question{position:absolute;right:2%;bottom:12%;font:clamp(25px,3.4vw,48px) Bagel;color:var(--brown);transform:rotate(5deg);animation:helloFloat 6s ease-in-out infinite reverse}
+.hello-envelope{position:absolute;width:86px;right:15%;top:8%;fill:none;stroke:var(--deep);stroke-width:2.5;stroke-linejoin:round;transform:rotate(12deg);animation:helloFloat 6.5s ease-in-out infinite}
+.hello-sparkle{position:absolute;left:10%;top:20%;font:70px Fredoka;color:var(--deep);animation:helloFloat 5s ease-in-out infinite}
+.slide:nth-of-type(4) .split>div:last-child{padding-left:3vw}
+.slide:nth-of-type(4) .brand-logo{max-width:300px}
+.slide:nth-of-type(4) .palette{position:relative}
+.slide:nth-of-type(4) .palette:after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:1px;background:#d7c4bc}
+.slide:nth-of-type(5) .step strong{position:relative}
+.slide:nth-of-type(5) .step strong:after{content:"";display:block;width:32px;height:2px;background:var(--deep);margin-top:10px;transition:width .5s}
+.slide:nth-of-type(5) .step:hover strong:after{width:76px}
+.slide:nth-of-type(6) .tile{position:relative}
+.slide:nth-of-type(6) .tile:before{content:"";display:block;width:34px;height:34px;border:1.5px solid var(--deep);border-radius:50%;margin-bottom:16px}
+.slide:nth-of-type(6) .tile:nth-child(1):before{border-radius:4px;transform:rotate(8deg)}
+.slide:nth-of-type(6) .tile:nth-child(2):before{border-radius:50% 50% 4px 4px}
+.slide:nth-of-type(6) .tile:nth-child(3):before{border-radius:4px;transform:rotate(45deg)}
+.slide:nth-of-type(7) .abc article{transition:transform .5s}
+.slide:nth-of-type(7) .abc article:hover{transform:translateY(-8px)}
+.slide:nth-of-type(7) .abc strong{display:block;line-height:1.1}
+
+/* QR mascot artwork: recognizable mascot silhouette with a fully intact, scannable QR on the body */
+.hub-qr img,.wall-qr img{object-fit:contain;background:transparent!important;border-radius:0!important;box-shadow:none!important;padding:0!important;animation:mascotBob 5s ease-in-out infinite!important}
+@keyframes mascotBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+.slide:nth-of-type(8) .hub-qr img{width:clamp(190px,21vw,270px);height:clamp(190px,21vw,270px)}
+.slide:nth-of-type(9) .wall-qr img{width:clamp(190px,21vw,270px);height:clamp(190px,21vw,270px)}
+.slide:nth-of-type(8) .hub-qr small,.slide:nth-of-type(9) .wall-qr small{display:none}
+.slide:nth-of-type(8) .hub-qr b,.slide:nth-of-type(9) .wall-qr b{margin-top:0}
+.slide:nth-of-type(8) .hub-left{background:transparent}
+.slide:nth-of-type(8) .hub-status{font-size:clamp(15px,1.3vw,18px);margin-top:8px}
+.slide:nth-of-type(9) .qr-note{border:0;background:transparent;padding:4px 0;font-size:clamp(16px,1.4vw,19px);font-family:Bagel;color:var(--deep)}
+/* Real paper, not fake heavy drop shadows */
+.slide:nth-of-type(9) .message-card{box-shadow:0 2px 5px #49332d0c!important;border:1px solid #e7d9d3!important;border-radius:1px!important;background:#fffdfb!important;transform:none!important}
+.slide:nth-of-type(9) .message-card:before{inset:12px;border:1px solid #eee2dc}
+.slide:nth-of-type(9) .message-card:after{right:20px;top:20px;width:28px;height:28px;border:1px solid #d9b3b8}
+.slide:nth-of-type(9) .message-card .message-date{font-size:12px;letter-spacing:.04em}
+.slide:nth-of-type(9) .wall-live-layout{align-items:center}
+.slide:nth-of-type(9) .message-wall{gap:20px;padding:8px 12px}
+.slide:nth-of-type(9) .wall-qr{background:transparent;box-shadow:none}
+.slide:nth-of-type(9) .wall-qr b{font-size:clamp(22px,2.4vw,32px)}
+/* Closing scene */
+.final-envelope{position:relative!important;width:min(25vw,300px)!important;height:min(18vw,220px)!important;aspect-ratio:auto!important;border:0!important;border-radius:0!important;background:transparent!important;outline:0!important;box-shadow:none!important;animation:envelopeDrift 6s ease-in-out infinite!important}
+.envelope-back{position:absolute;inset:10% 4%;background:#fffdfb;border:1px solid #e5d4ce;transform:rotate(-8deg);box-shadow:0 18px 35px #49332d12}
+.envelope-flap{position:absolute;inset:10% 4%;background:#f8e8e9;clip-path:polygon(0 0,100% 0,50% 62%);border:1px solid #e5d4ce;transform:rotate(-8deg)}
+.envelope-heart{position:absolute;left:50%;top:45%;width:32px;height:32px;background:var(--deep);transform:translate(-50%,-50%) rotate(45deg);border-radius:5px}
+.envelope-heart:before,.envelope-heart:after{content:"";position:absolute;width:32px;height:32px;background:var(--deep);border-radius:50%}
+.envelope-heart:before{left:-16px;top:0}.envelope-heart:after{left:0;top:-16px}
+@keyframes envelopeDrift{0%,100%{transform:translateY(0) rotate(4deg)}50%{transform:translateY(-15px) rotate(-2deg)}}
+.slide:nth-of-type(10) .brand-logo{width:min(210px,30vw);margin-top:16px}
+.slide:nth-of-type(10) .hero-stamp:before{content:"";position:absolute;inset:0;border:1px solid #fff7;border-radius:50%;transform:scaleX(.75) rotate(-20deg);animation:slowOrbit 22s linear infinite}
+.slide:nth-of-type(10) .hero-stamp .orbit{display:none}
+.slide:nth-of-type(10) .hero-stamp .stamp-core{width:100%;height:100%}
+.slide:nth-of-type(10) .hero-copy h1{max-width:9ch}
+#postalWipe{background:var(--paper);border:0;border-radius:0;box-shadow:0 0 0 1px #e6d3cc;transform:rotate(-3deg);overflow:hidden}
+#postalWipe:before{inset:24px;border:1px solid #e4d0c9;background:none}
+#postalWipe:after{content:"";width:170px;height:110px;background:url('logo-postella-transparent.png') center/contain no-repeat;filter:none}
+.slide.leaving{animation:sceneOut .5s cubic-bezier(.7,0,.3,1) both}
+@keyframes sceneOut{to{opacity:0;clip-path:inset(0 0 0 100%);transform:translateX(-2vw)}}
+.orbit:before,.orbit:after{content:"";display:none}#stampWipe span{font-family:Bagel;color:var(--deep);font-size:clamp(54px,10vw,130px)}
+</style>
+</head>
 <body>
 <div class="deck" id="deck">
 <section class="slide active" data-title="Bienvenida" data-transition="postal">
 
 <div class="hero">
-<div class="hero-copy"><h1>Hay cosas<br>que merecen<br><span style="color:var(--deep)">llegar.</span></h1></div>
-<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><img class="cover-logo" src="logo-postella-transparent.png" alt="postella"></div><div class="fly-letter">✉</div></div>
+<div class="hero-copy"><h1>haz que<br><span style="color:#fff">llegue.</span></h1></div>
+<div class="hero-stamp cover-art"><div class="cover-card"><div class="cover-card-logo"><img class="cover-logo" src="logo-postella-transparent.png" alt="postella"></div><div class="cover-card-line"></div><div class="cover-card-stamp"></div></div><div class="cover-ribbon"></div></div>
 </div>
 <footer><div class="nav"><button onclick="go(1)">→</button></div></footer>
 </section>
@@ -392,27 +504,27 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 <header><span>02 — La idea</span></header>
 <div class="kicker" style="margin-top:7vh">En un mundo que va demasiado rápido</div>
 <h2>Volvemos a lo<br><span style="color:var(--deep)">que importa.</span></h2>
-<div class="split"><div><p>postella nace para recuperar el valor de los pequeños gestos: escribir, regalar, guardar y compartir. Queremos que una postal sea mucho más que papel: que sea una forma de estar presente.</p><div class="brand-values"><span class="value">nostalgia</span><span class="value">creatividad</span><span class="value">dulzura</span></div></div><div style="position:relative;min-height:230px;display:grid;place-items:center"><div style="font:clamp(100px,19vw,230px) Bagel;color:#e8c4c8;transform:rotate(-9deg);text-shadow:8px 10px 0 #fff">hola</div><div style="position:absolute;right:8%;bottom:12%;font:clamp(28px,4vw,48px) Bagel;color:var(--brown);transform:rotate(7deg)">¿cómo estás?</div></div></div>
+<div class="split"><div><p>postella nace para recuperar el valor de los pequeños gestos: escribir, regalar, guardar y compartir. Queremos que una postal sea mucho más que papel: que sea una forma de estar presente.</p><div class="brand-values"><span class="value">nostalgia</span><span class="value">creatividad</span><span class="value">dulzura</span></div></div><div class="hello-scene"><div class="hello-sparkle">♡</div><div class="hello-word">hola</div><div class="hello-question">¿cómo estás?</div><svg class="hello-envelope" viewBox="0 0 120 82" aria-hidden="true"><rect x="4" y="5" width="112" height="72" rx="5"/><path d="M7 10l53 42 53-42"/></svg></div></div>
 <footer><span>postella · haz que llegue</span><div class="nav"><button onclick="go(0)">←</button><button onclick="go(2)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Qué ofrecemos" data-transition="postal">
 <header><span>03 — El universo postella</span></header>
 <div class="kicker" style="margin-top:5vh"></div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
 
-<div class="qr-stage"><span class="qr-pulse"></span><img src="postal-wall-qr.png" alt="QR para participar en POSTELLA FEST"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
+
 <div class="grid3">
-<article class="tile"><div class="n">01</div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
-<article class="tile"><div class="n">02</div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
-<article class="tile"><div class="n">03</div><b>Pequeños regalos</b><small>Objetos especiales, detalles y piezas seleccionadas para regalar o coleccionar.</small></article>
+<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="13" width="48" height="38" rx="3"/><path d="M12 18l20 16 20-16"/><path d="M12 46l15-13M52 46L37 33"/></svg></div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
+<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 8h28v48H18z"/><path d="M24 19h16M24 28h16M24 37h11"/></svg></div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
+<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 25h48v31H8zM5 18h54v9H5z"/><path d="M32 18c-17 0-17-14-7-14 7 0 7 14 7 14zm0 0c17 0 17-14 7-14-7 0-7 14-7 14z"/></svg></div><b>Pequeños regalos</b><small>Objetos especiales, detalles y piezas seleccionadas para regalar o coleccionar.</small></article>
 </div>
-<div class="fly-letter">💌</div>
+
 <footer><span>Un catálogo con identidad propia</span><div class="nav"><button onclick="go(1)">←</button><button onclick="go(3)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Identidad" data-transition="confetti">
 <header><span>04 — Identidad visual</span><span>Un lenguaje reconocible</span></header>
 <div class="split">
 <div><div class="kicker"></div><h2>Creativa.<br>Cercana.<br><span style="color:var(--deep)">Inconfundible.</span></h2><p>Una estética nostálgica y contemporánea, con una paleta cálida y una comunicación visual amable. Cada detalle construye una misma experiencia.</p><div class="brand-values"><span class="value">detalle</span><span class="value">diseño</span><span class="value">emoción</span></div></div>
-<div><div class="kicker">Nuestra paleta</div><div class="palette"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b><small>#F5B0BD</small></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b><small>#EFEAE7</small></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b><small>#AE8774</small></div></div><div style="margin-top:32px;background:#fffdf9;border-radius:24px;padding:24px;text-align:center;border:1px solid #e5d2ca"><img class="brand-logo" style="width:70%" src="logo-postella.png" alt="Logotipo original postella"></div></div>
+<div><div class="kicker">Nuestra paleta</div><div class="palette"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b><small>#F5B0BD</small></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b><small>#EFEAE7</small></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b><small>#AE8774</small></div></div><div style="margin-top:32px;background:#fffdf9;border-radius:24px;padding:24px;text-align:center;border:1px solid #e5d2ca"><img class="brand-logo" style="width:70%" src="logo-postella-transparent.png" alt="Logotipo original postella"></div></div>
 </div>
 <footer><span>Identidad corporativa</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
 </section>
@@ -420,14 +532,14 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 <header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
 <div class="kicker" style="margin-top:6vh">No es solo una tienda</div><h2>Un lugar para<br><span style="color:var(--deep)">quedarse un ratito.</span></h2>
 
-<div class="qr-stage"><span class="qr-pulse"></span><img src="postal-wall-qr.png" alt="QR para participar en POSTELLA FEST"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
+
 <div class="timeline">
 <div class="step"><strong>Descubrir</strong><p class="small">Colecciones que invitan a mirar, explorar y encontrar algo propio.</p></div>
 <div class="step"><strong>Elegir</strong><p class="small">Un surtido cuidado, organizado por estilos, temas y ocasiones.</p></div>
 <div class="step"><strong>Personalizar</strong><p class="small">Combinar postales, mensajes, sobres y pequeños detalles.</p></div>
 <div class="step"><strong>Compartir</strong><p class="small">Llevarse algo que conecta con otra persona.</p></div>
 </div>
-<div style="margin-top:35px;padding:18px 22px;background:var(--pink);border-radius:18px;max-width:650px;font:clamp(20px,3vw,34px) Bagel;transform:rotate(-1deg)"></div>
+
 <footer><span>Experiencia de compra y visual merchandising</span><div class="nav"><button onclick="go(3)">←</button><button onclick="go(5)">→</button></div></footer>
 </section>
 <section class="slide" data-title="" data-transition="postal">
@@ -456,8 +568,8 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 <header><span>08 — POSTELLA FEST</span><span></span></header>
 <div class="section-head"><h2>¡Ahora <span style="color:var(--deep)">participas tú!</span></h2><p>Escanea el QR, elige una dinámica y forma parte de postella.</p></div>
 <div class="fest-hub">
- <div class="hub-left"><div class="hub-qr"><img src="postal-wall-qr.png" alt="QR para participar"><b>entra desde tu móvil</b><small>Una sola entrada para todas las experiencias</small></div>
- <div class="hub-status" id="hubStatus">Conectando con la comunidad…</div></div>
+ <div class="hub-left"><div class="hub-qr"><img src="mascot-qr.png" alt="Escanea a nuestra mascota para participar"><b>entra desde tu móvil</b><small>Una sola entrada para todas las experiencias</small></div>
+ <div class="hub-status" id="hubStatus">Tus respuestas están llegando.</div></div>
  <div class="hub-results three-activities">
   <div class="hub-card cloud-card"><span>01 · UNA PALABRA</span><h3>The Postella Cloud</h3><div class="cloud-result" id="cloudResult"><div class="cloud-shape"><i>nostalgia</i><i>cariño</i><i>recuerdos</i></div></div></div>
   <div class="hub-card"><span>02 · IMAGINA Y CREA</span><h3>The Collection Lab</h3><p class="small">La próxima colección de postella empieza con vuestra imaginación.</p><div id="ideasResult" class="ideas-result">Aquí aparecerán los nombres, inspiraciones y productos que propongáis.</div></div>
@@ -469,17 +581,17 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 <section class="slide" data-title="The Postcard Wall" data-transition="postcard">
 <header><span>09 — THE POSTCARD WALL</span><span></span></header>
 <div class="wall-title"><h2>Deja algo bonito<br><span style="color:var(--deep)">por aquí.</span></h2><p>Un pequeño mensaje puede quedarse para siempre.</p></div>
-<div class="wall-live-layout"><div class="wall-compose"><div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para participar"><span><b>escanea y participa</b><small>elige «Send a postcard» en tu móvil</small></span></div><div class="qr-note" id="wallStatus">💌 conectando el mural…</div></div><div class="message-wall" id="messageWall" aria-live="polite"></div></div>
+<div class="wall-live-layout"><div class="wall-compose"><div class="wall-qr"><img src="mascot-qr.png" alt="Escanea a nuestra mascota para participar"><span><b>escanea y participa</b><small>elige «Send a postcard» en tu móvil</small></span></div><div class="qr-note" id="wallStatus">Tus postales están llegando.</div></div><div class="message-wall" id="messageWall" aria-live="polite"></div></div>
 <footer><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer></section>
 <section class="slide" data-title="Gracias" data-transition="confetti">
 <header><span>postella · haz que llegue</span><span>Gracias por estar aquí</span></header>
 <div class="hero">
-<div class="hero-copy"><div class="kicker"></div><h1>Que nunca<br>se nos olvide<br><span style="color:var(--deep)">decirlo.</span></h1><p>Gracias por descubrir postella con nosotros.</p><img class="brand-logo" src="logo-postella.png" alt="postella"></div>
-<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><span>💌</span></div></div>
+<div class="hero-copy"><div class="kicker"></div><h1>Que nunca<br>se nos olvide<br><span style="color:var(--deep)">decirlo.</span></h1><p>Gracias por descubrir postella con nosotros.</p><img class="brand-logo" src="logo-postella-transparent.png" alt="postella"></div>
+<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core final-envelope"><div class="envelope-back"></div><div class="envelope-flap"></div><div class="envelope-heart"></div></div></div>
 </div>
 <footer><span>Álvaro González · Eva de la Arena Mateos</span><div class="nav"><button onclick="go(8)">←</button><button onclick="go(0)">↻</button></div></footer>
 </section>
-<div id="postalWipe"></div><div id="stampWipe"><span>💌</span></div><div id="confetti"></div>
+<div id="postalWipe"></div><div id="stampWipe"><span>postella</span></div><div id="confetti"></div>
 <button class="audio" id="soundBtn">♫ Activar ambiente</button>
 <div class="progress"><i id="progress"></i></div>
 </div>
