@@ -436,6 +436,50 @@ button{font:inherit;cursor:pointer}
  .live-postcard p{font-size:11px}
 }
 
+
+/* 10 · GRAN FINAL — pensado para proyección en pantalla grande */
+.finale-slide{background:
+ radial-gradient(ellipse at 50% 115%,#b87583 0,transparent 42%),
+ radial-gradient(ellipse at 12% 12%,#8c6260 0,transparent 34%),
+ linear-gradient(135deg,#49332d 0%,#302321 72%);color:#fffaf4;isolation:isolate}
+.finale-slide:before,.finale-slide:after{content:"";position:absolute;z-index:0;left:50%;top:52%;width:min(88vw,1000px);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid #f5b0bd35;border-radius:50%;pointer-events:none;animation:finaleOrbit 48s linear infinite}
+.finale-slide:after{width:min(67vw,760px);animation-direction:reverse;opacity:.55}
+@keyframes finaleOrbit{to{rotate:360deg}}
+.finale-slide .topline,.finale-slide .bottom{position:relative;z-index:4;color:#f0d9d7}
+.finale-slide .brand-mini{color:var(--pink)}
+.finale-stage{position:relative;z-index:2;flex:1;min-height:0;display:grid;place-items:center;text-align:center}
+.finale-copy{position:relative;z-index:3;width:min(790px,78vw);padding:20px}
+.finale-eyebrow{font:500 clamp(11px,1.15vw,16px) Fredoka;letter-spacing:.24em;text-transform:uppercase;color:var(--pink);animation:finalRise .9s .2s both}
+.finale-headline{font:clamp(54px,8.1vw,112px)/.91 Bagel, sans-serif;letter-spacing:-.035em;color:#fffaf4;margin:clamp(18px,3vh,30px) auto;animation:finalRise 1s .55s both}
+.finale-headline em{font-style:normal;color:var(--pink);display:block}
+.finale-subtitle{font:clamp(16px,1.55vw,22px)/1.45 Fredoka;color:#eadbd5;max-width:570px;margin:0 auto;animation:finalRise .9s 1s both}
+.finale-wordmark{font:clamp(48px,6.2vw,82px)/1 Bagel;color:var(--pink);margin-top:clamp(18px,3vh,32px);animation:finalRise .9s 1.45s both}
+.finale-slogan{font:clamp(13px,1.1vw,16px) Fredoka;letter-spacing:.16em;color:#f0d9d7;margin-top:5px;animation:finalRise .9s 1.7s both}
+.finale-card{position:absolute;z-index:1;width:clamp(145px,17vw,245px);aspect-ratio:1.48;background:#fffaf4;color:#49332d;box-shadow:0 22px 55px #170d0d70;padding:18px;display:grid;place-content:center;text-align:center;font:clamp(17px,1.7vw,24px)/1.05 Bagel;border:1px solid #fff;opacity:0}
+.finale-card:after{content:"";position:absolute;inset:9px;border:1px solid #ae877488}
+.finale-card small{font:10px Fredoka;letter-spacing:.14em;text-transform:uppercase;color:#a66f7c;margin-top:10px}
+.finale-card.a{left:5%;top:12%;--r:-12deg;animation:cardArrive 1.2s .15s both,cardFloat 7s 1.4s ease-in-out infinite}
+.finale-card.b{right:5%;top:14%;--r:11deg;animation:cardArrive 1.2s .35s both,cardFloat 8s 1.6s ease-in-out infinite reverse}
+.finale-card.c{left:9%;bottom:9%;--r:8deg;animation:cardArrive 1.2s .55s both,cardFloat 8s 1.8s ease-in-out infinite}
+.finale-card.d{right:8%;bottom:10%;--r:-9deg;animation:cardArrive 1.2s .75s both,cardFloat 9s 2s ease-in-out infinite reverse}
+@keyframes cardArrive{from{opacity:0;transform:translateY(75px) rotate(var(--r)) scale(.65)}to{opacity:1;transform:translateY(0) rotate(var(--r)) scale(1)}}
+@keyframes cardFloat{0%,100%{translate:0 0}50%{translate:0 -13px}}
+.finale-seal-wrap{position:relative;margin:clamp(16px,2.5vh,28px) auto 0;width:clamp(76px,7.2vw,100px);height:clamp(76px,7.2vw,100px);animation:finalRise .8s 2s both}
+.finale-seal{width:100%;height:100%;border:0;border-radius:50%;background:var(--pink);color:#49332d;box-shadow:0 0 0 9px #f5b0bd20,0 15px 38px #170d0d70;font:clamp(11px,1vw,14px) Fredoka;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.finale-seal:before{content:"";position:absolute;inset:8px;border:1px dashed #49332d99;border-radius:50%;pointer-events:none}
+.finale-seal:hover{transform:scale(1.08) rotate(-8deg);box-shadow:0 0 0 14px #f5b0bd25,0 18px 45px #170d0d80}
+.finale-stamp{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-50%) scale(2.2) rotate(-14deg);border:3px double #e38da2;color:#e38da2;padding:9px 15px;font:clamp(17px,1.6vw,23px) Bagel;letter-spacing:.1em;opacity:0;pointer-events:none;white-space:nowrap}
+.finale-stamp.show{animation:stampMark .7s .1s forwards}
+@keyframes stampMark{0%{opacity:0;transform:translate(-50%,-50%) scale(2.2) rotate(-14deg)}55%{opacity:1;transform:translate(-50%,-50%) scale(.9) rotate(-10deg)}100%{opacity:.96;transform:translate(-50%,-50%) scale(1) rotate(-10deg)}}
+.finale-footnote{font:11px Fredoka;letter-spacing:.17em;text-transform:uppercase;color:#d7bdb7}
+@keyframes finalRise{from{opacity:0;transform:translateY(24px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:760px){
+ .finale-copy{width:100%;padding:12px}.finale-headline{font-size:clamp(45px,10vw,72px)}
+ .finale-card{width:clamp(100px,22vw,145px);padding:11px}.finale-card.a{left:1%;top:8%}.finale-card.b{right:1%;top:9%}.finale-card.c{left:2%;bottom:7%}.finale-card.d{right:2%;bottom:8%}
+ .finale-subtitle{max-width:360px}.finale-slide{padding-bottom:65px}
+}
+@media(prefers-reduced-motion:reduce){.finale-slide:before,.finale-slide:after,.finale-card,.finale-eyebrow,.finale-headline,.finale-subtitle,.finale-wordmark,.finale-slogan,.finale-seal-wrap{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -557,14 +601,34 @@ button{font:inherit;cursor:pointer}
  <div class="bottom participate-bottom"><span id="hubStatus" aria-hidden="true"></span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
 </section>
 
-<section class="slide wall-slide" data-title="The Postcard Wall">
- <div class="topline"><span class="brand-mini">postella</span><span>09 — The Postcard Wall</span></div>
+<section class="slide wall-slide" data-title="El mural de la clase">
+ <div class="topline"><span class="brand-mini">postella</span><span>09 — El mural de la clase</span></div>
  <div class="wall-layout">
-  <div class="wall-copy reveal"><div class="eyebrow">Tus postales están llegando</div><h2 class="display">Palabras<br>que se <em>quedan.</em></h2><p class="lead">Cada mensaje enviado forma parte de un mural colectivo.</p><div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para enviar una postal"><span>Escanea, escribe<br>y haz que llegue 💌</span></div></div>
-  <div class="postcard-wall" id="messageWall"><div class="wall-empty">Las postales de la comunidad aparecerán aquí.</div></div>
+  <div class="wall-copy reveal"><div class="eyebrow">Tus postales están llegando</div><h2 class="display">Palabras<br>que se <em>quedan.</em></h2><p class="lead">Cada mensaje que enviáis forma parte del mural de nuestra clase.</p><div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para enviar una postal"><span>Escanea, escribe<br>y haz que llegue 💌</span></div></div>
+  <div class="postcard-wall" id="messageWall"><div class="wall-empty">Las postales de la clase aparecerán aquí.</div></div>
  </div>
- <div class="bottom"><span id="wallStatus">Mural conectado a las aportaciones de la comunidad</span><div class="controls"><button data-prev>←</button><button data-restart>↻</button></div></div>
+ <div class="bottom"><span id="wallStatus">Mural conectado a las aportaciones de la clase</span><div class="controls"><button data-prev>←</button><button data-restart>↻</button></div></div>
 </section>
+
+<section class="slide finale-slide" data-title="El final">
+ <div class="topline"><span class="brand-mini">postella</span><span>10 — Un final para recordar</span></div>
+ <div class="finale-stage">
+  <div class="finale-card a">un detalle<br>que se queda<small>postella · 01</small></div>
+  <div class="finale-card b">para alguien<br>especial<small>postella · 02</small></div>
+  <div class="finale-card c">las cosas<br>bonitas llegan<small>postella · 03</small></div>
+  <div class="finale-card d">hecho para<br>recordar<small>postella · 04</small></div>
+  <div class="finale-copy">
+   <div class="finale-eyebrow">un pequeño universo · miles de historias</div>
+   <h2 class="finale-headline">Las pequeñas cosas <em>también dejan huella.</em></h2>
+   <p class="finale-subtitle">Gracias por formar parte de este pequeño universo. Cada palabra, cada idea y cada postal ya tiene un lugar aquí.</p>
+   <div class="finale-wordmark">postella</div>
+   <div class="finale-slogan">haz que llegue.</div>
+   <div class="finale-seal-wrap"><button class="finale-seal" id="deckFinaleSeal" type="button">SELLO<br>FINAL</button><div class="finale-stamp" id="deckFinaleStamp">ENTREGADO</div></div>
+  </div>
+ </div>
+ <div class="bottom"><span class="finale-footnote">gracias por dejar vuestra huella · postella</span><div class="controls"><button data-prev>←</button><button data-restart>↻</button></div></div>
+</section>
+
 <div class="postcard-wipe" id="postcardWipe" aria-hidden="true"><img src="logo-postella-transparent.png" alt=""></div>
 <div class="progress"><i id="progress"></i></div><div class="navhint">← →</div>
 </main>
@@ -579,6 +643,10 @@ button{font:inherit;cursor:pointer}
   setTimeout(()=>{old.classList.remove('active');old.classList.add('leaving');index=next;slides[index].classList.remove('leaving','entering');slides[index].classList.add('active');progress.style.width=((index+1)/slides.length*100)+'%';if(index===7)animateABC()},390);
   setTimeout(()=>{old.classList.remove('leaving');wipe.classList.remove('run');busy=false},1190)
  }
+
+ const deckSeal=document.getElementById('deckFinaleSeal');
+ if(deckSeal){deckSeal.addEventListener('click',()=>{deckSeal.classList.remove('stamped');void deckSeal.offsetWidth;deckSeal.classList.add('stamped');const stamp=document.getElementById('deckFinaleStamp');stamp.classList.remove('show');void stamp.offsetWidth;stamp.classList.add('show')})}
+
  function animateABC(){document.querySelectorAll('.abc-track i').forEach(el=>{el.style.width='0';requestAnimationFrame(()=>el.style.width=el.dataset.width)})}
  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>show(index+1)));document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>show(index-1)));document.querySelectorAll('[data-restart]').forEach(b=>b.addEventListener('click',()=>show(0)));
  document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
@@ -587,7 +655,7 @@ button{font:inherit;cursor:pointer}
  const URL='https://yfdbljqdqvfxuiscvczp.supabase.co';const KEY='sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX';
  const status=document.getElementById('hubStatus'),wall=document.getElementById('messageWall'),wallStatus=document.getElementById('wallStatus');
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function makeCard(row,i){const a=document.createElement('article');a.className='live-postcard';a.style.setProperty('--rot',[-3,2,-1,3,-2,1][i%6]+'deg');a.style.setProperty('--enter-delay',(Math.min(i,18)*85)+'ms');a.style.setProperty('--delay',(-i*.55)+'s');a.style.setProperty('--dur',(6.5+(i%5)*.7)+'s');const p=document.createElement('p');p.textContent=row.content||'';const small=document.createElement('small');small.textContent='postella · desde la comunidad';a.append(p,small);return a}
+ function makeCard(row,i){const a=document.createElement('article');a.className='live-postcard';a.style.setProperty('--rot',[-3,2,-1,3,-2,1][i%6]+'deg');a.style.setProperty('--enter-delay',(Math.min(i,18)*85)+'ms');a.style.setProperty('--delay',(-i*.55)+'s');a.style.setProperty('--dur',(6.5+(i%5)*.7)+'s');const p=document.createElement('p');p.textContent=row.content||'';const small=document.createElement('small');small.textContent='postella · desde la clase';a.append(p,small);return a}
  async function init(){if(!window.supabase){status.textContent='No se pudo cargar la conexión.';wallStatus.textContent='No se pudo conectar al mural.';return}
  const db=window.supabase.createClient(URL,KEY);
  const renderedPostcards=new Set();
