@@ -127,19 +127,35 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 @keyframes heroSpinIn{from{opacity:0;transform:scale(.55) rotate(-35deg)}to{opacity:1;transform:none}}
 @media(max-width:760px){.qr-stage{gap:9px;padding:8px}.qr-stage img{width:76px;height:76px}.qr-stage small{font-size:10px}.kinetic-sticker.two{display:none}}
 
+
+/* Cover refinement: quiet typography, original transparent wordmark */
+.cover-logo{width:78%;height:auto;max-height:48%;object-fit:contain;filter:none;position:relative;z-index:2}
+.slide:first-of-type .hero{grid-template-columns:1fr 1fr;gap:2vw}
+.slide:first-of-type .hero-copy h1{margin:0;font-size:clamp(64px,10.5vw,150px);line-height:.94}
+.slide:first-of-type .stamp-core{background:#fffdf9;border-color:#fffdf9;outline:2px dashed #b9828c}
+.slide:first-of-type .hero-stamp{width:min(38vw,450px)}
+.slide:first-of-type footer{bottom:22px}
+.slide:first-of-type header{display:none}
+@media(max-width:760px){
+ .slide:first-of-type .hero{grid-template-columns:1fr;align-content:center;gap:18px}
+ .slide:first-of-type .hero-copy h1{font-size:clamp(52px,13vw,82px)}
+ .slide:first-of-type .hero-stamp{width:min(48vw,220px);min-width:0;justify-self:center}
+ .cover-logo{width:82%}
+}
+
 </style></head>
 <body>
 <div class="deck" id="deck">
 <section class="slide active" data-title="Bienvenida" data-transition="postal">
-<header><span>postella · presentación de lanzamiento</span><span>01 / 10</span></header>
+
 <div class="hero">
-<div class="hero-copy"><div class="kicker">Una marca para volver a conectar</div><h1>Hay cosas<br>que merecen<br><span style="color:var(--deep)">llegar.</span></h1><p>Un universo de postales ilustradas, papelería creativa y pequeños regalos pensados para convertir momentos en recuerdos.</p><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:25px"><span class="pill">descubre postella</span><img class="brand-logo" src="logo-postella.png" alt="postella"></div></div>
-<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><span>💌</span></div><div class="fly-letter">✉</div></div>
+<div class="hero-copy"><h1>Hay cosas<br>que merecen<br><span style="color:var(--deep)">llegar.</span></h1></div>
+<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><img class="cover-logo" src="logo-postella-transparent.png" alt="postella"></div><div class="fly-letter">✉</div></div>
 </div>
-<footer><span>Una experiencia para descubrir</span><div class="nav"><span>Empezar</span><button onclick="go(1)">→</button></div></footer>
+<footer><span></span><div class="nav"><button onclick="go(1)">→</button></div></footer>
 </section>
 <section class="slide" data-title="La idea" data-transition="stamp">
-<header><span>02 — La idea</span><span>Una emoción que se puede tocar</span></header>
+<header><span>02 — La idea</span><span></span></header>
 <div class="kicker" style="margin-top:7vh">En un mundo que va demasiado rápido</div>
 <h2>Volvemos a lo<br><span style="color:var(--deep)">que importa.</span></h2>
 <div class="split"><div><p>postella nace para recuperar el valor de los pequeños gestos: escribir, regalar, guardar y compartir. Queremos que una postal sea mucho más que papel: que sea una forma de estar presente.</p><div class="brand-values"><span class="value">nostalgia</span><span class="value">creatividad</span><span class="value">dulzura</span></div></div><div style="position:relative;min-height:230px;display:grid;place-items:center"><div style="font:clamp(100px,19vw,230px) Bagel;color:#e8c4c8;transform:rotate(-9deg);text-shadow:8px 10px 0 #fff">hola</div><div style="position:absolute;right:8%;bottom:12%;font:clamp(28px,4vw,48px) Bagel;color:var(--brown);transform:rotate(7deg)">¿cómo estás?</div></div></div>
