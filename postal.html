@@ -24,7 +24,7 @@ document.getElementById('submit').onclick=async()=>{
  if(['vote','price','pack'].includes(kind)){if(!selected){document.getElementById('status').textContent='Elige una opción primero.';return}}
  else{content=(document.getElementById('answer')?.value||'').trim();if(!content){document.getElementById('status').textContent='Escribe algo antes de enviar.';return}}
  const btn=document.getElementById('submit');btn.disabled=true;btn.textContent='Enviando…';
- const {error}=await db.from('postella_activities').insert({kind,content,choice:selected||null});
+const {error}=await db.from('postella_activities').insert({kind,content,choice:selected||''});
  btn.disabled=false;btn.textContent='Enviar 💌';
  if(error){document.getElementById('status').textContent='No se ha podido enviar: '+error.message;return}
  document.getElementById('status').textContent='¡Recibido! Tu participación ya está en POSTELLA FEST 💗';
