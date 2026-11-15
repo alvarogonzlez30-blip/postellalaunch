@@ -176,10 +176,10 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 .hub-qr img{width:clamp(130px,15vw,190px);height:clamp(130px,15vw,190px);object-fit:contain;display:block;margin:auto auto 12px}
 .hub-qr b{font:24px Bagel;display:block}.hub-qr small{font-size:13px;color:#8d756b;display:block;max-width:200px}
 .hub-status{font-size:12px;color:#8d756b;margin-top:14px}
-.hub-results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hub-results{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hub-results.three-activities{grid-template-columns:1fr 1fr}.hub-results.three-activities .cloud-card{grid-row:span 2}.hub-results.three-activities .hub-card{min-height:180px}
 .hub-card{background:#fffdf9;border:1px solid #ead8d1;border-radius:20px;padding:14px;min-height:145px;overflow:hidden}
 .hub-card>span{font-size:10px;letter-spacing:.15em;color:#b07d7b}.hub-card h3{font:22px Bagel;margin:6px 0 10px;color:#49332d}
-.cloud-result{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.cloud-result i{font-style:normal;background:#f8e2e6;border-radius:999px;padding:5px 10px;animation:cloudPop .5s both}.cloud-result i:nth-child(2n){background:#efeae7}.cloud-result i:nth-child(3n){font-size:20px;color:#ae647b}
+.cloud-result{min-height:230px;display:flex;align-items:center;justify-content:center}.cloud-shape{position:relative;width:min(100%,340px);min-height:175px;padding:42px 25px 25px;border-radius:100px;background:#fffdf9;box-shadow:0 8px 24px #49332d16;display:flex;align-content:center;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;isolation:isolate}.cloud-shape:before,.cloud-shape:after{content:"";position:absolute;background:#fffdf9;border-radius:50%;z-index:-1}.cloud-shape:before{width:115px;height:115px;top:-35px;left:55px}.cloud-shape:after{width:135px;height:135px;top:-48px;right:48px}.cloud-shape i{font-style:normal;background:#f8e2e6;border-radius:999px;padding:5px 10px;animation:cloudPop .5s both;position:relative}.cloud-shape i:nth-child(2n){background:#efeae7}.cloud-shape i:nth-child(3n){font-size:20px;color:#ae647b}.idea-chip{display:block;background:#f8e2e6;border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14px}.pack-badges{display:flex;flex-wrap:wrap;gap:7px}.pack-badges span{background:#f8e2e6;border-radius:999px;padding:7px 10px;font-size:13px}.hub-card .small{font-size:13px;margin:0 0 8px}
 @keyframes cloudPop{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:scale(1)}}
 .ideas-result{font-size:13px;line-height:1.35;color:#765d53;display:flex;flex-wrap:wrap;gap:6px}
 .idea-chip{background:#f5b0bd55;border:1px solid #e7c3c6;border-radius:9px;padding:6px 8px;animation:cloudPop .5s both}
@@ -195,7 +195,7 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 .message-card .postmark{position:absolute;right:9px;top:7px;border:1px dashed #d8a8ad;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;color:#d97891;font-size:12px}
 .message-card .message-date{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#a78b80;margin-top:9px}
 @keyframes livePostcard{0%{opacity:0;transform:translateY(70px) rotate(12deg) scale(.6)}65%{opacity:1;transform:translateY(-5px) rotate(-3deg) scale(1.04)}100%{transform:rotate(var(--r)) scale(1)}}
-@media(max-width:760px){.fest-hub{grid-template-columns:1fr}.hub-left{flex-direction:row;gap:15px}.hub-qr img{width:90px;height:90px}.hub-results{grid-template-columns:1fr 1fr}.wall-live-layout{grid-template-columns:1fr}.message-wall{grid-template-columns:1fr 1fr}.wall-qr img{width:75px;height:75px}}
+@media(max-width:760px){.fest-hub{grid-template-columns:1fr}.hub-left{flex-direction:row;gap:15px}.hub-qr img{width:90px;height:90px}.hub-results{grid-template-columns:1fr 1fr}.hub-results.three-activities .cloud-card{grid-row:auto}.wall-live-layout{grid-template-columns:1fr}.message-wall{grid-template-columns:1fr 1fr}.wall-qr img{width:75px;height:75px}}
 
 </style></head>
 <body>
@@ -219,7 +219,7 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <header><span>03 — El universo postella</span></header>
 <div class="kicker" style="margin-top:5vh"></div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
 
-<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
+<div class="qr-stage"><span class="qr-pulse"></span><img src="postal-wall-qr.png" alt="QR para participar en POSTELLA FEST"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
 <div class="grid3">
 <article class="tile"><div class="n">01</div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
 <article class="tile"><div class="n">02</div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
@@ -240,7 +240,7 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
 <div class="kicker" style="margin-top:6vh">No es solo una tienda</div><h2>Un lugar para<br><span style="color:var(--deep)">quedarse un ratito.</span></h2>
 
-<div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
+<div class="qr-stage"><span class="qr-pulse"></span><img src="postal-wall-qr.png" alt="QR para participar en POSTELLA FEST"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
 <div class="timeline">
 <div class="step"><strong>Descubrir</strong><p class="small">Colecciones que invitan a mirar, explorar y encontrar algo propio.</p></div>
 <div class="step"><strong>Elegir</strong><p class="small">Un surtido cuidado, organizado por estilos, temas y ocasiones.</p></div>
@@ -278,11 +278,10 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <div class="fest-hub">
  <div class="hub-left"><div class="hub-qr"><img src="postal-wall-qr.png" alt="QR para participar"><b>entra desde tu móvil</b><small>Una sola entrada para todas las experiencias</small></div>
  <div class="hub-status" id="hubStatus">Conectando con la comunidad…</div></div>
- <div class="hub-results">
-  <div class="hub-card"><span>01 · PALABRAS</span><h3>The Postella Cloud</h3><div id="cloudResult" class="cloud-result"><i>nostalgia</i><i>cariño</i><i>recuerdos</i></div></div>
-  <div class="hub-card"><span>02 · IDEAS</span><h3>Create the Next Collection</h3><div id="ideasResult" class="ideas-result">Las ideas de la clase aparecerán aquí.</div></div>
-  <div class="hub-card"><span>03 · VOTACIÓN</span><h3>You Are the Creative Director</h3><div id="voteResult" class="vote-result"></div></div>
-  <div class="hub-card"><span>04 · PACK</span><h3>Build Your Postella</h3><div id="packResult" class="ideas-result">El pack favorito se construirá entre todos.</div></div>
+ <div class="hub-results three-activities">
+  <div class="hub-card cloud-card"><span>01 · UNA PALABRA</span><h3>The Postella Cloud</h3><div class="cloud-result" id="cloudResult"><div class="cloud-shape"><i>nostalgia</i><i>cariño</i><i>recuerdos</i></div></div></div>
+  <div class="hub-card"><span>02 · IMAGINA Y CREA</span><h3>The Collection Lab</h3><p class="small">La próxima colección de postella empieza con vuestra imaginación.</p><div id="ideasResult" class="ideas-result">Aquí aparecerán los nombres, inspiraciones y productos que propongáis.</div></div>
+  <div class="hub-card"><span>03 · VUESTROS FAVORITOS</span><h3>Build Your Postella</h3><p class="small">¿Qué no podría faltar en postella?</p><div id="packResult" class="ideas-result">Los productos más elegidos por la comunidad.</div></div>
  </div>
 </div>
 <footer><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
@@ -350,16 +349,14 @@ async function fetchAll(){
  const {data,error}=await postellaDb.from('postella_activities').select('*').order('created_at',{ascending:false}).limit(250);
  if(error){const s=document.getElementById('hubStatus');if(s)s.textContent='Revisa la configuración de actividades';return;}
  const rows=data||[];
- const words=rows.filter(x=>x.kind==='word').slice(0,24);
- const ideas=rows.filter(x=>x.kind==='idea').slice(0,5);
- const votes=rows.filter(x=>x.kind==='vote');
+ const words=rows.filter(x=>x.kind==='word').slice(0,40);
+ const ideas=rows.filter(x=>x.kind==='idea').slice(0,8);
  const packs=rows.filter(x=>x.kind==='pack');
- const cloud=document.getElementById('cloudResult');if(cloud)cloud.innerHTML=words.length?words.map(x=>'<i>'+esc(x.content)+'</i>').join(''):'<i>nostalgia</i><i>cariño</i><i>recuerdos</i>';
- const ideaBox=document.getElementById('ideasResult');if(ideaBox)ideaBox.innerHTML=ideas.length?ideas.map(x=>'<span class="idea-chip">'+esc(x.content)+'</span>').join(''):'Las ideas de la clase aparecerán aquí.';
- const counts={'Summer Memories':0,'Little Things':0,'Love Notes':0,'Around the World':0};votes.forEach(x=>{if(counts[x.choice]!==undefined)counts[x.choice]++});
- const vr=document.getElementById('voteResult');if(vr)vr.innerHTML=Object.entries(counts).map(([n,v])=>'<div class="vote-line">'+n+' · '+v+'<div class="vote-track"><div class="vote-fill" style="width:'+(votes.length?v/votes.length*100:0)+'%"></div></div></div>').join('');
- const pc={Postal:0,Stickers:0,Notebook:0,Envelope:0,Gift:0};packs.forEach(x=>{if(pc[x.choice]!==undefined)pc[x.choice]++});
- const pr=document.getElementById('packResult');if(pr)pr.innerHTML='<div class="pack-badges">'+Object.entries(pc).map(([n,v])=>'<span>'+n+' · '+v+'</span>').join('')+'</div>';
+ const cloud=document.getElementById('cloudResult');if(cloud)cloud.innerHTML='<div class="cloud-shape">'+(words.length?words.map(x=>'<i>'+esc(x.content)+'</i>').join(''):'<i>nostalgia</i><i>cariño</i><i>recuerdos</i>')+'</div>';
+ const ideaBox=document.getElementById('ideasResult');if(ideaBox)ideaBox.innerHTML=ideas.length?ideas.map(x=>'<span class="idea-chip">'+esc(x.content)+'</span>').join(''):'Aquí aparecerán los nombres, inspiraciones y productos que propongáis.';
+ const productNames=['Postales','Jellycat','Cerámica','Papelería','Pequeños regalos','Photobooth'];
+ const pc=Object.fromEntries(productNames.map(n=>[n,0]));packs.forEach(x=>String(x.choice||'').split(',').map(v=>v.trim()).forEach(v=>{if(pc[v]!==undefined)pc[v]++}));
+ const pr=document.getElementById('packResult');if(pr)pr.innerHTML='<div class="pack-badges">'+Object.entries(pc).map(([n,v])=>'<span>'+esc(n)+' · '+v+'</span>').join('')+'</div>';
  const st=document.getElementById('hubStatus');if(st)st.textContent='🟢 '+rows.length+' participaciones recibidas';
  const cards=rows.filter(x=>x.kind==='postcard');if(wall){wall.innerHTML='';cards.slice().reverse().forEach(x=>addCard({id:x.id,content:x.content,created_at:x.created_at}));}
 }
