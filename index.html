@@ -188,6 +188,42 @@ button{font:inherit;cursor:pointer}
 .live-postcard p{font:clamp(18px,2vw,28px)/1.05 Bagel;color:#6B5048;overflow-wrap:anywhere}
 .live-postcard small{font-size:12px;color:#AD8A7E}
 .wall-empty{grid-column:1/-1;text-align:center;color:#76574F;font:clamp(25px,3vw,38px) Bagel;padding:30px}
+
+/* POSTELLA PARTICIPA — immersive spatial composition, not a card dashboard */
+.participate{isolation:isolate}
+.participate-atmosphere{position:absolute;inset:-25%;z-index:-1;background:
+ radial-gradient(ellipse at 72% 48%,#B86F7D70 0,transparent 30%),
+ radial-gradient(ellipse at 35% 78%,#9A6A5870 0,transparent 32%),
+ radial-gradient(ellipse at 80% 10%,#F5B0BD38 0,transparent 28%);
+ animation:atmosphereDrift 16s ease-in-out infinite alternate}
+@keyframes atmosphereDrift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
+.immersive-participate{grid-template-columns:.72fr 1.28fr;gap:1vw}
+.participate-left{position:relative;z-index:3;padding-left:1vw}
+.participate-left h2{font-size:clamp(58px,7.4vw,108px);line-height:.86;margin:18px 0 22px}
+.participate-left p{font-size:clamp(16px,1.4vw,19px);max-width:330px}
+.participate-qr{margin-top:30px;gap:18px}
+.participate-qr img{width:clamp(116px,13vw,166px);padding:8px;border-radius:4px;box-shadow:0 15px 38px #140E0D70}
+.participate-qr strong{font-size:17px;color:#FFF8F3}
+.participate-qr span{display:block;font-size:14px;margin-top:5px;color:#D4BDB6}
+.participate-stage{position:relative;height:min(76vh,720px);min-height:430px;overflow:visible;display:grid;place-items:center}
+.stage-glow{position:absolute;width:min(54vw,680px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#D78C9A35 0,#B56B7930 38%,transparent 70%);filter:blur(8px);animation:glow 7s ease-in-out infinite}
+.stage-loop{position:absolute;border:1px solid #F5B0BD40;border-radius:50%;width:min(49vw,610px);aspect-ratio:1;transform:rotate(-18deg) scaleY(.48);animation:loopTurn 22s linear infinite}
+.loop-two{width:min(39vw,480px);transform:rotate(34deg) scaleY(.55);border-color:#F5E6DF32;animation-direction:reverse;animation-duration:29s}
+@keyframes loopTurn{to{rotate:360deg}}
+.stage-wordcloud{position:absolute;inset:8%;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:8px 16px;transform:rotate(-8deg);opacity:.25;pointer-events:none}
+.stage-wordcloud span{font:clamp(24px,4vw,54px) Bagel;color:#F8DDE0}
+.stage-wordcloud span:nth-child(2n){font-size:clamp(16px,2.2vw,30px);color:#E5C5B8}
+.experience-float{position:absolute;z-index:2;text-decoration:none;color:#FFF8F3;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,2.1vw,28px);box-shadow:0 24px 60px #140E0D35;transition:transform .55s var(--ease),box-shadow .55s}
+.experience-float:hover{box-shadow:0 34px 75px #140E0D70;z-index:5}
+.experience-float span{font-size:12px;letter-spacing:.12em;opacity:.75}
+.experience-float strong{font:clamp(28px,3.4vw,48px)/.9 Bagel;letter-spacing:-.04em}
+.experience-float i{font-style:normal;font-size:24px;align-self:flex-end}
+.cloud-float{width:clamp(180px,21vw,270px);height:clamp(190px,25vh,260px);left:9%;top:13%;background:linear-gradient(145deg,#D68D9B,#9E5968);transform:rotate(-9deg);animation:float 8s ease-in-out infinite}
+.cloud-float:hover{transform:rotate(-4deg) translateY(-10px)}
+.lab-float{width:clamp(190px,23vw,290px);height:clamp(160px,22vh,220px);right:3%;top:17%;background:linear-gradient(145deg,#E9C8BC,#AE8774);color:#49332D;transform:rotate(7deg);animation:float 9s ease-in-out -2s infinite}
+.lab-float:hover{transform:rotate(3deg) translateY(-10px)}
+.build-float{width:clamp(190px,22vw,280px);height:clamp(170px,22vh,230px);left:31%;bottom:8%;background:linear-gradient(145deg,#F5B0BD,#C67C8C);color:#49332D;transform:rotate(-2deg);animation:float 10s ease-in-out -4s infinite}
+.build-float:hover{transform:rotate(1deg) translateY(-10px)}
 @media(max-width:800px){
  .slide{padding:22px 6vw 72px}
  .topline{font-size:10px}.navhint{display:none}
@@ -245,6 +281,27 @@ button{font:inherit;cursor:pointer}
  .bottom{font-size:11px}
  .controls button{width:36px;height:36px}
 }
+
+@media(max-width:800px){
+ .participate{overflow:auto}
+ .immersive-participate{display:flex;flex-direction:column;gap:0;overflow:visible}
+ .participate-left{padding:0}
+ .participate-left h2{font-size:clamp(43px,10vw,66px);margin:8px 0 10px}
+ .participate-left p{font-size:13px;margin:0}
+ .participate-qr{margin-top:12px;gap:12px}
+ .participate-qr img{width:78px}
+ .participate-qr strong{font-size:14px}
+ .participate-qr span{font-size:11px}
+ .participate-stage{height:39vh;min-height:240px;margin-top:-4px}
+ .stage-loop{width:78vw}.loop-two{width:62vw}
+ .cloud-float{width:31vw;height:17vh;min-height:118px;left:2%;top:7%;padding:12px}
+ .lab-float{width:34vw;height:15vh;min-height:110px;right:0;top:12%;padding:12px}
+ .build-float{width:36vw;height:16vh;min-height:118px;left:30%;bottom:0;padding:12px}
+ .experience-float strong{font-size:clamp(18px,4.7vw,26px)}
+ .experience-float span{font-size:9px}
+ .experience-float i{font-size:17px}
+ .stage-wordcloud span{font-size:22px}
+}
 @media(max-width:420px){
  .topline span:last-child{display:none}
  .activity-universe{grid-template-columns:1fr 1fr}
@@ -255,38 +312,37 @@ button{font:inherit;cursor:pointer}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-/* Full-screen branded postcard transition between every slide */
+/* A postcard flies across the screen, turns in 3D and reveals the next slide */
 .postcard-wipe{
  position:absolute;inset:0;z-index:50;pointer-events:none;
  display:grid;place-items:center;overflow:hidden;
- background:linear-gradient(115deg,#F8EDE8 0%,#EFEAE7 48%,#F5B0BD 100%);
- transform:translate3d(-102%,0,0);will-change:transform;
- box-shadow:18px 0 55px #49332D20;
+ perspective:1400px;transform:translate3d(-115%,0,0) rotate(-9deg);
+ will-change:transform;
 }
 .postcard-wipe:before{
- content:"";position:absolute;inset:clamp(12px,2vw,26px);
- border:1px solid #AE877455;
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(110deg,#F7EAE5 0%,#EFEAE7 52%,#F5B0BD 100%);
+ box-shadow:20px 0 65px #49332D25;
 }
 .postcard-wipe:after{
- content:"";position:absolute;right:clamp(34px,6vw,88px);top:clamp(34px,6vh,70px);
- width:clamp(48px,6vw,76px);height:clamp(58px,7vw,88px);
- border:1px solid #AE877477;
- background:linear-gradient(135deg,#F5B0BD 0 50%,#EFEAE7 50%);
- box-shadow:0 5px 18px #49332D12;
+ content:"";position:absolute;inset:clamp(18px,3vw,42px);
+ border:1px solid #AE877455;
 }
 .postcard-wipe img{
- position:relative;z-index:1;width:clamp(170px,22vw,290px);max-height:24vh;
- object-fit:contain;filter:drop-shadow(0 14px 22px #6D4D4420);
+ position:relative;z-index:1;width:clamp(190px,26vw,340px);
+ max-height:28vh;object-fit:contain;
+ filter:drop-shadow(0 20px 26px #6D4D4440);
 }
-.postcard-wipe.run{animation:postcardAcross 1.08s cubic-bezier(.72,0,.22,1) both}
-@keyframes postcardAcross{
- 0%{transform:translate3d(-102%,0,0)}
- 36%{transform:translate3d(0,0,0)}
- 63%{transform:translate3d(0,0,0)}
- 100%{transform:translate3d(102%,0,0)}
+.postcard-wipe.run{animation:postcardFlight 1.35s cubic-bezier(.2,.72,.2,1) both}
+@keyframes postcardFlight{
+ 0%{transform:translate3d(-115%,8%,0) rotate(-12deg) rotateY(-32deg) scale(.76)}
+ 24%{transform:translate3d(-34%,1%,0) rotate(-7deg) rotateY(18deg) scale(.92)}
+ 48%{transform:translate3d(0,0,0) rotate(0deg) rotateY(0deg) scale(1)}
+ 66%{transform:translate3d(0,0,0) rotate(0deg) rotateY(0deg) scale(1)}
+ 100%{transform:translate3d(115%,-4%,0) rotate(10deg) rotateY(32deg) scale(.84)}
 }
-@media(prefers-reduced-motion:reduce){
- .postcard-wipe.run{animation-duration:.25s}
+@media(prefers-reduced-motion:reduce){.postcard-wipe.run{animation-duration:.3s}}
+
 }
 
 </style>
@@ -345,7 +401,7 @@ button{font:inherit;cursor:pointer}
 
 <section class="slide assortment" data-title="La oferta">
  <div class="topline"><span class="brand-mini">postella</span><span>05 — Oferta comercial</span></div>
- <div class="assortment-head"><div><div class="eyebrow">Un universo para descubrir</div><h2 class="display">Cinco formas<br>de decir <em>hola.</em></h2></div></div>
+ <div class="assortment-head"><div><h2 class="display">Cinco formas<br>de decir <em>hola.</em></h2></div></div>
  <div class="assortment-visual">
   <div class="assortment-orbit"><div class="orbit-ring"></div><div class="orbit-postcard"><img src="logo-postella-transparent.png" alt=""></div></div>
   <div class="assortment-list">
@@ -387,17 +443,27 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide participate" data-title="Participa">
- <div class="topline"><span class="brand-mini" style="color:#FFF8F3">postella</span><span>08 — POSTELLA PARTICIPA</span></div>
- <div class="participate-main">
-  <div class="participate-left reveal"><div class="eyebrow" style="color:#F5B0BD">El universo lo construimos juntos</div><h2>Tu idea<br>también <em>llega.</em></h2><p>Cuatro experiencias. Una comunidad. Escanea y deja tu huella en postella.</p><div class="participate-qr"><img src="mascot-qr.png" alt="QR para participar"><div><strong>Entra desde tu móvil</strong><span>Elige tu experiencia y participa</span></div></div></div>
-  <div class="activity-universe">
-   <article class="activity-orb"><div><span class="orb-count">01 / UNA PALABRA</span><h3>The Postella Cloud</h3><p>Una palabra para llenar nuestra nube colectiva.</p></div><i class="activity-art"></i></article>
-   <article class="activity-orb"><div><span class="orb-count">02 / IMAGINA</span><h3>The Collection Lab</h3><p>Diseña la próxima colección de postella.</p></div><i class="activity-art"></i></article>
-   <article class="activity-orb"><div><span class="orb-count">03 / ELIGE</span><h3>Build Your Postella</h3><p>Construye tu selección de productos favoritos.</p></div><i class="activity-art"></i></article>
-   <article class="activity-orb"><div><span class="orb-count">04 / ESCRIBE</span><h3>The Postcard Wall</h3><p>Envía unas palabras y déjalas llegar.</p></div><i class="activity-art"></i></article>
+ <div class="participate-atmosphere"></div>
+ <div class="participate-main immersive-participate">
+  <div class="participate-left reveal">
+   <div class="eyebrow" style="color:#F5B0BD">POSTELLA PARTICIPA</div>
+   <h2>Esto también<br>lo haces <em>tú.</em></h2>
+   <p>Entra, imagina, elige. El universo postella crece con cada persona que participa.</p>
+   <div class="participate-qr">
+    <img src="postal-wall-qr.png" alt="Código QR para participar en postella">
+    <div><strong>Escanea y participa</strong><span>Abre la experiencia en tu móvil</span></div>
+   </div>
+  </div>
+  <div class="participate-stage" aria-label="Experiencias participativas">
+   <div class="stage-glow"></div>
+   <div class="stage-wordcloud"><span>ideas</span><span>recuerdos</span><span>color</span><span>tú</span><span>postales</span></div>
+   <a class="experience-float cloud-float" href="postal.html"><span>01</span><strong>The<br>Postella<br>Cloud</strong><i>↗</i></a>
+   <a class="experience-float lab-float" href="postal.html"><span>02</span><strong>The Collection<br>Lab</strong><i>↗</i></a>
+   <a class="experience-float build-float" href="postal.html"><span>03</span><strong>Build Your<br>Postella</strong><i>↗</i></a>
+   <div class="stage-loop loop-one"></div><div class="stage-loop loop-two"></div>
   </div>
  </div>
- <div class="bottom participate-bottom"><span id="hubStatus">Conectando con las aportaciones…</span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
+ <div class="bottom participate-bottom"><span id="hubStatus">Las ideas de la comunidad dan forma a postella</span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
 </section>
 
 <section class="slide wall-slide" data-title="The Postcard Wall">
@@ -440,11 +506,6 @@ button{font:inherit;cursor:pointer}
   wall.innerHTML='';
   if(cards.length){cards.slice().reverse().forEach((r,i)=>wall.appendChild(makeCard(r,i)));wallStatus.textContent=cards.length+' postales compartidas'}
   else{const empty=document.createElement('div');empty.className='wall-empty';empty.textContent='La primera postal está por llegar 💌';wall.appendChild(empty);wallStatus.textContent='Esperando las primeras postales'}
-  // Live activity visual counters are intentionally data-only: no fabricated sample answers.
-  document.querySelector('.activity-orb:nth-child(1) .orb-count').textContent='01 / '+words.length+' PALABRAS';
-  document.querySelector('.activity-orb:nth-child(2) .orb-count').textContent='02 / '+ideas.length+' IDEAS';
-  document.querySelector('.activity-orb:nth-child(3) .orb-count').textContent='03 / '+packs.length+' SELECCIONES';
-  document.querySelector('.activity-orb:nth-child(4) .orb-count').textContent='04 / '+cards.length+' POSTALES';
  }
  await refresh();db.channel('postella-live-redesign').on('postgres_changes',{event:'INSERT',schema:'public',table:'postella_activities'},refresh).subscribe();setInterval(refresh,15000);
  }
