@@ -814,6 +814,75 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.universe-slide *{animation:none!important;transition:none!important}}
 
+
+
+/* RESPONSIVE TYPE FIXES — prevent clipping on iPad/tablet */
+.minimal-copy{width:100%;max-width:100%;min-width:0}
+.minimal-copy h1{width:100%;max-width:100%;overflow:visible;font-size:clamp(42px,5.6vw,78px);line-height:1.02;letter-spacing:-.065em}
+.minimal-copy h1 span,.minimal-copy h1 .pink-word{display:block;width:100%;max-width:100%;white-space:normal;overflow-wrap:normal;font-size:clamp(42px,5.6vw,78px);line-height:1.02;letter-spacing:-.065em;transform:scaleX(.91);transform-origin:left center}
+@media(min-width:761px) and (max-width:1100px){
+ .minimal-main{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:1vw;inset-left:5%;inset-right:5%}
+ .minimal-copy h1 span,.minimal-copy h1 .pink-word{font-size:clamp(38px,5.0vw,58px);transform:scaleX(.88)}
+ .minimal-art{width:36vw;height:38vw}
+}
+@media(max-width:760px){
+ .minimal-copy h1 span,.minimal-copy h1 .pink-word{font-size:clamp(39px,9.4vw,62px);transform:scaleX(.94)}
+}
+
+/* PAGE 03 title: deliberately sized to its real available width */
+.universe-brand{display:none!important}
+.universe-wrap{padding-top:clamp(26px,4vh,44px)}
+.universe-heading{width:100%;max-width:100%;min-width:0}
+.universe-heading h2{font-size:clamp(42px,5.8vw,76px);line-height:.98;letter-spacing:-.055em;max-width:100%;overflow-wrap:break-word}
+.universe-heading h2 br{display:block}
+.universe-heading p{max-width:100%}
+@media(min-width:761px) and (max-width:1100px){
+ .universe-heading h2{font-size:clamp(42px,5.2vw,58px)}
+ .universe-wrap{padding-left:5vw;padding-right:5vw}
+}
+@media(max-width:760px){.universe-heading h2{font-size:clamp(40px,10vw,60px)}}
+
+/* PAGE 04 — visual identity, brand-led and spacious */
+.identity-slide{background:#f5eee9!important;overflow:hidden}
+.identity-wrap{position:absolute;inset:0;padding:clamp(34px,6vh,68px) clamp(34px,7vw,104px) clamp(72px,10vh,104px);display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:clamp(24px,5vw,72px)}
+.identity-heading{position:relative;z-index:2;animation:identityIn .8s ease both}
+.identity-mark{font:400 20px Bagel,cursive;color:#49332d;margin-bottom:clamp(24px,4vh,42px);display:flex;align-items:center;gap:10px}
+.identity-mark span{font-size:16px}
+.identity-heading h2{font:400 clamp(48px,6.4vw,86px)/.93 Bagel,cursive;letter-spacing:-.06em;color:#49332d;margin:0}
+.identity-heading h2 em{font-style:normal;color:#e58fa2}
+.identity-heading p{font:400 clamp(15px,1.4vw,19px)/1.5 Fredoka,sans-serif;color:#8d7066;max-width:340px;margin:clamp(18px,3vh,30px) 0 0}
+.identity-showcase{position:relative;display:flex;flex-direction:column;gap:clamp(16px,3vh,28px);align-items:center;animation:identityShow .95s .15s ease both}
+.identity-brand-card{position:relative;width:min(100%,600px);height:clamp(230px,39vh,390px);background:#f5b0bd;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 24px 60px #79564c18;overflow:hidden}
+.identity-brand-card:before{content:"";position:absolute;width:72%;aspect-ratio:1;border:1px solid #fff8;border-radius:50%;transform:scaleY(.45) rotate(-18deg)}
+.identity-brand-card:after{content:"";position:absolute;inset:14px;border:1px solid #fff6}
+.identity-logo{position:relative;z-index:1;font:400 clamp(58px,8vw,108px)/1 Bagel,cursive;letter-spacing:-.065em;color:#49332d;text-shadow:0 2px 0 #fff5}
+.identity-logo sup{font:500 12px Fredoka,sans-serif;vertical-align:top;letter-spacing:0;margin-left:4px}
+.identity-slogan{position:relative;z-index:1;margin-top:16px;font:400 clamp(15px,1.6vw,21px) Fredoka,sans-serif;color:#6f4e4b}
+.identity-slogan span{margin-left:6px}
+.identity-sticker{position:absolute;z-index:2;right:8%;bottom:10%;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#fffaf5;color:#e58fa2;font:400 25px Bagel,cursive;box-shadow:0 8px 22px #75444b20;transform:rotate(12deg)}
+.identity-palette{width:min(100%,600px);display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.identity-color{min-width:0;display:flex;flex-direction:column;gap:5px;font-family:Fredoka,sans-serif;color:#49332d}
+.identity-color span{height:clamp(48px,8vh,76px);border-radius:3px;box-shadow:inset 0 0 0 1px #49332d10}
+.color-pink span{background:#F5B0BD}.color-cream span{background:#EFEAE7;border:1px solid #e3d9d2}.color-coffee span{background:#AE8774}
+.identity-color b{font-size:clamp(10px,1vw,13px);font-weight:500}
+.identity-color small{font-size:10px;color:#9a8176}
+@keyframes identityIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes identityShow{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){
+ .identity-wrap{padding:36px 7vw 82px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:18px;overflow:auto}
+ .identity-mark{margin-bottom:13px;font-size:18px}
+ .identity-heading h2{font-size:clamp(43px,10vw,62px)}
+ .identity-heading p{font-size:14px;margin-top:12px}
+ .identity-showcase{gap:14px}
+ .identity-brand-card{height:clamp(190px,29vh,260px)}
+ .identity-logo{font-size:clamp(55px,13vw,80px)}
+ .identity-palette{gap:8px}
+ .identity-color span{height:45px}
+ .identity-color b{font-size:10px}
+ .identity-color small{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.identity-slide *{animation:none!important}}
+
 </style><style id="final-polish">
 /* FINAL FIXES — responsive editorial typography and intentional motion */
 .slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
@@ -1016,13 +1085,27 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
   </div>
   <footer><span>Todo empieza con un detalle.</span><div class="nav"><button onclick="go(1)">←</button><button onclick="go(3)">→</button></div></footer>
 </section>
-<section class="slide" data-title="Identidad" data-transition="confetti">
-<header><span>04 — Identidad visual</span><span>Un lenguaje reconocible</span></header>
-<div class="split">
-<div><div class="kicker"></div><h2>Creativa.<br>Cercana.<br><span style="color:var(--deep)">Inconfundible.</span></h2><p>Una estética nostálgica y contemporánea, con una paleta cálida y una comunicación visual amable. Cada detalle construye una misma experiencia.</p><div class="brand-values"><span class="value">detalle</span><span class="value">diseño</span><span class="value">emoción</span></div></div>
-<div><div class="kicker">Nuestra paleta</div><div class="palette"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b><small>#F5B0BD</small></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b><small>#EFEAE7</small></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b><small>#AE8774</small></div></div><div style="margin-top:32px;background:#fffdf9;border-radius:24px;padding:24px;text-align:center;border:1px solid #e5d2ca"><img class="brand-logo" style="width:70%" src="logo-postella-transparent.png" alt="Logotipo original postella"></div></div>
-</div>
-<footer><span>Identidad corporativa</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
+<section class="slide identity-slide" data-title="Identidad" data-transition="postal">
+  <div class="identity-wrap">
+    <div class="identity-heading">
+      <div class="identity-mark">postella<span>💌</span></div>
+      <h2>Una identidad<br><em>que se siente.</em></h2>
+      <p>Una marca cercana, creativa y llena de pequeños detalles.</p>
+    </div>
+    <div class="identity-showcase">
+      <div class="identity-brand-card">
+        <div class="identity-logo">postella<sup>®</sup></div>
+        <div class="identity-slogan">haz que llegue <span>💌</span></div>
+        <div class="identity-sticker">P.</div>
+      </div>
+      <div class="identity-palette">
+        <div class="identity-color color-pink"><span></span><b>Candy Pink</b><small>#F5B0BD</small></div>
+        <div class="identity-color color-cream"><span></span><b>Egg White</b><small>#EFEAE7</small></div>
+        <div class="identity-color color-coffee"><span></span><b>Café au Lait</b><small>#AE8774</small></div>
+      </div>
+    </div>
+  </div>
+  <footer><span>La esencia visual de postella</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Experiencia" data-transition="stamp">
 <header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
