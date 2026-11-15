@@ -883,6 +883,182 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.identity-slide *{animation:none!important}}
 
+
+
+/* FINAL TYPOGRAPHY SAFETY NET — headings must fit their own layout columns */
+.slide, .slide *{box-sizing:border-box}
+.slide h1,.slide h2,.slide h3{
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:visible!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+  hyphens:none!important;
+  text-wrap:balance;
+}
+.slide .minimal-copy,.slide .identity-heading,.slide .universe-heading,
+.slide .hello-copy,.slide .hero-copy,.slide .section-head,.slide .wall-title{
+  min-width:0!important;max-width:100%!important;
+}
+.slide h2{
+  font-size:clamp(34px,5.1vw,72px)!important;
+  line-height:1.04!important;
+  letter-spacing:-.045em!important;
+}
+.slide h3{font-size:clamp(22px,2.5vw,34px)!important;line-height:1.06!important}
+@media(min-width:761px) and (max-width:1180px){
+  .slide h2{font-size:clamp(34px,4.5vw,56px)!important}
+  .slide h1{font-size:clamp(40px,6vw,76px)!important}
+}
+@media(max-width:760px){
+  .slide h2{font-size:clamp(32px,8.4vw,54px)!important;line-height:1.04!important}
+  .slide h1{font-size:clamp(38px,10vw,66px)!important;line-height:1.02!important}
+}
+/* Cover: three separate lines, each constrained by the actual text column */
+.minimal-copy h1{width:100%!important;max-width:100%!important}
+.minimal-copy h1 span,.minimal-copy h1 .pink-word{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  transform:none!important;
+  font-size:clamp(38px,5.2vw,70px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.06em!important;
+}
+@media(min-width:761px) and (max-width:1180px){
+  .minimal-copy h1 span,.minimal-copy h1 .pink-word{font-size:clamp(36px,4.6vw,54px)!important}
+}
+@media(max-width:760px){
+  .minimal-copy h1 span,.minimal-copy h1 .pink-word{font-size:clamp(38px,9.6vw,60px)!important}
+}
+/* Page 3: title uses full available heading width */
+.universe-heading h2{font-size:clamp(38px,5.2vw,70px)!important;line-height:1.02!important;max-width:100%!important}
+@media(min-width:761px) and (max-width:1180px){.universe-heading h2{font-size:clamp(36px,4.5vw,54px)!important}}
+@media(max-width:760px){.universe-heading h2{font-size:clamp(36px,9vw,56px)!important}}
+/* Page 4: remove the little duplicate brand lockup */
+.identity-mark{display:none!important}
+.identity-heading h2{font-size:clamp(40px,5.5vw,74px)!important;line-height:1.02!important;max-width:100%!important}
+@media(min-width:761px) and (max-width:1180px){.identity-heading h2{font-size:clamp(36px,4.5vw,56px)!important}}
+@media(max-width:760px){.identity-heading h2{font-size:clamp(38px,9.2vw,58px)!important}}
+
+
+
+/* PAGE 05 — POSTELLA brand world / visual information design */
+.p5-slide{background:#f4eee9!important;color:#49332d;overflow:hidden}
+.p5-shell{position:absolute;inset:0;padding:clamp(26px,4.5vh,48px) clamp(30px,6vw,88px) clamp(70px,9vh,92px);display:flex;flex-direction:column;gap:clamp(13px,2vh,22px)}
+.p5-topline{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d9cbc3;padding-bottom:12px;font:500 11px Fredoka,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#967c71}
+.p5-index{font-variant-numeric:tabular-nums}
+.p5-intro{display:flex;align-items:end;justify-content:space-between;gap:20px}
+.p5-intro h2{font:400 clamp(43px,5.3vw,70px)/.9 Bagel,cursive;letter-spacing:-.055em;margin:0;color:#49332d}
+.p5-intro h2 em{font-style:normal;color:#df8fa1}
+.p5-intro p{font:400 clamp(13px,1.25vw,16px) Fredoka,sans-serif;color:#8b7067;margin:0 0 4px;max-width:250px}
+.p5-content{display:grid;grid-template-columns:1.18fr .82fr;gap:clamp(16px,2.5vw,34px);min-height:0;flex:1}
+.p5-categories{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-height:0}
+.p5-category{background:#fffaf6;border:1px solid #e9ddd6;display:flex;flex-direction:column;min-width:0;overflow:hidden;animation:p5Rise .7s both;box-shadow:0 8px 24px #6b4d4210}
+.p5-category:nth-child(2){animation-delay:.08s}.p5-category:nth-child(3){animation-delay:.16s}.p5-category:nth-child(4){animation-delay:.24s}.p5-category:nth-child(5){animation-delay:.32s}
+.p5-main{grid-row:span 2}
+.p5-cat-art{position:relative;flex:1;min-height:75px;background:linear-gradient(140deg,#f4cbd0,#f7e2df);display:grid;place-items:center;overflow:hidden}
+.p5-main .p5-cat-art{min-height:190px}
+.p5-cat-art:after{content:"";position:absolute;width:75%;height:18%;bottom:8%;border-radius:50%;background:#76534a20;filter:blur(12px)}
+.p5-postcard-art{position:relative;z-index:1;width:53%;height:65%;background:#fffaf3;box-shadow:0 12px 24px #68483b28;transform:rotate(-7deg);display:flex;align-items:end;justify-content:center;padding-bottom:10px;overflow:hidden;border:5px solid #fff}
+.p5-postcard-art:before{content:"";position:absolute;inset:7px;border:1px solid #e6c9bd}
+.p5-postcard-art i{position:absolute;inset:0;background:linear-gradient(150deg,transparent 45%,#d6a2a0 45% 66%,#b8a48d 66%);clip-path:polygon(0 65%,35% 36%,55% 54%,100% 25%,100% 100%,0 100%)}
+.p5-postcard-art b{position:relative;z-index:2;font:400 clamp(12px,1.4vw,18px) Bagel,cursive;color:#b27d7d}
+.p5-cat-label{display:flex;align-items:center;gap:8px;padding:10px 12px;min-height:43px}
+.p5-cat-label span{font:500 10px Fredoka,sans-serif;color:#d38b9b}
+.p5-cat-label strong{font:500 clamp(11px,1.05vw,14px) Fredoka,sans-serif;color:#563e36;line-height:1.1}
+.p5-cat-label small{display:block;font:400 10px Fredoka,sans-serif;color:#a58a7d;margin-left:auto;white-space:nowrap}
+.p5-art-paper{background:linear-gradient(140deg,#e9d9cf,#f5e9e1)}
+.p5-mini-book{position:relative;width:38%;height:70%;background:#fffaf4;box-shadow:0 9px 18px #68483b25;transform:rotate(-8deg);border-radius:2px}
+.p5-mini-book:after{content:"";position:absolute;inset:20% 12%;border:1px solid #e7c5c7}
+.p5-mini-pencil{position:absolute;width:5px;height:76%;background:#d994a2;transform:rotate(22deg);right:25%;top:12%;border-radius:4px}
+.p5-art-gift{background:linear-gradient(140deg,#f1d4d2,#f7e8df)}
+.p5-mini-gift{position:relative;width:46%;height:48%;background:#e99eaa;box-shadow:0 10px 18px #68483b24;transform:rotate(6deg)}
+.p5-mini-gift:before{content:"";position:absolute;left:43%;top:0;bottom:0;width:14%;background:#fff0e9}
+.p5-mini-gift:after{content:"";position:absolute;left:-5%;right:-5%;top:-13%;height:22%;background:#f8d8dc}
+.p5-art-plush{background:linear-gradient(140deg,#e8ddd6,#f4eae3)}
+.p5-plush{z-index:1;width:65px;height:65px;border-radius:45% 45% 42% 42%;background:#d9b8a6;color:#fffaf4;display:grid;place-items:center;font-size:33px;box-shadow:inset -7px -6px 0 #b99381,0 10px 18px #68483b20}
+.p5-art-ceramic{background:linear-gradient(140deg,#eadbd2,#f4e9e1)}
+.p5-vase{z-index:1;position:relative;width:42px;height:72px;background:#c99b8b;border-radius:35% 35% 20% 20%;box-shadow:inset -7px 0 0 #b78477,0 10px 18px #68483b20}
+.p5-vase:before{content:"";position:absolute;top:-9px;left:13px;width:16px;height:18px;background:#c99b8b;border-radius:4px 4px 0 0}
+.p5-side{display:flex;flex-direction:column;gap:10px;min-height:0}
+.p5-journey,.p5-insight{background:#fffaf6;border:1px solid #e9ddd6;padding:clamp(13px,1.6vw,20px);min-height:0}
+.p5-side-title{font:400 clamp(17px,1.7vw,22px) Bagel,cursive;color:#563e36;margin-bottom:12px}
+.p5-journey-line{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 10px}
+.p5-journey-line>div{display:grid;grid-template-columns:27px 1fr;column-gap:7px;align-items:center}
+.p5-journey-line b{grid-row:span 2;width:25px;height:25px;border-radius:50%;background:#f3d3d7;color:#a96878;display:grid;place-items:center;font:500 10px Fredoka,sans-serif}
+.p5-journey-line strong{font:500 12px Fredoka,sans-serif;color:#563e36}
+.p5-journey-line span{font:400 10px Fredoka,sans-serif;color:#9b8176;line-height:1.2}
+.p5-insight{flex:1}
+.p5-experience-icons{display:grid;grid-template-columns:repeat(2,1fr);gap:13px 10px}
+.p5-experience-icons>div{display:flex;align-items:center;gap:9px;font:400 11px Fredoka,sans-serif;color:#80675e}
+.p5-experience-icons i{width:30px;height:30px;flex:none;border-radius:50%;background:#f5e0df;position:relative}
+.p5-icon-window:before{content:"";position:absolute;inset:8px 7px;border:1.5px solid #c98291}
+.p5-icon-light:before{content:"";position:absolute;left:10px;top:7px;width:10px;height:12px;border:1.5px solid #c98291;border-radius:50% 50% 35% 35%}
+.p5-icon-workshop:before{content:"✎";position:absolute;inset:0;display:grid;place-items:center;color:#c98291;font-style:normal;font-size:16px}
+.p5-icon-qr:before{content:"";position:absolute;inset:8px;background:repeating-linear-gradient(90deg,#c98291 0 3px,transparent 3px 5px),repeating-linear-gradient(0deg,#c98291 0 3px,transparent 3px 5px)}
+.p5-bottom{border-top:1px solid #dfd1c9;padding-top:12px}
+.p5-abc{display:grid;grid-template-columns:1fr 1.3fr auto;align-items:center;gap:18px}
+.p5-abc-copy{display:flex;flex-direction:column;gap:3px}
+.p5-abc-copy b{font:500 13px Fredoka,sans-serif;color:#563e36}
+.p5-abc-copy span{font:400 10px Fredoka,sans-serif;color:#9a8177}
+.p5-abc-bars{display:flex;flex-direction:column;gap:4px}
+.p5-abc-bars>div{height:13px;position:relative;background:#eee5df;border-radius:20px;overflow:hidden;display:flex;align-items:center}
+.p5-abc-bars i{position:absolute;left:0;top:0;bottom:0;background:#e9a5b1;border-radius:20px}
+.p5-abc-bars>div:nth-child(2) i{background:#c9a393}.p5-abc-bars>div:nth-child(3) i{background:#b6a99e}
+.p5-abc-bars b,.p5-abc-bars strong{position:relative;z-index:1;font:500 9px Fredoka,sans-serif;color:#573e36;padding:0 7px}
+.p5-abc-bars strong{margin-left:auto}
+.p5-total{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.p5-total small{font:400 10px Fredoka,sans-serif;color:#9a8177}
+.p5-total strong{font:400 clamp(17px,1.8vw,23px) Bagel,cursive;color:#563e36;white-space:nowrap}
+@keyframes p5Rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.p5-slide footer{z-index:5}
+@media(max-width:760px){
+ .p5-shell{padding:24px 6vw 80px;gap:13px;overflow:auto}
+ .p5-topline{font-size:9px}
+ .p5-intro{display:block}
+ .p5-intro h2{font-size:clamp(40px,10vw,58px)}
+ .p5-intro p{margin-top:8px;font-size:12px}
+ .p5-content{display:flex;flex-direction:column;gap:12px;flex:none}
+ .p5-categories{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ .p5-main{grid-row:auto;grid-column:span 2}
+ .p5-main .p5-cat-art{min-height:140px}
+ .p5-category:not(.p5-main) .p5-cat-art{min-height:90px}
+ .p5-cat-label{padding:8px;gap:6px}
+ .p5-cat-label strong{font-size:11px}
+ .p5-cat-label small{display:none}
+ .p5-side{display:grid;grid-template-columns:1fr;gap:10px}
+ .p5-journey,.p5-insight{padding:13px}
+ .p5-abc{grid-template-columns:1fr auto;gap:10px}
+ .p5-abc-bars{grid-column:1/-1;grid-row:2}
+ .p5-total{grid-column:2;grid-row:1}
+}
+@media(max-height:760px) and (min-width:761px){
+ .p5-shell{gap:10px;padding-top:22px}
+ .p5-intro h2{font-size:clamp(38px,4.7vw,58px)}
+ .p5-cat-label{padding:7px 9px}
+ .p5-side-title{margin-bottom:8px}
+ .p5-journey-line{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){.p5-slide *{animation:none!important;transition:none!important}}
+
+
+/* Page 5 value-added strip replaces ABC; ABC remains on its dedicated later page */
+.p5-value{display:grid;grid-template-columns:.8fr 2.2fr;align-items:center;gap:18px}
+.p5-value-lead{display:flex;flex-direction:column;gap:3px}
+.p5-value-lead span{font:500 10px Fredoka,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#c88796}
+.p5-value-lead strong{font:400 clamp(17px,1.8vw,23px)/1.02 Bagel,cursive;color:#563e36}
+.p5-value-items{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.p5-value-items>div{display:flex;align-items:center;gap:7px;border-left:1px solid #e2d4cc;padding-left:9px;min-width:0}
+.p5-value-items b{width:24px;height:24px;flex:none;border-radius:50%;background:#f3d3d7;color:#a96878;display:grid;place-items:center;font:500 9px Fredoka,sans-serif}
+.p5-value-items span{font:400 10px/1.2 Fredoka,sans-serif;color:#80675e}
+@media(max-width:760px){
+ .p5-value{grid-template-columns:1fr;gap:10px}
+ .p5-value-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .p5-value-items>div{min-height:34px}
+}
+
 </style><style id="final-polish">
 /* FINAL FIXES — responsive editorial typography and intentional motion */
 .slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
@@ -1107,19 +1283,71 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
   </div>
   <footer><span>La esencia visual de postella</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
 </section>
-<section class="slide" data-title="Experiencia" data-transition="stamp">
-<header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
-<div class="kicker" style="margin-top:6vh">No es solo una tienda</div><h2>Un lugar para<br><span style="color:var(--deep)">quedarse un ratito.</span></h2>
-
-
-<div class="timeline">
-<div class="step"><strong>Descubrir</strong><p class="small">Colecciones que invitan a mirar, explorar y encontrar algo propio.</p></div>
-<div class="step"><strong>Elegir</strong><p class="small">Un surtido cuidado, organizado por estilos, temas y ocasiones.</p></div>
-<div class="step"><strong>Personalizar</strong><p class="small">Combinar postales, mensajes, sobres y pequeños detalles.</p></div>
-<div class="step"><strong>Compartir</strong><p class="small">Llevarse algo que conecta con otra persona.</p></div>
-</div>
-
-<footer><span>Experiencia de compra y visual merchandising</span><div class="nav"><button onclick="go(3)">←</button><button onclick="go(5)">→</button></div></footer>
+<section class="slide p5-slide" data-title="El universo postella" data-transition="stamp">
+  <div class="p5-shell">
+    <div class="p5-topline"><span class="p5-eyebrow">postella · el universo de la marca</span><span class="p5-index">05 / 10</span></div>
+    <div class="p5-intro">
+      <h2>Todo tiene<br><em>su lugar.</em></h2>
+      <p>Un surtido pensado para descubrir, combinar y regalar.</p>
+    </div>
+    <div class="p5-content">
+      <div class="p5-categories">
+        <div class="p5-category p5-main">
+          <div class="p5-cat-art"><div class="p5-postcard-art"><i></i><b>postella</b></div></div>
+          <div class="p5-cat-label"><span>01</span><strong>Postales ilustradas</strong><small>El corazón de la tienda</small></div>
+        </div>
+        <div class="p5-category">
+          <div class="p5-cat-art p5-art-paper"><div class="p5-mini-book"></div><div class="p5-mini-pencil"></div></div>
+          <div class="p5-cat-label"><span>02</span><strong>Papelería creativa</strong></div>
+        </div>
+        <div class="p5-category">
+          <div class="p5-cat-art p5-art-gift"><div class="p5-mini-gift"></div></div>
+          <div class="p5-cat-label"><span>03</span><strong>Pequeños regalos</strong></div>
+        </div>
+        <div class="p5-category">
+          <div class="p5-cat-art p5-art-plush"><div class="p5-plush">☺</div></div>
+          <div class="p5-cat-label"><span>04</span><strong>Peluches & coleccionables</strong></div>
+        </div>
+        <div class="p5-category">
+          <div class="p5-cat-art p5-art-ceramic"><div class="p5-vase"></div></div>
+          <div class="p5-cat-label"><span>05</span><strong>Cerámica decorativa</strong></div>
+        </div>
+      </div>
+      <div class="p5-side">
+        <div class="p5-journey">
+          <div class="p5-side-title">La experiencia, paso a paso</div>
+          <div class="p5-journey-line">
+            <div><b>01</b><strong>Descubrir</strong><span>Escaparate y colecciones</span></div>
+            <div><b>02</b><strong>Explorar</strong><span>Expositores y categorías</span></div>
+            <div><b>03</b><strong>Elegir</strong><span>Asesoramiento personal</span></div>
+            <div><b>04</b><strong>Regalar</strong><span>Packaging cuidado</span></div>
+          </div>
+        </div>
+        <div class="p5-insight">
+          <div class="p5-side-title">Una tienda que se vive</div>
+          <div class="p5-experience-icons">
+            <div><i class="p5-icon-window"></i><span>Escaparate creativo</span></div>
+            <div><i class="p5-icon-light"></i><span>Luz cálida y ambiente</span></div>
+            <div><i class="p5-icon-workshop"></i><span>Talleres y encuentros</span></div>
+            <div><i class="p5-icon-qr"></i><span>QR y mundo online</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p5-bottom">
+      <div class="p5-value">
+        <div class="p5-value-lead"><span>Más que un producto</span><strong>Una experiencia<br>que continúa.</strong></div>
+        <div class="p5-value-items">
+          <div><b>01</b><span>Atención<br>personalizada</span></div>
+          <div><b>02</b><span>Packaging<br>cuidado</span></div>
+          <div><b>03</b><span>Venta<br>online</span></div>
+          <div><b>04</b><span>Colecciones<br>especiales</span></div>
+          <div><b>05</b><span>Colaboraciones<br>con ilustradores</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><span>Una experiencia coherente en cada detalle</span><div class="nav"><button onclick="go(3)">←</button><button onclick="go(5)">→</button></div></footer>
 </section>
 <section class="slide" data-title="" data-transition="postal">
 <header><span>06 — Detrás de la marca</span></header>
