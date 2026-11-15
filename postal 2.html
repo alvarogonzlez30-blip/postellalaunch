@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#49332d">
+<title>postella · participa</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Bagel+Fat+One&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--deep:#d97891;--paper:#fffaf4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 8%,#8e5860 0,transparent 35%),radial-gradient(ellipse at 90% 34%,#75494d 0,transparent 38%),linear-gradient(135deg,#49332d,#302321);color:var(--paper);font-family:Fredoka,sans-serif;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;border:1px solid #f5b0bd38;border-radius:50%;width:58vw;height:58vw;max-width:780px;max-height:780px;pointer-events:none;animation:orbit 24s linear infinite;z-index:0}
+body:before{top:8%;left:-20%}body:after{right:-25%;bottom:-30%;width:48vw;height:48vw;animation-direction:reverse}
+@keyframes orbit{to{transform:rotate(360deg)}}
+main{position:relative;z-index:1;width:min(1120px,calc(100% - 40px));margin:auto;padding:28px 0 64px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:52px}
+.brand{font:32px 'Bagel Fat One';color:var(--pink);letter-spacing:-1px}
+.brand span{font:18px Fredoka;color:var(--cream)}
+.top-note{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#ead1d1}
+.hero{max-width:720px;margin:0 auto 42px;text-align:center}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);margin:0 0 12px}
+h1{font:clamp(42px,7vw,76px)/.94 'Bagel Fat One';letter-spacing:-.035em;margin:0;color:var(--paper)}
+h1 em{font-style:normal;color:var(--pink)}
+.hero p{max-width:550px;margin:20px auto 0;color:#eadbd5;font-size:18px;line-height:1.45}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:0 0 18px}
+.section-head h2{font:clamp(25px,3vw,36px)/1 'Bagel Fat One';margin:0;color:var(--paper)}
+.section-head p{margin:0;color:#d7bdb7;font-size:14px}
+.experiences{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.experience{position:relative;min-height:280px;padding:22px;border-radius:4px;background:var(--pink);color:var(--ink);border:1px solid #ffffff50;box-shadow:0 20px 48px #1e11113b;display:flex;flex-direction:column;align-items:flex-start;text-align:left;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.experience:nth-child(2){background:var(--cream);transform:translateY(18px)}
+.experience:nth-child(3){background:#e89bad}
+.experience:hover{transform:translateY(-7px) rotate(-1deg);box-shadow:0 26px 55px #1e111155}
+.experience:nth-child(2):hover{transform:translateY(10px) rotate(1deg)}
+.number{font-size:12px;letter-spacing:.16em;opacity:.7}
+.experience h3{font:clamp(27px,3vw,38px)/.96 'Bagel Fat One';margin:auto 0 14px;max-width:260px}
+.experience p{font-size:14px;line-height:1.35;margin:0;max-width:240px;color:#62483f}
+.experience .go{position:absolute;right:18px;bottom:17px;width:36px;height:36px;border-radius:50%;background:#fffaf0;display:grid;place-items:center;font-size:19px;transition:transform .25s}
+.experience:hover .go{transform:translate(3px,-3px)}
+.experience:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #49332d24;border-radius:50%;right:-80px;top:-80px}
+.experience:focus-visible,.postcard-cta button:focus-visible,button:focus-visible{outline:3px solid white;outline-offset:4px}
+.postcard-cta{margin:72px 0 0;padding:30px;border:1px solid #f5b0bd55;background:linear-gradient(120deg,#5c3e3a,#71464e);display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;box-shadow:0 18px 48px #1e111133}
+.postcard-cta .eyebrow{margin-bottom:8px}
+.postcard-cta h2{font:clamp(30px,4vw,48px)/.96 'Bagel Fat One';margin:0;color:var(--paper)}
+.postcard-cta p{margin:12px 0 0;color:#eadbd5;max-width:600px;line-height:1.4}
+.postcard-cta button,.primary{border:0;border-radius:999px;background:var(--pink);color:var(--ink);padding:15px 24px;font:18px Fredoka;cursor:pointer;box-shadow:0 8px 22px #1f10102b;transition:transform .2s}
+.postcard-cta button:hover,.primary:hover{transform:translateY(-3px)}
+.heartline{height:1px;background:linear-gradient(90deg,transparent,#f5b0bd99,transparent);margin:42px 0 0}
+footer{text-align:center;color:#c9aaa2;font-size:13px;margin-top:34px}
+footer strong{font:20px 'Bagel Fat One';color:var(--pink);display:block;margin-bottom:4px}
+#activityView{display:none;max-width:720px;margin:0 auto}
+.back{background:transparent;border:0;color:var(--pink);font:16px Fredoka;padding:8px 0 18px;cursor:pointer}
+.form-card{background:var(--cream);color:var(--ink);padding:clamp(22px,5vw,42px);box-shadow:0 22px 60px #1e111155}
+.form-card .eyebrow{color:#a66f7c}
+.form-card h2{font:clamp(34px,6vw,54px)/.95 'Bagel Fat One';margin:0 0 14px}
+.form-card>p{color:#765f56;line-height:1.45;margin:0 0 22px}
+textarea{width:100%;min-height:120px;resize:vertical;border:1px solid #d7bdb7;border-radius:14px;background:#fffdf9;padding:16px;color:var(--ink);font:17px Fredoka;outline:none}
+textarea:focus{border-color:var(--deep);box-shadow:0 0 0 3px #d9789125}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.choices button{border:1px solid #d8c2bc;border-radius:14px;padding:15px 12px;background:#fffaf4;color:var(--ink);font:16px Fredoka;cursor:pointer;transition:.2s}
+.choices button.selected{background:var(--pink);border-color:#bd7182;box-shadow:inset 0 0 0 1px #bd7182}
+.hint,.counter{font-size:13px;color:#947b71;margin:10px 0}
+.form-actions{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap}
+.primary{background:var(--ink);color:white;min-width:180px}
+.status{min-height:24px;color:#986170;font-size:14px;margin-top:16px}
+.success{padding:18px;background:#f8e1e5;border-radius:14px;color:#60483f;line-height:1.4}
+@media(max-width:760px){main{width:min(560px,calc(100% - 28px));padding-top:20px}header{margin-bottom:36px}.experiences{grid-template-columns:1fr;gap:12px}.experience,.experience:nth-child(2){min-height:190px;transform:none;padding:20px}.experience:nth-child(2):hover{transform:translateY(-5px)}.experience h3{font-size:34px;margin:26px 0 8px}.experience p{max-width:80%}.postcard-cta{grid-template-columns:1fr;margin-top:42px;padding:24px}.postcard-cta button{justify-self:start}.section-head{align-items:flex-start;flex-direction:column}.hero p{font-size:16px}.choices{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">postella <span>💌</span></div><div class="top-note">haz que llegue</div></header>
+<section id="homeView">
+<div class="hero"><p class="eyebrow">un universo para compartir</p><h1>Entra, imagina.<br><em>Deja tu huella.</em></h1><p>Elige una experiencia y forma parte de postella. Tus ideas ayudan a crear nuevas colecciones, palabras y productos.</p></div>
+<div class="section-head"><h2>01 — Participa en postella</h2><p>Elige cómo quieres formar parte</p></div>
+<div class="experiences">
+<button class="experience" data-kind="word"><span class="number">01 / THE POSTELLA CLOUD</span><h3>The Postella Cloud</h3><p>Una palabra que te gustaría enviar al mundo. Entre todos creamos una nube de emociones.</p><span class="go">↗</span></button>
+<button class="experience" data-kind="idea"><span class="number">02 / THE COLLECTION LAB</span><h3>The Collection Lab</h3><p>Imagina una colección nueva: inspiración, nombre, ilustraciones y productos.</p><span class="go">↗</span></button>
+<button class="experience" data-kind="pack"><span class="number">03 / BUILD YOUR POSTELLA</span><h3>Build Your Postella</h3><p>Elige tus productos favoritos y ayuda a decidir qué debería formar parte de postella.</p><span class="go">↗</span></button>
+</div>
+<div class="postcard-cta"><div><p class="eyebrow">04 — THE POSTCARD WALL</p><h2>Una postal para alguien.</h2><p>Escribe una dedicatoria, una palabra bonita o un mensaje que merezca llegar. Tu postal aparecerá en el mural colectivo.</p></div><button id="openPostcard">Enviar una postal 💌</button></div>
+<div class="heartline"></div>
+</section>
+<section id="activityView">
+<button class="back" id="back">← volver a las experiencias</button>
+<div class="form-card"><p class="eyebrow" id="activityNumber">POSTELLA EXPERIENCE</p><h2 id="activityTitle"></h2><p id="activityPrompt"></p><div id="activityInput"></div><div class="form-actions"><button class="primary" id="submit">Enviar mi aportación 💌</button></div><div class="status" id="status" role="status" aria-live="polite"></div></div>
+</section>
+<footer><strong>postella</strong>papelería para hacer que llegue.</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const db=window.supabase.createClient("https://yfdbljqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
+let kind='',choice='';
+const titles={word:'The Postella Cloud',idea:'The Collection Lab',pack:'Build Your Postella',postcard:'Una postal para alguien'};
+const prompts={word:'Si piensas en recibir una postal, ¿qué única palabra te viene a la cabeza?',idea:'Imagina la próxima colección de postella. Cuéntanos cómo se llamaría, qué la inspiraría y qué productos tendría. ¡Sorpréndenos!',pack:'¿Qué productos te gustaría encontrar en postella? Puedes elegir todos los que quieras.',postcard:'Escribe un mensaje bonito, una dedicatoria o unas palabras que te gustaría hacer llegar. Aparecerá en nuestro mural de postales.'};
+const input=document.getElementById('activityInput');
+function showActivity(selectedKind){
+ kind=selectedKind;choice='';
+ document.getElementById('homeView').style.display='none';
+ document.getElementById('activityView').style.display='block';
+ document.getElementById('activityNumber').textContent=kind==='postcard'?'04 / THE POSTCARD WALL':'POSTELLA EXPERIENCE';
+ document.getElementById('activityTitle').textContent=titles[kind];
+ document.getElementById('activityPrompt').textContent=prompts[kind];
+ document.getElementById('status').textContent='';
+ document.getElementById('submit').disabled=false;
+ document.getElementById('submit').textContent='Enviar mi aportación 💌';
+ render();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function render(){
+ input.innerHTML='';choice='';
+ if(kind==='pack'){
+  input.innerHTML='<div class="choices">'+['Postales','Jellycat','Cerámica','Papelería','Pequeños regalos','Photobooth'].map(x=>'<button type="button" data-choice="'+x+'">'+x+'</button>').join('')+'</div><p class="hint">Puedes seleccionar más de uno.</p>';
+  input.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{b.classList.toggle('selected');choice=[...input.querySelectorAll('.selected')].map(x=>x.dataset.choice).join(',')});
+ }else if(kind==='word'){
+  input.innerHTML='<textarea id="answer" maxlength="24" rows="2" placeholder="Una palabra…"></textarea><div class="counter">máximo 24 caracteres</div>';
+ }else if(kind==='postcard'){
+  input.innerHTML='<textarea id="answer" maxlength="180" rows="5" placeholder="Querida vida…"></textarea><div class="counter">máximo 180 caracteres</div>';
+ }else{
+  input.innerHTML='<textarea id="answer" maxlength="300" rows="5" placeholder="Nombre de la colección, inspiración, productos…"></textarea><div class="counter">máximo 300 caracteres</div>';
+ }
+}
+document.querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click',()=>showActivity(b.dataset.kind)));
+document.getElementById('openPostcard').addEventListener('click',()=>showActivity('postcard'));
+document.getElementById('back').addEventListener('click',()=>{document.getElementById('activityView').style.display='none';document.getElementById('homeView').style.display='block';window.scrollTo({top:0,behavior:'smooth'})});
+document.getElementById('submit').addEventListener('click',async()=>{
+ let content='',selected=choice;
+ if(kind==='pack'){
+  if(!selected){document.getElementById('status').textContent='Selecciona al menos un producto.';return}
+ }else{
+  content=(document.getElementById('answer')?.value||'').trim();
+  if(!content){document.getElementById('status').textContent='Escribe algo antes de enviar.';return}
+  if(kind==='word'&&/\s/.test(content)){document.getElementById('status').textContent='¡Solo una palabra!';return}
+ }
+ const btn=document.getElementById('submit');btn.disabled=true;btn.textContent='Enviando…';
+ const {error}=await db.from('postella_activities').insert({kind,content,choice:selected||''});
+ btn.disabled=false;btn.textContent='Enviar mi aportación 💌';
+ if(error){document.getElementById('status').textContent='No se ha podido enviar: '+error.message;return}
+ document.getElementById('status').innerHTML='<div class="success">¡Recibido! Tu participación ya forma parte de postella. Gracias por hacer que llegue 💗</div>';
+ if(document.getElementById('answer'))document.getElementById('answer').value='';
+ input.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));choice='';
+});
+</script>
+</body>
+</html>
