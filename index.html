@@ -143,6 +143,33 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
  .cover-logo{width:82%}
 }
 
+
+.wall-live-layout{display:grid;grid-template-columns:minmax(210px,.62fr) 1.38fr;gap:22px;align-items:start;position:relative;z-index:3;margin-top:14px}
+.wall-qr{display:flex;align-items:center;gap:12px;background:#fffdf9;border:1px solid #e5d2ca;border-radius:18px;padding:10px;width:max-content;max-width:100%;box-shadow:0 12px 30px #72524512}
+.wall-qr img{width:clamp(92px,10vw,132px);height:clamp(92px,10vw,132px);object-fit:contain}
+.wall-qr b{display:block;font:18px Bagel;color:var(--ink)}
+.wall-qr small{display:block;max-width:145px;font-size:11px}
+.wall-live-layout .message-wall{margin-top:0;max-height:46vh;overflow:auto;align-content:flex-start;padding:8px 10px 22px}
+.message-card .postmark{position:absolute;right:9px;top:7px;border:1px dashed #d8a8ad;border-radius:50%;width:25px;height:25px;display:grid;place-items:center;color:#d97891;font-size:12px}
+.message-card .message-text{display:block;padding:8px 8px 12px 0;overflow-wrap:anywhere}
+.message-card .message-date{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#a78b80;margin-top:7px}
+.message-card.live-new{animation:livePostcard .9s cubic-bezier(.16,1,.3,1) both}
+@keyframes livePostcard{0%{opacity:0;transform:translateY(80px) rotate(15deg) scale(.55)}55%{opacity:1;transform:translateY(-8px) rotate(-4deg) scale(1.04)}100%{transform:rotate(var(--r)) scale(1)}}
+@media(max-width:760px){.wall-live-layout{grid-template-columns:1fr;gap:10px}.wall-live-layout .message-wall{max-height:25vh}.wall-qr img{width:78px;height:78px}}
+
+
+/* Final editorial cleanup: remove micro-copy and decorative labels throughout */
+.slide header{display:none!important}
+.slide .kicker{display:none!important}
+.slide .pill{display:none!important}
+.slide footer>span:first-child{display:none!important}
+.slide .brand-values{margin-top:12px}
+.slide .tile small{font-size:clamp(14px,1.25vw,17px);line-height:1.35;color:#755d53}
+.slide .qr-note{font-size:15px;line-height:1.35}
+.slide .swatch small{font-size:12px}
+.slide h3{margin-top:0}
+.slide footer{justify-content:flex-end}
+
 </style></head>
 <body>
 <div class="deck" id="deck">
@@ -152,18 +179,18 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <div class="hero-copy"><h1>Hay cosas<br>que merecen<br><span style="color:var(--deep)">llegar.</span></h1></div>
 <div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><img class="cover-logo" src="logo-postella-transparent.png" alt="postella"></div><div class="fly-letter">✉</div></div>
 </div>
-<footer><span></span><div class="nav"><button onclick="go(1)">→</button></div></footer>
+<footer><div class="nav"><button onclick="go(1)">→</button></div></footer>
 </section>
 <section class="slide" data-title="La idea" data-transition="stamp">
-<header><span>02 — La idea</span><span></span></header>
+<header><span>02 — La idea</span></header>
 <div class="kicker" style="margin-top:7vh">En un mundo que va demasiado rápido</div>
 <h2>Volvemos a lo<br><span style="color:var(--deep)">que importa.</span></h2>
 <div class="split"><div><p>postella nace para recuperar el valor de los pequeños gestos: escribir, regalar, guardar y compartir. Queremos que una postal sea mucho más que papel: que sea una forma de estar presente.</p><div class="brand-values"><span class="value">nostalgia</span><span class="value">creatividad</span><span class="value">dulzura</span></div></div><div style="position:relative;min-height:230px;display:grid;place-items:center"><div style="font:clamp(100px,19vw,230px) Bagel;color:#e8c4c8;transform:rotate(-9deg);text-shadow:8px 10px 0 #fff">hola</div><div style="position:absolute;right:8%;bottom:12%;font:clamp(28px,4vw,48px) Bagel;color:var(--brown);transform:rotate(7deg)">¿cómo estás?</div></div></div>
 <footer><span>postella · haz que llegue</span><div class="nav"><button onclick="go(0)">←</button><button onclick="go(2)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Qué ofrecemos" data-transition="postal">
-<header><span>03 — El universo postella</span><span>Producto y colección</span></header>
-<div class="kicker" style="margin-top:5vh">El corazón de la marca</div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
+<header><span>03 — El universo postella</span></header>
+<div class="kicker" style="margin-top:5vh"></div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
 
 <div class="qr-stage"><span class="qr-pulse"></span><img src="menti-qr.png" alt="QR para participar en Mentimeter"><span><strong>tu turno 💌</strong><small>Escanea y participa desde tu móvil</small></span></div>
 <div class="grid3">
@@ -177,7 +204,7 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <section class="slide" data-title="Identidad" data-transition="confetti">
 <header><span>04 — Identidad visual</span><span>Un lenguaje reconocible</span></header>
 <div class="split">
-<div><div class="kicker">Así se siente postella</div><h2>Creativa.<br>Cercana.<br><span style="color:var(--deep)">Inconfundible.</span></h2><p>Una estética nostálgica y contemporánea, con una paleta cálida y una comunicación visual amable. Cada detalle construye una misma experiencia.</p><div class="brand-values"><span class="value">💌 detalle</span><span class="value">diseño</span><span class="value">emoción</span></div></div>
+<div><div class="kicker"></div><h2>Creativa.<br>Cercana.<br><span style="color:var(--deep)">Inconfundible.</span></h2><p>Una estética nostálgica y contemporánea, con una paleta cálida y una comunicación visual amable. Cada detalle construye una misma experiencia.</p><div class="brand-values"><span class="value">💌 detalle</span><span class="value">diseño</span><span class="value">emoción</span></div></div>
 <div><div class="kicker">Nuestra paleta</div><div class="palette"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b><small>#F5B0BD</small></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b><small>#EFEAE7</small></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b><small>#AE8774</small></div></div><div style="margin-top:32px;background:#fffdf9;border-radius:24px;padding:24px;text-align:center;border:1px solid #e5d2ca"><img class="brand-logo" style="width:70%" src="logo-postella.png" alt="Logotipo original postella"><div class="small" style="margin-top:8px">Logotipo original · sin modificaciones</div></div></div>
 </div>
 <footer><span>Identidad corporativa</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
@@ -193,21 +220,21 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <div class="step"><strong>Personalizar</strong><p class="small">Combinar postales, mensajes, sobres y pequeños detalles.</p></div>
 <div class="step"><strong>Compartir</strong><p class="small">Llevarse algo que conecta con otra persona.</p></div>
 </div>
-<div style="margin-top:35px;padding:18px 22px;background:var(--pink);border-radius:18px;max-width:650px;font:clamp(20px,3vw,34px) Bagel;transform:rotate(-1deg)">Cada visita puede convertirse en una historia.</div>
+<div style="margin-top:35px;padding:18px 22px;background:var(--pink);border-radius:18px;max-width:650px;font:clamp(20px,3vw,34px) Bagel;transform:rotate(-1deg)"></div>
 <footer><span>Experiencia de compra y visual merchandising</span><div class="nav"><button onclick="go(3)">←</button><button onclick="go(5)">→</button></div></footer>
 </section>
-<section class="slide" data-title="Gestión comercial" data-transition="postal">
-<header><span>06 — Detrás de la marca</span><span>Gestión comercial</span></header>
+<section class="slide" data-title="" data-transition="postal">
+<header><span>06 — Detrás de la marca</span></header>
 <div class="kicker" style="margin-top:5vh">La creatividad también necesita estrategia</div><h2>Una marca bonita.<br><span style="color:var(--deep)">Un negocio pensado.</span></h2>
 <div class="grid3">
 <article class="tile"><div class="n">01</div><b>Surtido</b><small>Familias, subfamilias y referencias organizadas para facilitar la compra y la gestión.</small></article>
 <article class="tile"><div class="n">02</div><b>Inventario</b><small>Control de existencias y seguimiento de los productos para mantener un surtido equilibrado.</small></article>
 <article class="tile"><div class="n">03</div><b>Comercialización</b><small>Tienda física, canal online y oportunidades de colaboración y venta a empresas.</small></article>
 </div>
-<footer><span>De la idea a la operación</span><div class="nav"><button onclick="go(4)">←</button><button onclick="go(6)">→</button></div></footer>
+<footer><div class="nav"><button onclick="go(4)">←</button><button onclick="go(6)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Análisis ABC" data-transition="confetti">
-<header><span>07 — Análisis ABC</span><span>Control del inventario</span></header>
+<header><span>07 — Análisis ABC</span></header>
 <div class="kicker" style="margin-top:4vh">Tomar decisiones con datos</div><h2>¿Dónde ponemos<br><span style="color:var(--deep)">el foco?</span></h2>
 <p>En el ejercicio de clasificación ABC, las 16 referencias se distribuyen según su aportación al valor total del inventario.</p>
 <div class="abc">
@@ -216,13 +243,13 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <article><strong>C</strong><h3>4,65%</h3><small>Control más sencillo</small><div class="track"><i style="width:4.65%"></i></div></article>
 </div>
 <p class="small" style="margin-top:18px">Valor total del inventario: <b>2.083,53 €</b> · 16 referencias · Datos del supuesto de trabajo.</p>
-<footer><span>Una gestión basada en prioridades</span><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
+<footer><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
 </section>
 <section class="slide" data-title="POSTELLA FEST" data-transition="confetti">
-<header><span>08 — POSTELLA FEST</span><span>La clase toma el control</span></header>
+<header><span>08 — POSTELLA FEST</span></header>
 <div class="menti-layout">
   <div class="menti-copy">
-    <div class="kicker">The audience is the creative team</div>
+    <div class="kicker"></div>
     <h2>¡Ahora<br><span style="color:var(--deep)">participas tú!</span></h2>
     <p>Escanea el QR o entra en Mentimeter desde tu móvil. Vota, crea y decide con nosotros.</p>
     <div class="menti-code">💌 POSTELLA FEST</div>
@@ -236,23 +263,31 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
     </div>
   </div>
 </div>
-<footer><span>POSTELLA FEST · Ideas que llegan, personas que conectan</span><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer>
+<footer><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer>
 </section>
 <section class="slide" data-title="The Postcard Wall" data-transition="stamp">
-<header><span>09 — The postcard wall</span><span>Un mensaje que se queda</span></header>
+<header><span>09 — The postcard wall</span></header>
 <div class="kicker" style="margin-top:2vh">Deja algo bonito por aquí</div><h2>Una postal para<br><span style="color:var(--deep)">alguien.</span></h2>
 <div class="interact">
 <p style="margin-bottom:0">¿Qué frase te gustaría recibir? Escríbela y conviértela en una postal.</p>
-<div class="msg-form"><input id="message" maxlength="65" placeholder="Ej. para alguien que echo de menos…"><button class="action" id="addMessage">Enviar mi postal 💌</button></div>
-<div class="message-wall" id="messageWall"><div class="message-card" style="--r:-2deg">que nunca falten los abrazos</div><div class="message-card" style="--r:2deg">hoy pensé en ti</div><div class="message-card" style="--r:-1deg">los pequeños momentos cuentan</div></div>
-<div class="qr-note">Mural interactivo de demostración: las postales aparecen en esta pantalla. Para recibir aportaciones de todos los móviles en tiempo real, conectaremos un servicio de datos compartido.</div>
+<div class="wall-live-layout">
+  <div class="wall-compose">
+    <div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para enviar una postal"><span><b>escanea y participa</b><small>envía tu frase desde el móvil</small></span></div>
+    <div class="qr-note" id="wallStatus">💌 las postales aparecerán aquí en directo.</div>
+  </div>
+  <div class="message-wall" id="messageWall" aria-live="polite">
+    <div class="message-card sample" style="--r:-2deg">que nunca falten los abrazos</div>
+    <div class="message-card sample" style="--r:2deg">hoy pensé en ti</div>
+    <div class="message-card sample" style="--r:-1deg">los pequeños momentos cuentan</div>
+  </div>
 </div>
-<footer><span>Las historias merecen llegar</span><div class="nav"><button onclick="go(7)">←</button><button onclick="go(9)">→</button></div></footer>
+</div>
+<footer><div class="nav"><button onclick="go(7)">←</button><button onclick="go(9)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Gracias" data-transition="confetti">
 <header><span>postella · haz que llegue</span><span>Gracias por estar aquí</span></header>
 <div class="hero">
-<div class="hero-copy"><div class="kicker">Esto es solo el principio</div><h1>Que nunca<br>se nos olvide<br><span style="color:var(--deep)">decirlo.</span></h1><p>Gracias por descubrir postella con nosotros.</p><img class="brand-logo" src="logo-postella.png" alt="postella"></div>
+<div class="hero-copy"><div class="kicker"></div><h1>Que nunca<br>se nos olvide<br><span style="color:var(--deep)">decirlo.</span></h1><p>Gracias por descubrir postella con nosotros.</p><img class="brand-logo" src="logo-postella.png" alt="postella"></div>
 <div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><span>💌</span></div></div>
 </div>
 <footer><span>Álvaro González · Eva de la Arena Mateos</span><div class="nav"><button onclick="go(8)">←</button><button onclick="go(0)">↻</button></div></footer>
@@ -261,6 +296,7 @@ footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,
 <button class="audio" id="soundBtn">♫ Activar ambiente</button>
 <div class="progress"><i id="progress"></i></div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const slides=[...document.querySelectorAll('.slide')];let index=0,busy=false;
 const postal=document.getElementById('postalWipe'),stamp=document.getElementById('stampWipe'),confetti=document.getElementById('confetti');
@@ -282,4 +318,30 @@ let ctx=null,master=null,playing=false,timer=null,step=0;const notes=[261.63,329
 function tone(){if(!playing)return;let o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=notes[step++%notes.length];g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.12,ctx.currentTime+.18);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.25);o.connect(g);g.connect(master);o.start();o.stop(ctx.currentTime+1.3);timer=setTimeout(tone,900)}
 document.getElementById('soundBtn').onclick=async()=>{if(!playing){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();await ctx.resume();master=ctx.createGain();master.gain.value=.11;master.connect(ctx.destination);playing=true;tone();document.getElementById('soundBtn').textContent='♫ Silenciar'}else{playing=false;clearTimeout(timer);if(master)master.gain.setTargetAtTime(0,ctx.currentTime,.08);document.getElementById('soundBtn').textContent='♫ Activar ambiente'}};
 document.getElementById('progress').style.width=(1/slides.length*100)+'%';
+
+const postellaDb = window.supabase.createClient("https://yfdbjqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
+const liveWall=document.getElementById('messageWall');
+const liveStatus=document.getElementById('wallStatus');
+function addLivePostcard(row,isNew=false){
+ if(!row||!row.message)return;
+ if(row.id&&liveWall.querySelector('[data-post-id="'+CSS.escape(String(row.id))+'"]'))return;
+ liveWall.querySelectorAll('.sample').forEach(n=>n.remove());
+ const card=document.createElement('article');card.className='message-card'+(isNew?' live-new':'');
+ card.style.setProperty('--r',(Math.random()*5-2.5)+'deg');
+ card.innerHTML='<span class="postmark">♥</span><span class="message-text"></span><span class="message-date"></span>';
+ card.querySelector('.message-text').textContent=row.message;
+ const date=row.created_at?new Date(row.created_at):new Date();
+ card.querySelector('.message-date').textContent='un mensaje que llega · '+date.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+ if(row.id)card.dataset.postId=row.id;
+ liveWall.prepend(card);while(liveWall.children.length>40)liveWall.lastElementChild.remove();
+}
+async function initLiveWall(){
+ if(!liveWall)return;
+ const {data,error}=await postellaDb.from('postella_postcards').select('id,message,created_at').order('created_at',{ascending:false}).limit(30);
+ if(error){liveStatus.textContent='No se pudo conectar el mural. Comprueba la conexión.';return;}
+ liveWall.innerHTML='';(data||[]).reverse().forEach(row=>addLivePostcard(row));
+ liveStatus.textContent='🟢 mural conectado · escanea el QR para enviar tu postal';
+ postellaDb.channel('postella-live-wall').on('postgres_changes',{event:'INSERT',schema:'public',table:'postella_postcards'},payload=>addLivePostcard(payload.new,true)).subscribe(status=>{if(status==='CHANNEL_ERROR')liveStatus.textContent='Se ha interrumpido la conexión en directo.';});
+}
+initLiveWall();
 </script></body></html>

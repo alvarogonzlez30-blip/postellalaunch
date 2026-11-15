@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>envía tu postal · postella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&family=Bagel+Fat+One&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--deep:#d97891}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 8%,#f8dce2,transparent 34%),#f7f3ef;color:var(--ink);font-family:Fredoka,system-ui,sans-serif;display:grid;place-items:center;padding:22px}
+main{width:min(100%,520px);background:#fffdf9;border:1px solid #ead8d1;border-radius:28px;padding:clamp(24px,6vw,42px);box-shadow:0 24px 80px #62463a18;position:relative;overflow:hidden}
+main:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#f5b0bd66;right:-95px;top:-100px}
+.brand{font:36px 'Bagel Fat One',cursive;color:var(--deep);position:relative}
+.eyebrow{font-size:12px;letter-spacing:.17em;text-transform:uppercase;color:var(--brown);margin:22px 0 8px}
+h1{font:clamp(38px,9vw,54px)/.98 'Bagel Fat One',cursive;margin:0 0 14px;position:relative}
+p{font-size:17px;line-height:1.35;color:#765d53;position:relative}
+label{display:block;font-size:14px;margin:25px 0 8px}
+textarea{width:100%;min-height:145px;resize:vertical;border:1.5px solid #e3c9c5;border-radius:17px;background:#fff;padding:16px;font:18px Fredoka,sans-serif;color:var(--ink);outline:none}
+textarea:focus{border-color:var(--deep);box-shadow:0 0 0 4px #f5b0bd44}
+.count{text-align:right;font-size:12px;color:#9a8177;margin-top:5px}
+button{width:100%;border:0;border-radius:999px;background:var(--ink);color:white;font:20px 'Bagel Fat One',cursive;padding:16px 20px;margin-top:18px;cursor:pointer;transition:transform .2s,background .2s}
+button:active{transform:scale(.98)}button:disabled{opacity:.6;cursor:wait}
+.status{min-height:26px;margin-top:14px;font-size:15px;text-align:center}
+.note{font-size:12px;color:#a38d84;text-align:center;margin-top:20px}
+</style></head><body><main>
+<div class="brand">postella 💌</div><div class="eyebrow">the postcard wall · postella fest</div>
+<h1>deja algo<br>bonito por aquí.</h1>
+<p>Escribe una frase que te gustaría recibir. Cuando la envíes, aparecerá en la pared de postales.</p>
+<label for="message">tu mensaje</label>
+<textarea id="message" maxlength="120" placeholder="A veces, las palabras llegan justo cuando las necesitamos…"></textarea>
+<div class="count"><span id="count">0</span>/120</div>
+<button id="send">Enviar mi postal 💌</button>
+<div class="status" id="status" aria-live="polite"></div>
+<div class="note">No escribas datos personales. Tu mensaje será visible para todos los asistentes.</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const db = window.supabase.createClient("https://yfdbjqdqvfxuiscvczp.supabase.co","sb_publishable_n3YJfrHAyxHcAvmOSv5DTQ_DCGewVBX");
+const field=document.getElementById('message'),btn=document.getElementById('send'),status=document.getElementById('status');
+field.addEventListener('input',()=>document.getElementById('count').textContent=field.value.length);
+btn.addEventListener('click',async()=>{
+ const message=field.value.trim();
+ if(!message){status.textContent='Escribe tu mensaje antes de enviarlo 💗';field.focus();return}
+ btn.disabled=true;btn.textContent='Enviando…';status.textContent='';
+ const {error}=await db.from('postella_postcards').insert({message});
+ btn.disabled=false;btn.textContent='Enviar mi postal 💌';
+ if(error){status.textContent='No se ha podido enviar. Inténtalo de nuevo.';return}
+ field.value='';document.getElementById('count').textContent='0';
+ status.textContent='¡tu postal ya está en camino! 💌';
+});
+</script></body></html>
