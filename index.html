@@ -748,6 +748,72 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){.hello-slide *{animation:none!important}}
 
+
+
+/* PAGE 03 — POSTELLA universe / editorial product showcase */
+.universe-slide{background:#f6f0eb!important;overflow:hidden}
+.universe-wrap{position:absolute;inset:0;padding:clamp(34px,6vh,68px) clamp(34px,7vw,104px) clamp(72px,10vh,104px);display:flex;flex-direction:column;justify-content:center;gap:clamp(22px,4vh,42px)}
+.universe-heading{position:relative;z-index:2;max-width:760px;animation:universeHeading .8s ease both}
+.universe-brand{font:400 19px Bagel,cursive;color:#49332d;display:flex;align-items:center;gap:9px;margin-bottom:clamp(16px,2.4vh,26px)}
+.universe-brand span{font-size:15px}
+.universe-heading h2{font:400 clamp(47px,6.5vw,88px)/.91 Bagel,cursive;letter-spacing:-.055em;color:#49332d;margin:0}
+.universe-heading h2 em{font-style:normal;color:#e58fa2}
+.universe-heading p{font:400 clamp(14px,1.35vw,18px) Fredoka,sans-serif;color:#8b6c64;margin:clamp(12px,2vh,20px) 0 0}
+.universe-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px);align-items:stretch;min-height:0}
+.universe-product{position:relative;min-width:0;background:#fffdfa;border:1px solid #eee4df;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 35px #74534b0c;animation:universeCardIn .9s both;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.universe-product:nth-child(2){animation-delay:.12s}.universe-product:nth-child(3){animation-delay:.24s}
+.universe-product:hover{transform:translateY(-7px);box-shadow:0 22px 48px #74534b18}
+.universe-visual{position:relative;height:clamp(155px,25vh,270px);display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#f7dce0,#f3c6cd)}
+.product-stationery .universe-visual{background:linear-gradient(145deg,#e9d8cd,#f3e8df)}
+.product-gifts .universe-visual{background:linear-gradient(145deg,#eadfd8,#f7e8e2)}
+.universe-product-shadow{position:absolute;width:55%;height:10%;bottom:13%;border-radius:50%;background:#69464b24;filter:blur(12px)}
+.universe-postcard{position:relative;z-index:1;width:43%;height:69%;background:#fffaf2;box-shadow:0 14px 28px #83545b2b;transform:rotate(-8deg);border:5px solid #fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;overflow:hidden;animation:productFloat 7s ease-in-out infinite}
+.universe-postcard:before{content:"";position:absolute;inset:7px;border:1px solid #e4c9bd;z-index:3}
+.universe-postcard span{position:relative;z-index:4;font:400 clamp(12px,1.4vw,18px) Bagel,cursive;color:#b77e82}
+.upc-sun{position:absolute;width:38%;aspect-ratio:1;border-radius:50%;background:#eaa2a9;top:15%;right:16%}
+.upc-hill{position:absolute;bottom:18%;width:100%;height:45%;border-radius:50% 50% 0 0}
+.hill-one{background:#b9a58f;left:-20%;transform:rotate(-12deg)}
+.hill-two{background:#d9a2a1;right:-35%;bottom:10%;transform:rotate(14deg)}
+.universe-notebook{position:relative;z-index:1;width:43%;height:69%;background:#fffaf4;box-shadow:0 14px 28px #76584b2b;transform:rotate(7deg);border-radius:3px;display:flex;align-items:center;justify-content:center}
+.notebook-spine{position:absolute;left:8%;top:0;bottom:0;width:5px;background:#d7b7a9}
+.notebook-label{font:400 clamp(16px,2vw,25px)/.95 Bagel,cursive;color:#a37b6d;text-align:center}
+.notebook-label b{color:#e58fa2}
+.notebook-flower{position:absolute;right:12%;top:10%;font-size:clamp(18px,2vw,27px);color:#e58fa2}
+.universe-pencil{position:absolute;z-index:2;width:4%;height:75%;background:linear-gradient(90deg,#c47f8f,#f1c2c5,#bd7886);right:23%;top:9%;transform:rotate(24deg);border-radius:5px;box-shadow:0 6px 14px #74534b22}
+.universe-gift{position:relative;z-index:1;width:48%;height:52%;background:linear-gradient(135deg,#f8c6cd,#e89aaa);box-shadow:0 16px 28px #76534b30;transform:rotate(-7deg);border-radius:3px}
+.gift-lid{position:absolute;left:-5%;right:-5%;top:-12%;height:23%;background:#f9dce0;box-shadow:0 5px 8px #744a4a20}
+.gift-ribbon-v{position:absolute;left:44%;top:-12%;bottom:0;width:14%;background:#fff0e9}
+.gift-ribbon-h{position:absolute;left:0;right:0;top:44%;height:14%;background:#fff0e9}
+.gift-bow{position:absolute;width:38%;height:20%;left:31%;top:-24%;border:7px solid #fff0e9;border-radius:50%;transform:rotate(-12deg)}
+.universe-product-copy{padding:clamp(16px,2vw,24px) clamp(16px,2vw,26px) clamp(18px,2.3vw,28px);display:grid;grid-template-columns:32px 1fr;column-gap:12px;align-content:start}
+.universe-number{grid-row:1/3;font:400 12px Fredoka,sans-serif;color:#d28c98;padding-top:5px}
+.universe-product-copy h3{font:400 clamp(22px,2.4vw,32px)/.98 Bagel,cursive;color:#49332d;margin:0;letter-spacing:-.03em}
+.universe-product-copy p{grid-column:2;font:400 clamp(12px,1.15vw,15px)/1.4 Fredoka,sans-serif;color:#8b7067;margin:10px 0 0;max-width:260px}
+.universe-slide footer{z-index:5}
+@keyframes universeHeading{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes universeCardIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes productFloat{0%,100%{translate:0 0;rotate:-8deg}50%{translate:0 -7px;rotate:-6deg}}
+@media(max-width:760px){
+ .universe-wrap{padding:34px 7vw 82px;gap:18px;justify-content:flex-start;overflow:auto}
+ .universe-heading h2{font-size:clamp(43px,11vw,64px)}
+ .universe-heading p{font-size:13px;max-width:300px}
+ .universe-products{grid-template-columns:1fr;gap:12px}
+ .universe-product{display:grid;grid-template-columns:39% 1fr;min-height:130px}
+ .universe-visual{height:100%;min-height:132px}
+ .universe-postcard,.universe-notebook{width:52%;height:72%}
+ .universe-product-copy{padding:15px 13px;align-content:center;grid-template-columns:23px 1fr;column-gap:8px}
+ .universe-product-copy h3{font-size:clamp(20px,5vw,27px)}
+ .universe-product-copy p{font-size:11px;margin-top:6px}
+ .universe-number{font-size:10px}
+ .universe-slide footer{background:linear-gradient(transparent,#f6f0eb 30%)}
+}
+@media(max-height:720px) and (min-width:761px){
+ .universe-wrap{gap:18px;padding-top:28px;padding-bottom:64px}
+ .universe-visual{height:clamp(130px,21vh,190px)}
+ .universe-heading h2{font-size:clamp(44px,5.4vw,70px)}
+}
+@media(prefers-reduced-motion:reduce){.universe-slide *{animation:none!important;transition:none!important}}
+
 </style><style id="final-polish">
 /* FINAL FIXES — responsive editorial typography and intentional motion */
 .slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
@@ -913,18 +979,42 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
   </div>
   <footer><span>postella · haz que llegue</span><div class="nav"><button onclick="go(0)">←</button><button onclick="go(2)">→</button></div></footer>
 </section>
-<section class="slide" data-title="Qué ofrecemos" data-transition="postal">
-<header><span>03 — El universo postella</span></header>
-<div class="kicker" style="margin-top:5vh"></div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
-
-
-<div class="grid3">
-<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="13" width="48" height="38" rx="3"/><path d="M12 18l20 16 20-16"/><path d="M12 46l15-13M52 46L37 33"/></svg></div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
-<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 8h28v48H18z"/><path d="M24 19h16M24 28h16M24 37h11"/></svg></div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
-<article class="tile"><div class="product-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 25h48v31H8zM5 18h54v9H5z"/><path d="M32 18c-17 0-17-14-7-14 7 0 7 14 7 14zm0 0c17 0 17-14 7-14-7 0-7 14-7 14z"/></svg></div><b>Pequeños regalos</b><small>Objetos especiales, detalles y piezas seleccionadas para regalar o coleccionar.</small></article>
-</div>
-
-<footer><span>Un catálogo con identidad propia</span><div class="nav"><button onclick="go(1)">←</button><button onclick="go(3)">→</button></div></footer>
+<section class="slide universe-slide" data-title="Qué ofrecemos" data-transition="postal">
+  <div class="universe-wrap">
+    <div class="universe-heading">
+      <div class="universe-brand">postella<span>💌</span></div>
+      <h2>Un universo<br><em>para regalar.</em></h2>
+      <p>Pequeños objetos que guardan grandes historias.</p>
+    </div>
+    <div class="universe-products">
+      <article class="universe-product product-postcard">
+        <div class="universe-visual">
+          <div class="universe-postcard">
+            <div class="upc-sun"></div><div class="upc-hill hill-one"></div><div class="upc-hill hill-two"></div>
+            <span>postella</span>
+          </div>
+          <div class="universe-product-shadow"></div>
+        </div>
+        <div class="universe-product-copy"><span class="universe-number">01</span><h3>Postales<br>ilustradas</h3><p>Ilustraciones originales para enviar, guardar y coleccionar.</p></div>
+      </article>
+      <article class="universe-product product-stationery">
+        <div class="universe-visual">
+          <div class="universe-notebook"><div class="notebook-spine"></div><div class="notebook-label">ideas<br><b>bonitas.</b></div><div class="notebook-flower">✿</div></div>
+          <div class="universe-pencil"></div>
+          <div class="universe-product-shadow"></div>
+        </div>
+        <div class="universe-product-copy"><span class="universe-number">02</span><h3>Papelería<br>creativa</h3><p>Cuadernos, pegatinas y accesorios para crear sin límites.</p></div>
+      </article>
+      <article class="universe-product product-gifts">
+        <div class="universe-visual">
+          <div class="universe-gift"><div class="gift-lid"></div><div class="gift-ribbon-v"></div><div class="gift-ribbon-h"></div><div class="gift-bow"></div></div>
+          <div class="universe-product-shadow"></div>
+        </div>
+        <div class="universe-product-copy"><span class="universe-number">03</span><h3>Pequeños<br>regalos</h3><p>Detalles especiales que apetece descubrir y compartir.</p></div>
+      </article>
+    </div>
+  </div>
+  <footer><span>Todo empieza con un detalle.</span><div class="nav"><button onclick="go(1)">←</button><button onclick="go(3)">→</button></div></footer>
 </section>
 <section class="slide" data-title="Identidad" data-transition="confetti">
 <header><span>04 — Identidad visual</span><span>Un lenguaje reconocible</span></header>
