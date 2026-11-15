@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>postella — brand launch experience</title>
+<title>postella — una experiencia para descubrir</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
 :root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--white:#fffdfa;--hot:#ed7897}
@@ -30,12 +30,64 @@ p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;max-width:720px;color:#7259
 .reveal{opacity:0;transform:translateY(18px);transition:.7s}.active .reveal{opacity:1;transform:none}.active .reveal:nth-child(2){transition-delay:.12s}.active .reveal:nth-child(3){transition-delay:.24s}
 @media(max-width:760px){.hero,.split{grid-template-columns:1fr;gap:12px}.hero-art{max-height:28vh}.hero-art img{max-height:26vh}.visual{height:28vh}.cards{grid-template-columns:1fr}.catalog{grid-template-columns:repeat(2,1fr)}.product img{height:110px}.wall{grid-template-columns:repeat(3,1fr)}.abc{gap:6px}.abc div{padding:10px}.abc strong{font-size:34px}.slide{padding:22px}.footer{left:22px;right:22px}.topline{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* POSTELLA MOTION EDITION */
+:root{--paper:#fffdf9;--pink-deep:#df7893;--shadow:0 28px 80px #56382d30}
+body{background:var(--cream)}
+.deck:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.24;background-image:radial-gradient(#ae8774 0.55px,transparent .55px);background-size:7px 7px;mask-image:linear-gradient(120deg,transparent,#000 40%,transparent)}
+.slide{isolation:isolate}
+.slide.active{animation:pageArrive .8s cubic-bezier(.18,.78,.22,1) both}
+@keyframes pageArrive{0%{opacity:0;transform:translateX(4vw) scale(.985);filter:blur(5px)}100%{opacity:1;transform:none;filter:blur(0)}}
+.slide:before{content:"";position:absolute;inset:16px;border:1px solid #cdaea24d;border-radius:24px;pointer-events:none;z-index:0}
+.logo{filter:drop-shadow(0 10px 12px #ae877422)}
+.hero-art img{animation:bob 5s ease-in-out infinite, softFloat 8s ease-in-out infinite}
+@keyframes softFloat{0%,100%{filter:drop-shadow(0 24px 25px #8c5c4c22)}50%{filter:drop-shadow(0 35px 28px #8c5c4c35)}}
+.product{position:relative;overflow:hidden}.product:after{content:"✦";position:absolute;right:13px;top:9px;color:#d78a9b;opacity:0;transform:scale(.3) rotate(-40deg);transition:.35s}.product:hover:after{opacity:1;transform:scale(1) rotate(0)}
+.product img{transition:transform .65s cubic-bezier(.2,.8,.2,1)}.product:hover img{transform:scale(1.08) rotate(-2deg)}
+.visual{position:relative}.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,#ffffff70 48%,transparent 70%);transform:translateX(-130%);animation:shine 7s ease-in-out infinite;pointer-events:none}@keyframes shine{0%,65%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
+.kicker:before{content:"✳";display:inline-block;margin-right:9px;color:var(--pink-deep);animation:spin 12s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.pill{background:#fffaf680;box-shadow:0 5px 18px #ae87741a}
+.hanging .postcard{transition:filter .3s,box-shadow .3s}.hanging .postcard:hover{filter:saturate(1.3);box-shadow:0 25px 40px #6d4d3d35;z-index:3}
+.note{animation:notePop .7s cubic-bezier(.2,.8,.2,1) both}@keyframes notePop{from{opacity:0;transform:translateY(25px) rotate(0) scale(.7)}to{opacity:1;transform:translateY(0) rotate(var(--r)) scale(1)}}
+/* full-screen postcard page-turn */
+#postcardTransition{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#49332d;opacity:0;visibility:hidden;pointer-events:none;perspective:1600px}
+#postcardTransition.go{visibility:visible;animation:screenDim 1.18s ease both}
+@keyframes screenDim{0%{opacity:0}18%,78%{opacity:1}100%{opacity:0}}
+.turn-card{width:min(72vw,720px);height:min(76vh,520px);position:relative;transform-style:preserve-3d;transform:rotateY(0deg) scale(.72) rotate(-5deg);box-shadow:0 35px 100px #170e0b88;border:13px solid #fffdf9;background:#fffdf9;overflow:visible}
+#postcardTransition.go .turn-card{animation:postcardFlip 1.18s cubic-bezier(.62,.02,.28,1) both}
+@keyframes postcardFlip{0%{transform:rotateY(0) scale(.72) rotate(-5deg)}18%{transform:rotateY(0) scale(1) rotate(0)}52%{transform:rotateY(180deg) scale(1.04) rotate(2deg)}82%{transform:rotateY(360deg) scale(1.12) rotate(-1deg)}100%{transform:rotateY(360deg) scale(1.5) rotate(0)}}
+.turn-front,.turn-back{position:absolute;inset:0;backface-visibility:hidden;display:grid;place-items:center;overflow:hidden}
+.turn-front{background:#f5b0bd}.turn-back{background:#efeae7;transform:rotateY(180deg)}
+.turn-front img,.turn-back img{width:100%;height:100%;object-fit:contain;padding:9%;mix-blend-mode:multiply}
+.turn-stamp{position:absolute;right:5%;top:7%;width:76px;height:76px;border:2px dashed #ae8774;border-radius:50%;display:grid;place-items:center;color:#ae8774;font:600 11px Fredoka;letter-spacing:.12em;transform:rotate(13deg)}
+.turn-lines{position:absolute;left:7%;right:7%;bottom:9%;height:1px;background:#ae8774;box-shadow:0 -13px #ae877455,0 -26px #ae877455}
+#postcardTransition .turn-caption{position:absolute;bottom:8%;color:#fffdf9;font:500 12px 'DM Sans';letter-spacing:.25em;text-transform:uppercase}
+/* envelope reveal on first entrance */
+.envelope{position:absolute;z-index:8;left:50%;top:50%;width:min(42vw,420px);height:min(29vw,290px);transform:translate(-50%,-50%);pointer-events:none;opacity:0}
+.envelope .env-body{position:absolute;inset:0;background:#f5b0bd;border-radius:12px;box-shadow:0 25px 65px #754c4b30;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.envelope .env-flap{position:absolute;inset:0;background:#e99aaa;clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;filter:drop-shadow(0 6px 3px #8b596022)}
+.envelope .env-letter{position:absolute;left:9%;right:9%;bottom:8%;height:80%;background:#fffdf9;border-radius:5px;display:grid;place-items:center;box-shadow:0 5px 15px #593d321c}
+.envelope .env-letter img{width:70%;mix-blend-mode:multiply}
+.slide:first-child .envelope{animation:envIn 2.4s 0.2s cubic-bezier(.2,.8,.2,1) both}
+.slide:first-child .env-flap{animation:flapOpen .7s 1.05s ease-in-out both}
+.slide:first-child .env-letter{animation:letterRise 1s 1.45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes envIn{0%{opacity:0;transform:translate(-50%,-20%) scale(.6)}20%,75%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-70%) scale(1.08)}}
+@keyframes flapOpen{to{transform:rotateX(180deg);z-index:0}}
+@keyframes letterRise{from{transform:translateY(25%)}to{transform:translateY(-12%)}}
+.slide:first-child .hero>*{animation:heroReveal .8s 1.8s both;opacity:0}@keyframes heroReveal{to{opacity:1}}
+/* decorative moving postage strip */
+.postella-marquee{position:absolute;left:0;right:0;bottom:0;overflow:hidden;white-space:nowrap;color:#ae8774;font:600 12px Fredoka;letter-spacing:.2em;opacity:.55;z-index:1}
+.postella-marquee span{display:inline-block;padding-left:100%;animation:marquee 24s linear infinite}@keyframes marquee{to{transform:translateX(-100%)}}
+@media(max-width:760px){.turn-card{width:84vw;height:54vh}.turn-stamp{width:54px;height:54px;font-size:8px}.slide:before{inset:7px;border-radius:16px}.envelope{width:70vw;height:48vw}}
+
 </style></head>
 <body>
 <button class="sound" id="soundBtn">♫ Activar ambiente</button>
+<div id="postcardTransition" aria-hidden="true"><div class="turn-card"><div class="turn-front"><img src="postcard-single.png" alt=""><span class="turn-stamp">POSTELLA<br>✳ 2026</span></div><div class="turn-back"><img src="logo-postella.png" alt=""><span class="turn-lines"></span></div></div><div class="turn-caption">una historia está a punto de llegar</div></div>
 <div class="deck">
 <section class="slide active" data-title="Inicio">
  <div class="topline"><span>Brand launch experience</span><span>01 / 08</span></div>
+ <div class="envelope" aria-hidden="true"><div class="env-body"></div><div class="env-letter"><img src="logo-postella.png" alt=""></div><div class="env-flap"></div></div>
  <div class="hero">
   <div>
    <div class="kicker reveal">Una nueva forma de hacer llegar emociones</div>
@@ -46,6 +98,7 @@ p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;max-width:720px;color:#7259
   </div>
   <div class="hero-art"><img src="sticker-sheet.png" alt="Universo ilustrado de postella"></div>
  </div>
+ <div class="postella-marquee"><span>POSTALES CON HISTORIAS ✳ PAPELERÍA CON PERSONALIDAD ✳ PEQUEÑOS DETALLES QUE LLEGAN ✳ POSTALES CON HISTORIAS ✳</span></div>
  <span class="floater" style="left:48%;top:16%">✦</span><span class="floater" style="right:8%;top:18%;animation-delay:-2s">♡</span>
 </section>
 <section class="slide" data-title="La idea">
@@ -123,10 +176,13 @@ p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;max-width:720px;color:#7259
 <script>
 const slides=[...document.querySelectorAll('.slide')];let index=0;
 const label=document.getElementById('sectionLabel'),counter=document.getElementById('counter'),progress=document.getElementById('progress');
-function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));label.textContent=String(index+1).padStart(2,'0')+' — '+slides[index].dataset.title;counter.textContent=(index+1)+' / '+slides.length;progress.style.width=((index+1)/slides.length*100)+'%';}
+let turning=false;const transition=document.getElementById('postcardTransition');
+function show(n,animate=true){const target=Math.max(0,Math.min(slides.length-1,n));if(target===index||turning)return;if(!animate){index=target;slides.forEach((s,i)=>s.classList.toggle('active',i===index));syncNav();return;}turning=true;transition.classList.remove('go');void transition.offsetWidth;transition.classList.add('go');window.setTimeout(()=>{index=target;slides.forEach((s,i)=>s.classList.toggle('active',i===index));syncNav();},430);window.setTimeout(()=>{transition.classList.remove('go');turning=false;},1190);}
+function syncNav(){label.textContent=String(index+1).padStart(2,'0')+' — '+slides[index].dataset.title;counter.textContent=(index+1)+' / '+slides.length;progress.style.width=((index+1)/slides.length*100)+'%';}
 document.getElementById('next').onclick=()=>show(index+1);document.getElementById('prev').onclick=()=>show(index-1);
 document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
 document.getElementById('addNote').onclick=()=>{const input=document.getElementById('message');const v=input.value.trim();if(!v)return;const n=document.createElement('div');n.className='note';n.style.setProperty('--r',(Math.random()*6-3)+'deg');n.textContent=v;document.getElementById('wall').appendChild(n);input.value='';};
+let touchX=0;document.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>90)show(index+(dx<0?1:-1));},{passive:true});
 document.getElementById('message').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addNote').click()});
 // Ambient original synthesized music: starts only after an explicit click.
 let audioCtx=null,oscillators=[],master=null,playing=false;
@@ -136,5 +192,5 @@ function play(){if(!playing)return;const o=audioCtx.createOscillator(),g=audioCt
 playing=true;play();document.getElementById('soundBtn').textContent='♫ Silenciar ambiente';}
 function stopMusic(){playing=false;if(master)master.gain.setTargetAtTime(0,audioCtx.currentTime,.1);document.getElementById('soundBtn').textContent='♫ Activar ambiente';}
 document.getElementById('soundBtn').onclick=()=>{if(!playing)startMusic();else stopMusic()};
-show(0);
+syncNav();
 </script></body></html>
