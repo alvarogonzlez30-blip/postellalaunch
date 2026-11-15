@@ -18,7 +18,7 @@ textarea:focus{border-color:var(--deep);box-shadow:0 0 0 4px #f5b0bd44}
 .count{text-align:right;font-size:12px;color:#9a8177;margin-top:5px}
 button{width:100%;border:0;border-radius:999px;background:var(--ink);color:white;font:20px 'Bagel Fat One',cursive;padding:16px 20px;margin-top:18px;cursor:pointer;transition:transform .2s,background .2s}
 button:active{transform:scale(.98)}button:disabled{opacity:.6;cursor:wait}
-.status{min-height:26px;margin-top:14px;font-size:15px;text-align:center}
+.status{min-height:26px;margin-top:14px;font-size:14px;line-height:1.35;text-align:center;overflow-wrap:anywhere;color:#9a5360}
 .note{font-size:12px;color:#a38d84;text-align:center;margin-top:20px}
 </style></head><body><main>
 <div class="brand">postella 💌</div><div class="eyebrow">the postcard wall · postella fest</div>
@@ -42,7 +42,12 @@ btn.addEventListener('click',async()=>{
  btn.disabled=true;btn.textContent='Enviando…';status.textContent='';
  const {error}=await db.from('postella_postcards').insert({message});
  btn.disabled=false;btn.textContent='Enviar mi postal 💌';
- if(error){status.textContent='No se ha podido enviar. Inténtalo de nuevo.';return}
+ if(error){
+   console.error('POSTELLA SUPABASE INSERT ERROR', error);
+   const detail = [error.code, error.message, error.details, error.hint].filter(Boolean).join(' · ');
+   status.textContent = 'Error: ' + (detail || 'respuesta desconocida de Supabase');
+   return;
+ }
  field.value='';document.getElementById('count').textContent='0';
  status.textContent='¡tu postal ya está en camino! 💌';
 });
