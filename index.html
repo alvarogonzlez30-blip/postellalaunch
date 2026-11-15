@@ -377,6 +377,38 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
+
+/* COVER — SOBRE + REVELADO TIPOGRÁFICO */
+.cover-slide{background:var(--pink);padding:0!important;color:var(--ink)}
+.cover-slide:before,.cover-slide:after{display:none}
+.cover-stage{position:absolute;inset:0;overflow:hidden;display:grid;place-items:center;isolation:isolate;background:linear-gradient(145deg,#f7bdc8 0%,#f5b0bd 54%,#efa0b1 100%)}
+.cover-glow{position:absolute;width:min(72vw,900px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff7 0%,#fff2 43%,transparent 70%);filter:blur(10px);animation:coverGlow 7s ease-in-out infinite alternate}
+.cover-envelope{position:absolute;width:min(43vw,560px);height:min(29vw,370px);min-width:300px;min-height:205px;top:48%;left:50%;transform:translate(-50%,-50%) rotate(-7deg);perspective:1400px;z-index:2;animation:envelopeArrive 1.2s cubic-bezier(.18,.8,.2,1) both}
+.cover-envelope-back{position:absolute;inset:0;background:#fdfaf6;border-radius:5px;box-shadow:0 35px 75px #744a5030}
+.cover-letter{position:absolute;z-index:2;left:8%;right:8%;top:5%;height:88%;background:#fffefa;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8%;box-shadow:0 8px 25px #6f4a4a18;animation:letterRise 1.1s 1.9s cubic-bezier(.16,.8,.2,1) both}
+.cover-wordmark{width:min(72%,320px);height:auto;max-height:90px;object-fit:contain;opacity:0;transform:translateY(18px) scale(.96);animation:wordmarkReveal .9s 2.65s cubic-bezier(.2,.8,.2,1) forwards}
+.cover-letter-rule{height:1px;width:46%;background:#e7c9c9;margin:18px 0 14px;transform:scaleX(0);transform-origin:center;animation:ruleReveal .7s 3.05s ease forwards}
+.cover-letter-message{font:clamp(18px,2vw,27px) Bagel;color:var(--ink);opacity:0;transform:translateY(10px);animation:wordmarkReveal .7s 3.2s ease forwards}
+.cover-envelope-front{position:absolute;inset:0;z-index:4;background:#f8eee9;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:5px;filter:drop-shadow(0 8px 8px #5d34341a)}
+.cover-envelope-flap{position:absolute;inset:0;z-index:5;background:#fff9f5;clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:50% 0;transform:rotateX(0deg);animation:flapOpen .95s 1.05s cubic-bezier(.5,.05,.2,1) forwards;backface-visibility:visible;filter:drop-shadow(0 5px 5px #6e44441c)}
+.cover-title{position:absolute;left:clamp(28px,7vw,110px);bottom:clamp(42px,8vh,90px);z-index:6;max-width:75vw;opacity:0;transform:translateY(24px);animation:titleReveal 1s 3.35s cubic-bezier(.2,.8,.2,1) forwards}
+.cover-title-small{font:400 clamp(11px,1.1vw,14px) Fredoka,sans-serif;letter-spacing:.18em;color:#805d59;margin-bottom:15px}
+.cover-title h1{font:clamp(44px,7vw,100px)/.96 Bagel,cursive;letter-spacing:-.035em;margin:0;color:#49332d;max-width:11ch}
+.cover-title h1 span{color:#fffdf9}
+.cover-word-reveal{position:absolute;right:clamp(28px,7vw,110px);top:clamp(30px,6vh,70px);font:clamp(34px,5vw,68px) Bagel;color:#fffdf9;letter-spacing:-.04em;opacity:0;transform:translateY(-18px);animation:titleReveal .9s 3.65s cubic-bezier(.2,.8,.2,1) forwards}
+.cover-slide footer{z-index:12;color:#805d59}
+.cover-slide .nav button{background:#fffdf9dd;border-color:#fff9;color:#49332d}
+@keyframes envelopeArrive{from{opacity:0;transform:translate(-50%,18%) rotate(-15deg) scale(.72)}to{opacity:1;transform:translate(-50%,-50%) rotate(-7deg) scale(1)}}
+@keyframes flapOpen{0%{transform:rotateX(0)}100%{transform:rotateX(180deg);z-index:1}}
+@keyframes letterRise{0%{transform:translateY(0)}100%{transform:translateY(-43%)}}
+@keyframes wordmarkReveal{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ruleReveal{to{transform:scaleX(1)}}
+@keyframes titleReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes coverGlow{to{transform:scale(1.12);opacity:.65}}
+@media(max-width:760px){.cover-envelope{width:76vw;height:51vw;top:39%;min-width:0;min-height:0}.cover-title{max-width:86vw;bottom:12vh}.cover-title h1{font-size:clamp(42px,10vw,68px)}.cover-word-reveal{font-size:clamp(30px,8vw,48px);top:24px;right:25px}.cover-title-small{font-size:10px}.cover-letter-message{font-size:16px}}
+@media(max-height:650px) and (min-width:761px){.cover-envelope{height:23vw;width:36vw}.cover-title{bottom:6vh}.cover-title h1{font-size:clamp(42px,6vw,76px)}}
+@media(prefers-reduced-motion:reduce){.cover-envelope,.cover-envelope-flap,.cover-letter,.cover-wordmark,.cover-letter-rule,.cover-letter-message,.cover-title,.cover-word-reveal,.cover-glow{animation:none!important;opacity:1!important;transform:none!important}}
+
 </style><style id="final-polish">
 /* FINAL FIXES — responsive editorial typography and intentional motion */
 .slide h1,.slide h2,.slide h3{max-width:100%;overflow:visible;text-wrap:balance;overflow-wrap:normal;word-break:normal}
@@ -492,13 +524,26 @@ header,.kicker,.pill,.slide footer>span:first-child{display:none!important}
 </head>
 <body>
 <div class="deck" id="deck">
-<section class="slide active" data-title="Bienvenida" data-transition="postal">
-
-<div class="hero">
-<div class="hero-copy"><h1>haz que<br><span style="color:#fff">llegue.</span></h1></div>
-<div class="hero-stamp cover-art"><div class="cover-card"><div class="cover-card-logo"><img class="cover-logo" src="logo-postella-transparent.png" alt="postella"></div><div class="cover-card-line"></div><div class="cover-card-stamp"></div></div><div class="cover-ribbon"></div></div>
-</div>
-<footer><div class="nav"><button onclick="go(1)">→</button></div></footer>
+<section class="slide active cover-slide" data-title="Bienvenida" data-transition="postal">
+  <div class="cover-stage" aria-label="postella, haz que llegue">
+    <div class="cover-glow"></div>
+    <div class="cover-envelope">
+      <div class="cover-envelope-back"></div>
+      <div class="cover-letter">
+        <img src="logo-postella-transparent.png" alt="postella" class="cover-wordmark">
+        <div class="cover-letter-rule"></div>
+        <div class="cover-letter-message">haz que llegue.</div>
+      </div>
+      <div class="cover-envelope-front"></div>
+      <div class="cover-envelope-flap"></div>
+    </div>
+    <div class="cover-title">
+      <div class="cover-title-small">ÁLVARO GONZÁLEZ · EVA DE LA ARENA</div>
+      <h1>Hay cosas que<br><span>merecen llegar.</span></h1>
+    </div>
+    <div class="cover-word-reveal"><span>postella</span></div>
+  </div>
+  <footer><div class="nav"><button onclick="go(1)" aria-label="Continuar">→</button></div></footer>
 </section>
 <section class="slide" data-title="La idea" data-transition="stamp">
 <header><span>02 — La idea</span></header>
