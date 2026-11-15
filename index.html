@@ -1,196 +1,227 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>postella — una experiencia para descubrir</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>postella — haz que llegue</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
-:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--white:#fffdfa;--hot:#ed7897}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif}
-button{font:inherit;cursor:pointer;border:0}.deck{height:100%;width:100%;position:relative}.slide{position:absolute;inset:0;padding:clamp(22px,5vw,76px);display:none;overflow:hidden;background:var(--cream)}
-.slide.active{display:flex;animation:appear .65s cubic-bezier(.2,.8,.2,1)}@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
-.slide:after{content:"";position:absolute;width:34vw;height:34vw;border-radius:50%;background:#f7cbd2;opacity:.45;right:-12vw;bottom:-19vw;pointer-events:none}
-.topline{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:3;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8b6b5e}
-.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9c7466;font-weight:800}
-h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Fredoka,sans-serif;font-weight:600;letter-spacing:-.035em}
-h1{font-size:clamp(54px,9vw,128px);line-height:.92;margin:22px 0;color:var(--ink)}h2{font-size:clamp(42px,6.5vw,86px);line-height:.98;margin:12px 0 22px}h3{font-size:clamp(24px,3vw,38px);margin-bottom:10px}
-p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;max-width:720px;color:#72594f}
-.logo{width:min(46vw,520px);height:auto;mix-blend-mode:multiply;display:block}.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3vw;flex:1;position:relative;z-index:2}.hero-art{position:relative;display:flex;align-items:center;justify-content:center;height:100%}.hero-art img{max-width:100%;max-height:70vh;object-fit:contain;filter:drop-shadow(0 24px 25px #8c5c4c22);animation:bob 5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-16px) rotate(2deg)}}
-.pill{display:inline-flex;border:1px solid #d5b8ac;border-radius:99px;padding:10px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8b6b5e}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;flex:1;position:relative;z-index:2}.visual{height:min(62vh,600px);border-radius:28px;background:#f8d6dc;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 20px 50px #815a4a18}.visual img{width:100%;height:100%;object-fit:contain;padding:18px}.visual.cover img{object-fit:cover;padding:0}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;position:relative;z-index:2}.card{background:#fffaf6;border:1px solid #ead8d0;border-radius:22px;padding:20px;min-height:170px;box-shadow:0 10px 25px #8b5e4b0d}.card b{font:600 24px Fredoka}.card small{display:block;color:#987c70;margin-top:9px;line-height:1.4}.number{font:600 44px Fredoka;color:var(--hot)}
-.catalog{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:2}.product{background:#fffaf6;border-radius:20px;padding:10px;box-shadow:0 12px 28px #704c3c12;transform:rotate(var(--r));transition:.3s}.product:hover{transform:translateY(-10px) rotate(0) scale(1.03)}.product img{width:100%;height:clamp(110px,19vh,190px);object-fit:contain;border-radius:14px;background:#f8e4e5}.product span{display:block;padding:10px 5px 4px;font:600 18px Fredoka}
-.hanging{display:flex;justify-content:center;gap:2vw;height:36vh;align-items:flex-start;position:relative}.hanging:before{content:"";position:absolute;top:0;left:5%;right:5%;height:2px;background:#c6a99b}.postcard{width:clamp(90px,13vw,170px);height:clamp(125px,22vh,230px);background:#fffdf9;border:8px solid white;box-shadow:0 12px 25px #6d4d3d22;position:relative;transform-origin:top center;animation:swing 4s ease-in-out infinite}.postcard:nth-child(2){animation-delay:-1s;margin-top:35px}.postcard:nth-child(3){animation-delay:-2s;margin-top:12px}.postcard:nth-child(4){animation-delay:-.5s;margin-top:48px}.postcard:before{content:"";position:absolute;left:50%;top:-40px;height:40px;width:1px;background:#9e8073}.postcard .sun{position:absolute;width:40%;aspect-ratio:1;border-radius:50%;background:var(--pink);left:30%;top:18%}.postcard .land{position:absolute;bottom:0;left:0;right:0;height:42%;background:#c9a28c;clip-path:polygon(0 45%,30% 10%,58% 58%,80% 20%,100% 45%,100% 100%,0 100%)}.postcard:nth-child(2) .sun{background:#f5a6b7}.postcard:nth-child(3) .land{background:#e6b7b6}.postcard:nth-child(4) .sun{background:#d3a48b}
-@keyframes swing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-.wall{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:900px;margin:20px auto;position:relative;z-index:2}.note{background:#fffdf9;min-height:100px;padding:14px;box-shadow:0 8px 18px #7753461c;transform:rotate(var(--r));font:500 14px Fredoka;display:flex;align-items:center;justify-content:center;text-align:center;color:#8e665b}.note:nth-child(3n){background:#f9d8df}.note:nth-child(4n){background:#e8d7ce}
-.abc{display:flex;gap:14px;margin-top:28px;position:relative;z-index:2}.abc div{flex:1;padding:22px;border-radius:20px;background:#fffaf6}.abc strong{font:600 54px Fredoka;color:var(--hot)}.bar{height:12px;background:#eadbd4;border-radius:20px;margin-top:14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);border-radius:20px;animation:grow 1.5s ease both}@keyframes grow{from{width:0}}
-.footer{position:absolute;bottom:22px;left:clamp(22px,5vw,76px);right:clamp(22px,5vw,76px);display:flex;align-items:center;justify-content:space-between;z-index:10;color:#9a7d70;font-size:12px}.controls{display:flex;gap:8px;align-items:center}.ctrl{background:#fffaf6;border:1px solid #e4cfc5;border-radius:50%;width:42px;height:42px;color:#72594f;font-size:19px;box-shadow:0 5px 12px #7d5d4d12}.ctrl:hover{background:var(--pink)}.progress{height:3px;background:#e6d4cd;position:absolute;bottom:0;left:0;right:0;z-index:20}.progress i{height:100%;display:block;background:var(--hot);transition:width .4s}
-.sound{position:fixed;right:22px;top:18px;z-index:40;border-radius:99px;background:#fffaf6dd;padding:10px 14px;color:#7a5b50;font-size:12px;border:1px solid #ead8d0;backdrop-filter:blur(10px)}
-.floater{position:absolute;font-size:clamp(22px,3vw,42px);color:#d88a9a;animation:float 6s ease-in-out infinite;opacity:.7}@keyframes float{50%{transform:translateY(-24px) rotate(14deg)}}
-.reveal{opacity:0;transform:translateY(18px);transition:.7s}.active .reveal{opacity:1;transform:none}.active .reveal:nth-child(2){transition-delay:.12s}.active .reveal:nth-child(3){transition-delay:.24s}
-@media(max-width:760px){.hero,.split{grid-template-columns:1fr;gap:12px}.hero-art{max-height:28vh}.hero-art img{max-height:26vh}.visual{height:28vh}.cards{grid-template-columns:1fr}.catalog{grid-template-columns:repeat(2,1fr)}.product img{height:110px}.wall{grid-template-columns:repeat(3,1fr)}.abc{gap:6px}.abc div{padding:10px}.abc strong{font-size:34px}.slide{padding:22px}.footer{left:22px;right:22px}.topline{font-size:9px}}
+@font-face{font-family:Bagel;src:url('BagelFatOne-Regular.ttf') format('truetype');font-display:swap}
+@font-face{font-family:Fredoka;src:url('Fredoka-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Fredoka;src:url('Fredoka-Light.ttf') format('truetype');font-weight:300;font-display:swap}
+:root{--pink:#F5B0BD;--cream:#EFEAE7;--brown:#AE8774;--ink:#49332d;--paper:#fffdf9;--deep:#d97891;--line:#d9c4ba}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--cream);color:var(--ink);font-family:Fredoka,sans-serif;font-weight:400}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+.deck{position:relative;width:100%;height:100%;isolation:isolate;background:var(--cream)}
+.deck:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#ae8774 0.55px,transparent .55px);background-size:8px 8px;z-index:0}
+.slide{position:absolute;inset:0;padding:clamp(24px,5vw,76px);display:none;overflow:hidden;background:var(--cream)}
+.slide.active{display:flex;flex-direction:column;animation:fadeIn .65s ease both}
+@keyframes fadeIn{from{opacity:0;filter:blur(8px);transform:scale(1.025)}to{opacity:1;filter:none;transform:none}}
+.slide:after{content:"";position:absolute;right:-14vw;bottom:-24vw;width:42vw;height:42vw;border:1px solid #ae877455;border-radius:50%;pointer-events:none}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative;z-index:3;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#96796d}
+.kicker{font-size:clamp(11px,1vw,14px);letter-spacing:.2em;text-transform:uppercase;color:#9b7467}
+h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Bagel,cursive;font-weight:400;letter-spacing:-.025em}
+h1{font-size:clamp(58px,10vw,145px);line-height:.92;margin:20px 0;color:var(--ink)}
+h2{font-size:clamp(44px,7vw,94px);line-height:.98;margin:12px 0 20px}
+h3{font-size:clamp(25px,3vw,40px);margin-bottom:8px}
+p{font-size:clamp(16px,1.7vw,22px);line-height:1.45;max-width:760px;color:#755d53}
+small,.small{font-size:14px;line-height:1.4;color:#8f7165}
+.brand-logo{width:min(34vw,340px);max-height:100px;object-fit:contain;mix-blend-mode:multiply}
+.hero{flex:1;display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;position:relative;z-index:2}
+.hero-copy{position:relative;z-index:2}.hero-copy p{max-width:560px}
+.hero-stamp{width:min(34vw,410px);aspect-ratio:1;justify-self:center;position:relative;display:grid;place-items:center}
+.orbit{position:absolute;inset:3%;border:1px dashed #b98e80;border-radius:50%;animation:spin 28s linear infinite}
+.orbit:before,.orbit:after{content:"💌";position:absolute;font-size:clamp(25px,4vw,54px);background:var(--cream);padding:6px}
+.orbit:before{top:7%;left:12%}.orbit:after{right:8%;bottom:13%}
+.stamp-core{width:65%;aspect-ratio:1;border-radius:50%;background:var(--pink);display:grid;place-items:center;border:10px solid var(--paper);outline:2px dashed #b9828c;box-shadow:0 25px 65px #79544822;animation:levitate 4s ease-in-out infinite}
+.stamp-core span{font:clamp(45px,7vw,100px) Bagel;color:var(--paper);transform:rotate(-12deg)}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes levitate{50%{transform:translateY(-15px) rotate(5deg)}}
+.pill{display:inline-flex;border:1px solid #cdaea2;border-radius:99px;padding:9px 15px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8b6b5e}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:2;margin-top:20px}
+.tile{background:var(--paper);border:1px solid #e6d5ce;border-radius:24px;padding:clamp(16px,2vw,28px);min-height:160px;box-shadow:0 14px 34px #7553460d;position:relative;overflow:hidden}
+.tile:after{content:"";position:absolute;width:90px;height:90px;border:1px solid #e7c6ca;border-radius:50%;right:-35px;bottom:-40px}
+.tile .n{font:44px Bagel;color:var(--deep)}.tile b{font:26px Bagel;display:block;margin:8px 0}.tile small{display:block;max-width:260px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;flex:1;position:relative;z-index:2}
+.brand-values{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.value{padding:13px 18px;border-radius:99px;background:var(--pink);font:20px Bagel;animation:pop .55s both}
+.value:nth-child(2){animation-delay:.12s;background:#e7d5cc}.value:nth-child(3){animation-delay:.24s;background:#fff}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:none}}
+.big-number{font:clamp(60px,9vw,120px) Bagel;color:var(--deep);line-height:1}
+.palette{display:flex;gap:12px;margin-top:22px}.swatch{flex:1;min-width:0}.swatch i{display:block;height:clamp(54px,9vh,90px);border-radius:16px;border:1px solid #bfa69c55}.swatch b{display:block;margin-top:8px;font-size:14px}.swatch small{font-size:11px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;position:relative;z-index:2}
+.timeline .step{border-top:2px solid var(--brown);padding:16px 10px 0;position:relative}.step:before{content:"";position:absolute;width:13px;height:13px;background:var(--pink);border:2px solid var(--brown);border-radius:50%;top:-9px;left:0}.step strong{font:24px Bagel;display:block;margin-bottom:8px}
+.abc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;position:relative;z-index:2}
+.abc article{background:var(--paper);padding:22px;border-radius:22px;border:1px solid #e6d5ce}
+.abc strong{font:clamp(44px,6vw,76px) Bagel;color:var(--deep)}.track{height:12px;background:#e8d9d2;border-radius:99px;overflow:hidden;margin-top:14px}.track i{display:block;height:100%;background:var(--pink);border-radius:99px;animation:fill 1.4s ease both}@keyframes fill{from{width:0}}
+/* transitions: each section has its own choreography */
+#postalWipe{position:absolute;z-index:50;left:-120vw;top:0;width:120vw;height:100%;background:var(--paper);border:14px solid white;box-shadow:0 0 0 1px #c7a89b,0 30px 100px #49332d55;pointer-events:none;display:flex;align-items:center;justify-content:center;transform:rotate(-7deg);opacity:0}
+#postalWipe:before{content:"";position:absolute;inset:22px;border:2px dashed #d5b7aa}
+#postalWipe:after{content:"💌";font-size:clamp(90px,18vw,240px);filter:drop-shadow(0 15px 8px #7b4f4425)}
+#postalWipe.go{opacity:1;animation:postalAcross 1.25s cubic-bezier(.68,0,.24,1) both}
+@keyframes postalAcross{0%{left:-125vw;transform:rotate(-12deg) scale(.82)}35%{left:-5vw;transform:rotate(0) scale(1.04)}58%{left:0;transform:rotate(0) scale(1)}100%{left:125vw;transform:rotate(9deg) scale(.82)}}
+#stampWipe{position:absolute;z-index:50;inset:0;display:grid;place-items:center;pointer-events:none;opacity:0}
+#stampWipe span{font:clamp(60px,12vw,170px) Bagel;color:var(--deep);border:7px double var(--deep);padding:18px 38px;transform:rotate(-18deg) scale(2);opacity:0}
+#stampWipe.go{opacity:1}#stampWipe.go span{animation:stamp .8s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes stamp{0%{opacity:0;transform:rotate(-18deg) scale(2.8)}35%{opacity:1;transform:rotate(-12deg) scale(.9)}65%{opacity:1;transform:rotate(-12deg) scale(1)}100%{opacity:0;transform:rotate(-12deg) scale(.85)}}
+#confetti{position:absolute;inset:0;z-index:55;pointer-events:none;overflow:hidden}.conf{position:absolute;top:-10%;width:12px;height:24px;background:var(--pink);animation:fall 1.5s ease-in forwards}.conf:nth-child(3n){background:var(--brown)}.conf:nth-child(4n){background:#fff}
+@keyframes fall{to{transform:translateY(120vh) rotate(800deg);opacity:0}}
+/* motion elements */
+.fly-letter{position:absolute;right:8%;top:18%;font-size:clamp(40px,7vw,90px);animation:letterFloat 5s ease-in-out infinite;filter:drop-shadow(0 12px 10px #79544822)}
+@keyframes letterFloat{50%{transform:translate(20px,-24px) rotate(13deg)}}
+.type-line{display:inline-block;overflow:hidden;white-space:nowrap;border-right:3px solid var(--deep);width:0;animation:type 2.4s steps(24,end) .4s forwards}@keyframes type{to{width:100%}}
+/* audience interaction */
+.interact{background:#fffdf9;border:1px solid #e5d2ca;border-radius:26px;padding:clamp(18px,3vw,34px);position:relative;z-index:3;box-shadow:0 18px 50px #72524512}
+.poll-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.poll-option{padding:18px 12px;border:1px solid #ddc5ba;border-radius:18px;background:#fff8f5;color:var(--ink);font:22px Bagel;transition:.2s}
+.poll-option:hover,.poll-option.selected{background:var(--pink);transform:translateY(-4px);border-color:var(--deep)}
+.results{display:flex;gap:8px;align-items:end;height:110px;margin-top:20px}.result{flex:1;text-align:center;font-size:12px;color:#84685d}.result i{display:block;background:var(--pink);border-radius:12px 12px 3px 3px;min-height:5px;transition:height .6s}.result:nth-child(2) i{background:#d9b8aa}.result:nth-child(3) i{background:#c4a092}
+.msg-form{display:flex;gap:10px;margin-top:14px}.msg-form input{min-width:0;flex:1;border:1px solid #dcc7bd;border-radius:99px;padding:14px 18px;background:white;color:var(--ink)}
+.action{background:var(--ink);color:white;padding:14px 22px;border-radius:99px;font-weight:400}.action:hover{background:var(--deep)}
+.message-wall{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;min-height:54px}.message-card{background:var(--pink);padding:12px 16px;border-radius:5px 15px 5px 15px;max-width:220px;transform:rotate(var(--r));animation:pop .4s both;font-size:15px}
+.qr-note{border:1px dashed #c6a396;border-radius:16px;padding:14px;margin-top:16px;font-size:13px;color:#8b6b5e;background:#fff9f5}
+footer{position:absolute;bottom:20px;left:clamp(24px,5vw,76px);right:clamp(24px,5vw,76px);display:flex;justify-content:space-between;align-items:center;z-index:10;color:#92776b;font-size:13px}
+.nav{display:flex;align-items:center;gap:10px}.nav button{width:42px;height:42px;border-radius:50%;background:#fffdf9;border:1px solid #dfc9bf;color:var(--ink);font-size:20px}.nav button:hover{background:var(--pink)}
+.progress{position:absolute;bottom:0;left:0;right:0;height:4px;background:#e4d4ce;z-index:60}.progress i{display:block;height:100%;background:var(--deep);width:11%;transition:width .45s}
+.audio{position:absolute;right:clamp(24px,5vw,76px);top:clamp(20px,3vw,36px);z-index:20;background:#fffdf9dd;border:1px solid #e2cec5;border-radius:99px;padding:9px 14px;color:#806459;font-size:13px}
+@media(max-width:760px){.slide{padding:22px 22px 76px}.hero,.split{grid-template-columns:1fr;gap:12px}.hero-stamp{width:35vw;min-width:130px}.hero h1{font-size:clamp(48px,14vw,84px)}h2{font-size:clamp(40px,11vw,65px)}.grid3{grid-template-columns:1fr;gap:8px}.tile{min-height:0;padding:13px}.tile .n{font-size:32px}.tile b{font-size:21px}.timeline{grid-template-columns:repeat(2,1fr);gap:18px}.abc{gap:7px}.abc article{padding:12px}.poll-options{grid-template-columns:1fr}.poll-option{padding:12px}.brand-logo{width:45vw}.palette{gap:6px}.swatch b{font-size:11px}.swatch small{font-size:9px}.msg-form{flex-direction:column}.fly-letter{top:9%;right:8%;font-size:34px}footer{left:22px;right:22px;font-size:11px}.nav button{width:36px;height:36px}}
+@media(max-height:650px) and (min-width:761px){.slide{padding-top:22px;padding-bottom:62px}h1{font-size:clamp(48px,8vw,100px)}h2{font-size:clamp(38px,5.5vw,70px)}.tile{min-height:120px;padding:14px}.hero-stamp{width:28vw}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
-/* POSTELLA MOTION EDITION */
-:root{--paper:#fffdf9;--pink-deep:#df7893;--shadow:0 28px 80px #56382d30}
-body{background:var(--cream)}
-.deck:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.24;background-image:radial-gradient(#ae8774 0.55px,transparent .55px);background-size:7px 7px;mask-image:linear-gradient(120deg,transparent,#000 40%,transparent)}
-.slide{isolation:isolate}
-.slide.active{animation:pageArrive .8s cubic-bezier(.18,.78,.22,1) both}
-@keyframes pageArrive{0%{opacity:0;transform:translateX(4vw) scale(.985);filter:blur(5px)}100%{opacity:1;transform:none;filter:blur(0)}}
-.slide:before{content:"";position:absolute;inset:16px;border:1px solid #cdaea24d;border-radius:24px;pointer-events:none;z-index:0}
-.logo{filter:drop-shadow(0 10px 12px #ae877422)}
-.hero-art img{animation:bob 5s ease-in-out infinite, softFloat 8s ease-in-out infinite}
-@keyframes softFloat{0%,100%{filter:drop-shadow(0 24px 25px #8c5c4c22)}50%{filter:drop-shadow(0 35px 28px #8c5c4c35)}}
-.product{position:relative;overflow:hidden}.product:after{content:"✦";position:absolute;right:13px;top:9px;color:#d78a9b;opacity:0;transform:scale(.3) rotate(-40deg);transition:.35s}.product:hover:after{opacity:1;transform:scale(1) rotate(0)}
-.product img{transition:transform .65s cubic-bezier(.2,.8,.2,1)}.product:hover img{transform:scale(1.08) rotate(-2deg)}
-.visual{position:relative}.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,#ffffff70 48%,transparent 70%);transform:translateX(-130%);animation:shine 7s ease-in-out infinite;pointer-events:none}@keyframes shine{0%,65%{transform:translateX(-130%)}85%,100%{transform:translateX(130%)}}
-.kicker:before{content:"✳";display:inline-block;margin-right:9px;color:var(--pink-deep);animation:spin 12s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.pill{background:#fffaf680;box-shadow:0 5px 18px #ae87741a}
-.hanging .postcard{transition:filter .3s,box-shadow .3s}.hanging .postcard:hover{filter:saturate(1.3);box-shadow:0 25px 40px #6d4d3d35;z-index:3}
-.note{animation:notePop .7s cubic-bezier(.2,.8,.2,1) both}@keyframes notePop{from{opacity:0;transform:translateY(25px) rotate(0) scale(.7)}to{opacity:1;transform:translateY(0) rotate(var(--r)) scale(1)}}
-/* full-screen postcard page-turn */
-#postcardTransition{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#49332d;opacity:0;visibility:hidden;pointer-events:none;perspective:1600px}
-#postcardTransition.go{visibility:visible;animation:screenDim 1.18s ease both}
-@keyframes screenDim{0%{opacity:0}18%,78%{opacity:1}100%{opacity:0}}
-.turn-card{width:min(72vw,720px);height:min(76vh,520px);position:relative;transform-style:preserve-3d;transform:rotateY(0deg) scale(.72) rotate(-5deg);box-shadow:0 35px 100px #170e0b88;border:13px solid #fffdf9;background:#fffdf9;overflow:visible}
-#postcardTransition.go .turn-card{animation:postcardFlip 1.18s cubic-bezier(.62,.02,.28,1) both}
-@keyframes postcardFlip{0%{transform:rotateY(0) scale(.72) rotate(-5deg)}18%{transform:rotateY(0) scale(1) rotate(0)}52%{transform:rotateY(180deg) scale(1.04) rotate(2deg)}82%{transform:rotateY(360deg) scale(1.12) rotate(-1deg)}100%{transform:rotateY(360deg) scale(1.5) rotate(0)}}
-.turn-front,.turn-back{position:absolute;inset:0;backface-visibility:hidden;display:grid;place-items:center;overflow:hidden}
-.turn-front{background:#f5b0bd}.turn-back{background:#efeae7;transform:rotateY(180deg)}
-.turn-front img,.turn-back img{width:100%;height:100%;object-fit:contain;padding:9%;mix-blend-mode:multiply}
-.turn-stamp{position:absolute;right:5%;top:7%;width:76px;height:76px;border:2px dashed #ae8774;border-radius:50%;display:grid;place-items:center;color:#ae8774;font:600 11px Fredoka;letter-spacing:.12em;transform:rotate(13deg)}
-.turn-lines{position:absolute;left:7%;right:7%;bottom:9%;height:1px;background:#ae8774;box-shadow:0 -13px #ae877455,0 -26px #ae877455}
-#postcardTransition .turn-caption{position:absolute;bottom:8%;color:#fffdf9;font:500 12px 'DM Sans';letter-spacing:.25em;text-transform:uppercase}
-/* envelope reveal on first entrance */
-.envelope{position:absolute;z-index:8;left:50%;top:50%;width:min(42vw,420px);height:min(29vw,290px);transform:translate(-50%,-50%);pointer-events:none;opacity:0}
-.envelope .env-body{position:absolute;inset:0;background:#f5b0bd;border-radius:12px;box-shadow:0 25px 65px #754c4b30;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
-.envelope .env-flap{position:absolute;inset:0;background:#e99aaa;clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;filter:drop-shadow(0 6px 3px #8b596022)}
-.envelope .env-letter{position:absolute;left:9%;right:9%;bottom:8%;height:80%;background:#fffdf9;border-radius:5px;display:grid;place-items:center;box-shadow:0 5px 15px #593d321c}
-.envelope .env-letter img{width:70%;mix-blend-mode:multiply}
-.slide:first-child .envelope{animation:envIn 2.4s 0.2s cubic-bezier(.2,.8,.2,1) both}
-.slide:first-child .env-flap{animation:flapOpen .7s 1.05s ease-in-out both}
-.slide:first-child .env-letter{animation:letterRise 1s 1.45s cubic-bezier(.2,.8,.2,1) both}
-@keyframes envIn{0%{opacity:0;transform:translate(-50%,-20%) scale(.6)}20%,75%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-70%) scale(1.08)}}
-@keyframes flapOpen{to{transform:rotateX(180deg);z-index:0}}
-@keyframes letterRise{from{transform:translateY(25%)}to{transform:translateY(-12%)}}
-.slide:first-child .hero>*{animation:heroReveal .8s 1.8s both;opacity:0}@keyframes heroReveal{to{opacity:1}}
-/* decorative moving postage strip */
-.postella-marquee{position:absolute;left:0;right:0;bottom:0;overflow:hidden;white-space:nowrap;color:#ae8774;font:600 12px Fredoka;letter-spacing:.2em;opacity:.55;z-index:1}
-.postella-marquee span{display:inline-block;padding-left:100%;animation:marquee 24s linear infinite}@keyframes marquee{to{transform:translateX(-100%)}}
-@media(max-width:760px){.turn-card{width:84vw;height:54vh}.turn-stamp{width:54px;height:54px;font-size:8px}.slide:before{inset:7px;border-radius:16px}.envelope{width:70vw;height:48vw}}
-
+.menti-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(18px,3vw,42px);align-items:center;flex:1;position:relative;z-index:2;min-height:0}
+.menti-copy h2{font-size:clamp(42px,6vw,78px)}
+.menti-copy p{max-width:460px}
+.menti-code{display:inline-flex;align-items:center;gap:8px;background:var(--pink);border:1px dashed #bd8290;border-radius:999px;padding:12px 20px;font:22px Bagel;margin:8px 0 14px}
+.menti-frame{background:#fffdf9;border:8px solid #fffdf9;border-radius:28px;box-shadow:0 24px 70px #75534624;overflow:hidden;min-width:0}
+.menti-frame iframe{border:0}
+@media(max-width:760px){.menti-layout{grid-template-columns:1fr;overflow:auto;align-content:start}.menti-copy h2{font-size:clamp(38px,10vw,60px)}.menti-frame{margin-bottom:16px}.menti-copy .small{font-size:12px}}
 </style></head>
 <body>
-<button class="sound" id="soundBtn">♫ Activar ambiente</button>
-<div id="postcardTransition" aria-hidden="true"><div class="turn-card"><div class="turn-front"><img src="postcard-single.png" alt=""><span class="turn-stamp">POSTELLA<br>✳ 2026</span></div><div class="turn-back"><img src="logo-postella.png" alt=""><span class="turn-lines"></span></div></div><div class="turn-caption">una historia está a punto de llegar</div></div>
-<div class="deck">
-<section class="slide active" data-title="Inicio">
- <div class="topline"><span>Brand launch experience</span><span>01 / 08</span></div>
- <div class="envelope" aria-hidden="true"><div class="env-body"></div><div class="env-letter"><img src="logo-postella.png" alt=""></div><div class="env-flap"></div></div>
- <div class="hero">
-  <div>
-   <div class="kicker reveal">Una nueva forma de hacer llegar emociones</div>
-   <img class="logo reveal" src="logo-postella.png" alt="Logotipo original postella">
-   <h1 class="reveal">Un pequeño mundo<br>de detalles.</h1>
-   <p class="reveal">Una marca que convierte la ilustración, la papelería y los pequeños regalos en formas de conectar con los demás.</p>
-   <span class="pill reveal">Álvaro González · Eva de la Arena</span>
+<div class="deck" id="deck">
+<section class="slide active" data-title="Bienvenida" data-transition="postal">
+<header><span>postella · presentación de lanzamiento</span><span>01 / 10</span></header>
+<div class="hero">
+<div class="hero-copy"><div class="kicker">Una marca para volver a conectar</div><h1>Hay cosas<br>que merecen<br><span style="color:var(--deep)">llegar.</span></h1><p>Un universo de postales ilustradas, papelería creativa y pequeños regalos pensados para convertir momentos en recuerdos.</p><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:25px"><span class="pill">descubre postella</span><img class="brand-logo" src="logo-postella.png" alt="postella"></div></div>
+<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><span>💌</span></div><div class="fly-letter">✉</div></div>
+</div>
+<footer><span>Una experiencia para descubrir</span><div class="nav"><span>Empezar</span><button onclick="go(1)">→</button></div></footer>
+</section>
+<section class="slide" data-title="La idea" data-transition="stamp">
+<header><span>02 — La idea</span><span>Una emoción que se puede tocar</span></header>
+<div class="kicker" style="margin-top:7vh">En un mundo que va demasiado rápido</div>
+<h2>Volvemos a lo<br><span style="color:var(--deep)">que importa.</span></h2>
+<div class="split"><div><p>postella nace para recuperar el valor de los pequeños gestos: escribir, regalar, guardar y compartir. Queremos que una postal sea mucho más que papel: que sea una forma de estar presente.</p><div class="brand-values"><span class="value">nostalgia</span><span class="value">creatividad</span><span class="value">dulzura</span></div></div><div style="position:relative;min-height:230px;display:grid;place-items:center"><div style="font:clamp(100px,19vw,230px) Bagel;color:#e8c4c8;transform:rotate(-9deg);text-shadow:8px 10px 0 #fff">hola</div><div style="position:absolute;right:8%;bottom:12%;font:clamp(28px,4vw,48px) Bagel;color:var(--brown);transform:rotate(7deg)">¿cómo estás?</div></div></div>
+<footer><span>postella · haz que llegue</span><div class="nav"><button onclick="go(0)">←</button><button onclick="go(2)">→</button></div></footer>
+</section>
+<section class="slide" data-title="Qué ofrecemos" data-transition="postal">
+<header><span>03 — El universo postella</span><span>Producto y colección</span></header>
+<div class="kicker" style="margin-top:5vh">El corazón de la marca</div><h2>Pequeños objetos.<br><span style="color:var(--deep)">Grandes historias.</span></h2>
+<div class="grid3">
+<article class="tile"><div class="n">01</div><b>Postales ilustradas</b><small>El producto protagonista. Diseños originales creados por ilustradores profesionales.</small></article>
+<article class="tile"><div class="n">02</div><b>Papelería creativa</b><small>Cuadernos, blocs, pegatinas, tarjetas y accesorios para dar forma a las ideas.</small></article>
+<article class="tile"><div class="n">03</div><b>Pequeños regalos</b><small>Objetos especiales, detalles y piezas seleccionadas para regalar o coleccionar.</small></article>
+</div>
+<div class="fly-letter">💌</div>
+<footer><span>Un catálogo con identidad propia</span><div class="nav"><button onclick="go(1)">←</button><button onclick="go(3)">→</button></div></footer>
+</section>
+<section class="slide" data-title="Identidad" data-transition="confetti">
+<header><span>04 — Identidad visual</span><span>Un lenguaje reconocible</span></header>
+<div class="split">
+<div><div class="kicker">Así se siente postella</div><h2>Creativa.<br>Cercana.<br><span style="color:var(--deep)">Inconfundible.</span></h2><p>Una estética nostálgica y contemporánea, con una paleta cálida y una comunicación visual amable. Cada detalle construye una misma experiencia.</p><div class="brand-values"><span class="value">💌 detalle</span><span class="value">diseño</span><span class="value">emoción</span></div></div>
+<div><div class="kicker">Nuestra paleta</div><div class="palette"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b><small>#F5B0BD</small></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b><small>#EFEAE7</small></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b><small>#AE8774</small></div></div><div style="margin-top:32px;background:#fffdf9;border-radius:24px;padding:24px;text-align:center;border:1px solid #e5d2ca"><img class="brand-logo" style="width:70%" src="logo-postella.png" alt="Logotipo original postella"><div class="small" style="margin-top:8px">Logotipo original · sin modificaciones</div></div></div>
+</div>
+<footer><span>Identidad corporativa</span><div class="nav"><button onclick="go(2)">←</button><button onclick="go(4)">→</button></div></footer>
+</section>
+<section class="slide" data-title="Experiencia" data-transition="stamp">
+<header><span>05 — La experiencia</span><span>Del escaparate al recuerdo</span></header>
+<div class="kicker" style="margin-top:6vh">No es solo una tienda</div><h2>Un lugar para<br><span style="color:var(--deep)">quedarse un ratito.</span></h2>
+<div class="timeline">
+<div class="step"><strong>Descubrir</strong><p class="small">Colecciones que invitan a mirar, explorar y encontrar algo propio.</p></div>
+<div class="step"><strong>Elegir</strong><p class="small">Un surtido cuidado, organizado por estilos, temas y ocasiones.</p></div>
+<div class="step"><strong>Personalizar</strong><p class="small">Combinar postales, mensajes, sobres y pequeños detalles.</p></div>
+<div class="step"><strong>Compartir</strong><p class="small">Llevarse algo que conecta con otra persona.</p></div>
+</div>
+<div style="margin-top:35px;padding:18px 22px;background:var(--pink);border-radius:18px;max-width:650px;font:clamp(20px,3vw,34px) Bagel;transform:rotate(-1deg)">Cada visita puede convertirse en una historia.</div>
+<footer><span>Experiencia de compra y visual merchandising</span><div class="nav"><button onclick="go(3)">←</button><button onclick="go(5)">→</button></div></footer>
+</section>
+<section class="slide" data-title="Gestión comercial" data-transition="postal">
+<header><span>06 — Detrás de la marca</span><span>Gestión comercial</span></header>
+<div class="kicker" style="margin-top:5vh">La creatividad también necesita estrategia</div><h2>Una marca bonita.<br><span style="color:var(--deep)">Un negocio pensado.</span></h2>
+<div class="grid3">
+<article class="tile"><div class="n">01</div><b>Surtido</b><small>Familias, subfamilias y referencias organizadas para facilitar la compra y la gestión.</small></article>
+<article class="tile"><div class="n">02</div><b>Inventario</b><small>Control de existencias y seguimiento de los productos para mantener un surtido equilibrado.</small></article>
+<article class="tile"><div class="n">03</div><b>Comercialización</b><small>Tienda física, canal online y oportunidades de colaboración y venta a empresas.</small></article>
+</div>
+<footer><span>De la idea a la operación</span><div class="nav"><button onclick="go(4)">←</button><button onclick="go(6)">→</button></div></footer>
+</section>
+<section class="slide" data-title="Análisis ABC" data-transition="confetti">
+<header><span>07 — Análisis ABC</span><span>Control del inventario</span></header>
+<div class="kicker" style="margin-top:4vh">Tomar decisiones con datos</div><h2>¿Dónde ponemos<br><span style="color:var(--deep)">el foco?</span></h2>
+<p>En el ejercicio de clasificación ABC, las 16 referencias se distribuyen según su aportación al valor total del inventario.</p>
+<div class="abc">
+<article><strong>A</strong><h3>80,61%</h3><small>Mayor prioridad de control</small><div class="track"><i style="width:80.61%"></i></div></article>
+<article><strong>B</strong><h3>14,74%</h3><small>Seguimiento intermedio</small><div class="track"><i style="width:14.74%"></i></div></article>
+<article><strong>C</strong><h3>4,65%</h3><small>Control más sencillo</small><div class="track"><i style="width:4.65%"></i></div></article>
+</div>
+<p class="small" style="margin-top:18px">Valor total del inventario: <b>2.083,53 €</b> · 16 referencias · Datos del supuesto de trabajo.</p>
+<footer><span>Una gestión basada en prioridades</span><div class="nav"><button onclick="go(5)">←</button><button onclick="go(7)">→</button></div></footer>
+</section>
+<section class="slide" data-title="POSTELLA FEST" data-transition="confetti">
+<header><span>08 — POSTELLA FEST</span><span>La clase toma el control</span></header>
+<div class="menti-layout">
+  <div class="menti-copy">
+    <div class="kicker">The audience is the creative team</div>
+    <h2>¡Ahora<br><span style="color:var(--deep)">participas tú!</span></h2>
+    <p>Escanea el QR o entra en Mentimeter desde tu móvil. Vota, crea y decide con nosotros.</p>
+    <div class="menti-code">💌 POSTELLA FEST</div>
+    <p class="small">Las actividades y sus resultados aparecerán en esta pantalla. Para participar, utiliza el acceso de Mentimeter que se muestra en tu dispositivo o el QR de la presentación.</p>
   </div>
-  <div class="hero-art"><img src="sticker-sheet.png" alt="Universo ilustrado de postella"></div>
- </div>
- <div class="postella-marquee"><span>POSTALES CON HISTORIAS ✳ PAPELERÍA CON PERSONALIDAD ✳ PEQUEÑOS DETALLES QUE LLEGAN ✳ POSTALES CON HISTORIAS ✳</span></div>
- <span class="floater" style="left:48%;top:16%">✦</span><span class="floater" style="right:8%;top:18%;animation-delay:-2s">♡</span>
+  <div class="menti-frame">
+    <div style="position:relative;padding-bottom:56.25%;padding-top:35px;height:0;overflow:hidden;border-radius:22px;">
+      <iframe title="Mentimeter — POSTELLA FEST" sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="true" allowtransparency="true" frameborder="0" height="315" src="https://www.mentimeter.com/app/presentation/al8auy1cr1v61vgaxi56c16jjpx32wbi/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;" width="420"></iframe>
+    </div>
+  </div>
+</div>
+<footer><span>POSTELLA FEST · Ideas que llegan, personas que conectan</span><div class="nav"><button onclick="go(6)">←</button><button onclick="go(8)">→</button></div></footer>
 </section>
-<section class="slide" data-title="La idea">
- <div class="topline"><span>02 — The idea</span><span>postella / brand story</span></div>
- <div class="split">
-  <div><div class="kicker reveal">Volver a lo tangible</div><h2 class="reveal">Hay mensajes<br>que merecen<br>llegar en papel.</h2><p class="reveal">postella nace para recuperar el valor de la comunicación física a través de postales ilustradas originales, papelería creativa y pequeños regalos con personalidad.</p><p class="reveal">Nuestra propuesta une diseño, creatividad y emoción en productos que invitan a regalar, escribir y conservar recuerdos.</p></div>
-  <div class="visual reveal"><img src="postcard-single.png" alt="Postal ilustrada de postella"></div>
- </div>
+<section class="slide" data-title="The Postcard Wall" data-transition="stamp">
+<header><span>09 — The postcard wall</span><span>Un mensaje que se queda</span></header>
+<div class="kicker" style="margin-top:2vh">Deja algo bonito por aquí</div><h2>Una postal para<br><span style="color:var(--deep)">alguien.</span></h2>
+<div class="interact">
+<p style="margin-bottom:0">Escribe una palabra o un mensaje breve. Lo añadiremos al mural de postella.</p>
+<div class="msg-form"><input id="message" maxlength="65" placeholder="Ej. para alguien que echo de menos…"><button class="action" id="addMessage">Enviar mi postal 💌</button></div>
+<div class="message-wall" id="messageWall"><div class="message-card" style="--r:-2deg">que nunca falten los abrazos</div><div class="message-card" style="--r:2deg">hoy pensé en ti</div><div class="message-card" style="--r:-1deg">los pequeños momentos cuentan</div></div>
+<div class="qr-note">En la versión conectada, cada persona podrá enviar su mensaje desde el móvil escaneando un QR y aparecerá aquí en tiempo real.</div>
+</div>
+<footer><span>Las historias merecen llegar</span><div class="nav"><button onclick="go(7)">←</button><button onclick="go(9)">→</button></div></footer>
 </section>
-<section class="slide" data-title="El universo">
- <div class="topline"><span>03 — The universe</span><span>Un universo de productos</span></div>
- <div class="kicker reveal">Nuestro surtido</div><h2 class="reveal">Pequeños objetos.<br>Grandes historias.</h2>
- <div class="catalog">
-  <div class="product" style="--r:-2deg"><img src="postcard-single.png"><span>Postales ilustradas</span></div>
-  <div class="product" style="--r:2deg"><img src="sticker-sheet.png"><span>Papelería creativa</span></div>
-  <div class="product" style="--r:-1deg"><img src="tote-sticker.png"><span>Pequeños regalos</span></div>
-  <div class="product" style="--r:2deg"><img src="sticker-book.png"><span>Objetos de diseño</span></div>
- </div>
- <p class="reveal" style="margin-top:18px;font-size:14px">Las postales son el producto protagonista y el punto de partida de una selección complementaria de papelería, accesorios, regalos y objetos decorativos.</p>
+<section class="slide" data-title="Gracias" data-transition="confetti">
+<header><span>postella · haz que llegue</span><span>Gracias por estar aquí</span></header>
+<div class="hero">
+<div class="hero-copy"><div class="kicker">Esto es solo el principio</div><h1>Que nunca<br>se nos olvide<br><span style="color:var(--deep)">decirlo.</span></h1><p>Gracias por descubrir postella con nosotros.</p><img class="brand-logo" src="logo-postella.png" alt="postella"></div>
+<div class="hero-stamp"><div class="orbit"></div><div class="stamp-core"><span>💌</span></div></div>
+</div>
+<footer><span>Álvaro González · Eva de la Arena Mateos</span><div class="nav"><button onclick="go(8)">←</button><button onclick="go(0)">↻</button></div></footer>
 </section>
-<section class="slide" data-title="La marca">
- <div class="topline"><span>04 — Brand identity</span><span>Identidad visual</span></div>
- <div class="split">
-  <div><div class="kicker reveal">Una identidad reconocible</div><h2 class="reveal">Creativa.<br>Cercana.<br>Con personalidad.</h2><p class="reveal">La identidad de postella combina una estética nostálgica y contemporánea con una paleta cálida y una comunicación visual amable.</p><div class="cards" style="grid-template-columns:repeat(3,1fr)"><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Candy Pink</b><small>#F5B0BD</small></div><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Egg White</b><small>#EFEAE7</small></div><div class="card" style="min-height:auto;padding:12px"><b style="font-size:16px">Café au Lait</b><small>#AE8774</small></div></div></div>
-  <div class="visual reveal"><img src="packaging.png" alt="Packaging de postella"></div>
- </div>
-</section>
-<section class="slide" data-title="La experiencia">
- <div class="topline"><span>05 — The experience</span><span>Visual merchandising</span></div>
- <div class="kicker reveal">Así imaginamos el espacio</div><h2 class="reveal">Un escaparate que<br>invita a quedarse.</h2>
- <div class="hanging reveal"><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div><div class="postcard"><i class="sun"></i><i class="land"></i></div></div>
- <div class="split" style="grid-template-columns:1fr 1fr;gap:20px;flex:0 0 auto"><p class="reveal">Postales suspendidas, peanas a diferentes alturas y zonas de producto que construyen una experiencia visual ordenada, cálida y atractiva.</p><div class="visual reveal" style="height:20vh"><img src="store-window.png" alt="Propuesta de escaparate"></div></div>
-</section>
-<section class="slide" data-title="La gestión">
- <div class="topline"><span>06 — Behind the brand</span><span>Gestión comercial</span></div>
- <div class="kicker reveal">Detrás de la creatividad</div><h2 class="reveal">Una marca bonita<br>también necesita estrategia.</h2>
- <div class="cards">
-  <div class="card reveal"><div class="number">01</div><b>El surtido</b><small>Organización por familias, subfamilias y referencias para facilitar la gestión y la compra.</small></div>
-  <div class="card reveal"><div class="number">02</div><b>El inventario</b><small>Control de existencias y seguimiento de los productos para mantener un surtido equilibrado.</small></div>
-  <div class="card reveal"><div class="number">03</div><b>La experiencia</b><small>Presentación, distribución y comunicación coherentes con la identidad de postella.</small></div>
- </div>
- <p class="reveal" style="margin-top:24px">El proyecto combina decisiones creativas con criterios comerciales: qué ofrecemos, cómo lo organizamos y cómo lo presentamos.</p>
-</section>
-<section class="slide" data-title="Análisis ABC">
- <div class="topline"><span>07 — Inventory ABC</span><span>Ejercicio de clasificación ABC</span></div>
- <div class="kicker reveal">El valor del inventario</div><h2 class="reveal">Decidir dónde<br>poner el foco.</h2>
- <p class="reveal">En nuestro ejercicio de análisis ABC, las 16 referencias se distribuyen según su aportación al valor total del inventario.</p>
- <div class="abc">
-  <div class="reveal"><strong>A</strong><h3>80,61%</h3><small>Mayor prioridad de control</small><div class="bar"><i style="width:80.61%"></i></div></div>
-  <div class="reveal"><strong>B</strong><h3>14,74%</h3><small>Seguimiento intermedio</small><div class="bar"><i style="width:14.74%"></i></div></div>
-  <div class="reveal"><strong>C</strong><h3>4,65%</h3><small>Control más sencillo</small><div class="bar"><i style="width:4.65%"></i></div></div>
- </div>
- <p class="reveal" style="margin-top:22px;font-size:14px">Valor total del inventario del ejercicio: <b>2.083,53 €</b> · 16 referencias. Datos del supuesto de trabajo.</p>
-</section>
-<section class="slide" data-title="The Postcard Wall">
- <div class="topline"><span>08 — The postcard wall</span><span>Una experiencia para compartir</span></div>
- <div class="kicker reveal">Un lugar para dejar algo de ti</div><h2 class="reveal">The Postcard Wall.</h2>
- <p class="reveal">Imaginamos un espacio donde cada persona pueda dejar un mensaje, compartir un recuerdo o dedicar unas palabras. Una pared que crece con las historias de quienes pasan por postella.</p>
- <div class="wall" id="wall">
-  <div class="note" style="--r:-3deg">Para alguien<br>que echo de menos ♡</div><div class="note" style="--r:2deg">Los pequeños<br>momentos cuentan</div><div class="note" style="--r:-2deg">Un abrazo<br>en forma de postal</div><div class="note" style="--r:3deg">Hoy pensé<br>en ti ✦</div><div class="note" style="--r:-1deg">Que nunca falten<br>las sorpresas</div>
- </div>
- <div style="display:flex;gap:10px;align-items:center;position:relative;z-index:2"><input id="message" maxlength="65" placeholder="Escribe un mensaje para el muro…" style="flex:1;min-width:0;padding:14px 18px;border-radius:99px;border:1px solid #ddc5ba;background:#fffaf6;font:inherit;color:#49332d"><button id="addNote" style="background:#49332d;color:white;padding:14px 20px;border-radius:99px;font-weight:700">Añadir postal +</button></div>
- <p style="font-size:12px;margin-top:12px">Prueba a escribir un mensaje: aparecerá en el muro durante la presentación.</p>
-</section>
-<section class="slide" data-title="Gracias">
- <div class="topline"><span>Thank you for being here</span><span>postella</span></div>
- <div class="hero">
-  <div><div class="kicker reveal">Esto es solo el principio</div><h1 class="reveal">Las historias<br>merecen<br>llegar.</h1><p class="reveal">Gracias por descubrir postella con nosotros.</p><img src="logo-postella.png" class="logo reveal" style="width:min(30vw,330px)" alt="postella"></div>
-  <div class="hero-art"><img src="sticker-sheet.png" alt="Universo postella"></div>
- </div>
-</section>
-<div class="footer"><span id="sectionLabel">01 — Inicio</span><div class="controls"><button class="ctrl" id="prev" aria-label="Anterior">←</button><span id="counter">1 / 9</span><button class="ctrl" id="next" aria-label="Siguiente">→</button></div></div>
-<div class="progress"><i id="progress" style="width:11.11%"></i></div>
+<div id="postalWipe"></div><div id="stampWipe"><span>💌</span></div><div id="confetti"></div>
+<button class="audio" id="soundBtn">♫ Activar ambiente</button>
+<div class="progress"><i id="progress"></i></div>
 </div>
 <script>
-const slides=[...document.querySelectorAll('.slide')];let index=0;
-const label=document.getElementById('sectionLabel'),counter=document.getElementById('counter'),progress=document.getElementById('progress');
-let turning=false;const transition=document.getElementById('postcardTransition');
-function show(n,animate=true){const target=Math.max(0,Math.min(slides.length-1,n));if(target===index||turning)return;if(!animate){index=target;slides.forEach((s,i)=>s.classList.toggle('active',i===index));syncNav();return;}turning=true;transition.classList.remove('go');void transition.offsetWidth;transition.classList.add('go');window.setTimeout(()=>{index=target;slides.forEach((s,i)=>s.classList.toggle('active',i===index));syncNav();},430);window.setTimeout(()=>{transition.classList.remove('go');turning=false;},1190);}
-function syncNav(){label.textContent=String(index+1).padStart(2,'0')+' — '+slides[index].dataset.title;counter.textContent=(index+1)+' / '+slides.length;progress.style.width=((index+1)/slides.length*100)+'%';}
-document.getElementById('next').onclick=()=>show(index+1);document.getElementById('prev').onclick=()=>show(index-1);
-document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
-document.getElementById('addNote').onclick=()=>{const input=document.getElementById('message');const v=input.value.trim();if(!v)return;const n=document.createElement('div');n.className='note';n.style.setProperty('--r',(Math.random()*6-3)+'deg');n.textContent=v;document.getElementById('wall').appendChild(n);input.value='';};
-let touchX=0;document.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>90)show(index+(dx<0?1:-1));},{passive:true});
-document.getElementById('message').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addNote').click()});
-// Ambient original synthesized music: starts only after an explicit click.
-let audioCtx=null,oscillators=[],master=null,playing=false;
-function startMusic(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;audioCtx=audioCtx||new AC();audioCtx.resume();master=audioCtx.createGain();master.gain.value=.035;master.connect(audioCtx.destination);
-const notes=[261.63,329.63,392,493.88,392,329.63,293.66,349.23];let step=0;
-function play(){if(!playing)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=notes[step%notes.length];g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.25,audioCtx.currentTime+.25);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+1.5);o.connect(g);g.connect(master);o.start();o.stop(audioCtx.currentTime+1.6);oscillators.push(o);step++;setTimeout(play,850)}
-playing=true;play();document.getElementById('soundBtn').textContent='♫ Silenciar ambiente';}
-function stopMusic(){playing=false;if(master)master.gain.setTargetAtTime(0,audioCtx.currentTime,.1);document.getElementById('soundBtn').textContent='♫ Activar ambiente';}
-document.getElementById('soundBtn').onclick=()=>{if(!playing)startMusic();else stopMusic()};
-syncNav();
+const slides=[...document.querySelectorAll('.slide')];let index=0,busy=false;
+const postal=document.getElementById('postalWipe'),stamp=document.getElementById('stampWipe'),confetti=document.getElementById('confetti');
+function burst(){confetti.innerHTML='';for(let i=0;i<48;i++){let e=document.createElement('i');e.className='conf';e.style.left=Math.random()*100+'%';e.style.animationDelay=Math.random()*.35+'s';e.style.transform='rotate('+Math.random()*180+'deg)';confetti.appendChild(e)}setTimeout(()=>confetti.innerHTML='',1800)}
+function go(n){let next=Math.max(0,Math.min(slides.length-1,n));if(next===index||busy)return;busy=true;let kind=slides[next].dataset.transition;
+if(kind==='postal'){postal.classList.remove('go');void postal.offsetWidth;postal.classList.add('go')}
+else if(kind==='stamp'){stamp.classList.remove('go');void stamp.offsetWidth;stamp.classList.add('go')}
+else burst();
+setTimeout(()=>{slides[index].classList.remove('active');index=next;slides[index].classList.add('active');document.getElementById('progress').style.width=((index+1)/slides.length*100)+'%';slides.forEach((s,i)=>{let h=s.querySelector('header span:last-child');if(h&&i===index)h.dataset.page=(index+1)+' / '+slides.length});},kind==='postal'?590:360);
+setTimeout(()=>{postal.classList.remove('go');stamp.classList.remove('go');busy=false},kind==='postal'?1320:1000);
+}
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(index-1)}if(e.key==='Home')go(0);if(e.key==='End')go(slides.length-1)});
+let sx=0;document.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].screenX-sx;if(Math.abs(dx)>80)go(index+(dx<0?1:-1))},{passive:true});
+const votes={Postales:0,Papelería:0,Regalos:0};document.querySelectorAll('.poll-option').forEach(btn=>btn.addEventListener('click',()=>{if(btn.classList.contains('selected'))return;document.querySelectorAll('.poll-option').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');votes[btn.dataset.choice]++;const total=Object.values(votes).reduce((a,b)=>a+b,0);document.querySelectorAll('.result').forEach((el,i)=>{let key=Object.keys(votes)[i],v=votes[key];el.querySelector('i').style.height=Math.max(5,v/total*90)+'px';el.querySelector('span').textContent=v})}));
+document.getElementById('addMessage').onclick=()=>{let input=document.getElementById('message'),v=input.value.trim();if(!v)return;let el=document.createElement('div');el.className='message-card';el.style.setProperty('--r',(Math.random()*5-2.5)+'deg');el.textContent=v;document.getElementById('messageWall').appendChild(el);input.value=''};
+document.getElementById('message').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addMessage').click()});
+// Original ambient tone sequence, only after an explicit click.
+let ctx=null,master=null,playing=false,timer=null,step=0;const notes=[261.63,329.63,392,493.88,392,329.63,293.66,349.23];
+function tone(){if(!playing)return;let o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=notes[step++%notes.length];g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.12,ctx.currentTime+.18);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.25);o.connect(g);g.connect(master);o.start();o.stop(ctx.currentTime+1.3);timer=setTimeout(tone,900)}
+document.getElementById('soundBtn').onclick=async()=>{if(!playing){let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();await ctx.resume();master=ctx.createGain();master.gain.value=.11;master.connect(ctx.destination);playing=true;tone();document.getElementById('soundBtn').textContent='♫ Silenciar'}else{playing=false;clearTimeout(timer);if(master)master.gain.setTargetAtTime(0,ctx.currentTime,.08);document.getElementById('soundBtn').textContent='♫ Activar ambiente'}};
+document.getElementById('progress').style.width=(1/slides.length*100)+'%';
 </script></body></html>
