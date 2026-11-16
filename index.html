@@ -135,16 +135,16 @@ button{font:inherit;cursor:pointer}
 .position-axis.right{right:3%;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:right center}
 .position-brand{position:absolute;z-index:4;left:76%;top:23%;transform:translate(-50%,-50%) rotate(-3deg);padding:11px 18px 12px;background:#F5B0BD;color:#49332D;border:2px solid #fff;border-radius:13px;box-shadow:0 12px 28px #8D5D6728;font:clamp(22px,2.5vw,34px)/1 Bagel;letter-spacing:-.04em;white-space:nowrap}
 .position-brand:after{content:"";position:absolute;inset:-7px;border:1px solid #D68C9A;border-radius:17px;opacity:.75}
-.position-competitor{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);width:clamp(92px,12vw,158px);height:clamp(48px,7vw,82px);padding:5px 8px;border-radius:10px;background:#FFFEFC;box-shadow:0 12px 26px #76554B18;animation:competitorFloat 6.4s ease-in-out infinite;will-change:transform}
-.position-competitor img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.position-competitor{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);width:clamp(92px,12vw,158px);height:clamp(48px,7vw,82px);padding:2px;background:transparent;box-shadow:none;border-radius:0;animation:competitorFloat 6.4s ease-in-out infinite;will-change:transform}
+.position-competitor img{display:block;max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 8px #76554B18)}
 .position-competitor.moderno{left:23%;top:24%;width:clamp(105px,14vw,174px);height:clamp(58px,8vw,94px);animation-delay:-1.1s}
-.position-competitor.nest{left:72%;top:12%;color:#6F9C91;font-family:Georgia,serif;font-size:clamp(15px,1.8vw,22px);animation-delay:-2.3s}
+.position-competitor.nest{left:72%;top:12%;width:clamp(120px,16vw,190px);height:clamp(54px,7vw,82px);animation-delay:-2.3s}
 .position-competitor.panta{left:39%;top:39%;width:clamp(100px,13vw,160px);height:clamp(35px,5vw,58px);padding:0;border-radius:3px;animation-delay:-3.2s}
-.position-competitor.panta img{width:100%;height:100%;object-fit:cover}
+.position-competitor.panta img{width:100%;height:100%;object-fit:contain}
 .position-competitor.postalera{left:64%;top:57%;width:clamp(125px,17vw,205px);height:clamp(48px,6vw,70px);animation-delay:-4.1s}
 .position-competitor.bomagui{left:24%;top:79%;width:clamp(100px,13vw,158px);height:clamp(65px,8vw,94px);animation-delay:-2s}
 .position-competitor.bomagui img{max-width:100%;max-height:100%}
-.position-competitor.wonderful{left:78%;top:78%;color:#6F9C91;font-family:Georgia,serif;font-weight:bold;animation-delay:-4.8s}
+.position-competitor.wonderful{left:78%;top:78%;width:clamp(120px,16vw,190px);height:clamp(54px,7vw,82px);animation-delay:-4.8s}
 @keyframes competitorFloat{0%,100%{translate:0 0;rotate:-1.2deg}50%{translate:0 -11px;rotate:1.2deg}}
 .position-map-note{position:absolute;left:50%;bottom:10%;transform:translateX(-50%);font-size:11px;color:#A58F84;white-space:nowrap;letter-spacing:.04em}
 .positioning .bottom{color:#947D73}
@@ -711,13 +711,13 @@ button{font:inherit;cursor:pointer}
     <span class="position-axis top">Precio alto</span><span class="position-axis bottom">Precio bajo</span>
     <span class="position-axis left">Estilo minimalista</span><span class="position-axis right">Estilo ilustrado</span>
     <span class="position-competitor moderno"><img src="logo-el-moderno.png" alt="El Moderno Concept Store"></span>
-    <span class="position-competitor nest">NEST</span>
+    <span class="position-competitor nest"><img src="logo-nest.png" alt="NEST"></span>
     <span class="position-competitor panta"><img src="logo-panta-rhei.png" alt="Panta Rhei"></span>
-    <span class="position-competitor postalera"><img src="logo-la-postalera.webp" alt="La Postalera"></span>
-    <span class="position-competitor bomagui"><img src="logo-bomagui.jpg" alt="Bomagui"></span>
-    <span class="position-competitor wonderful">wonderful</span>
+    <span class="position-competitor postalera"><img src="logo-la-postalera.png" alt="La Postalera"></span>
+    <span class="position-competitor bomagui"><img src="logo-bomagui.png" alt="Bomagui"></span>
+    <span class="position-competitor wonderful"><img src="logo-mr-wonderful.png" alt="Mr. Wonderful"></span>
     <span class="position-brand">postella</span>
-    <span class="position-map-note">Mapa de posicionamiento · precio / estilo</span>
+
    </div>
   </div>
  </div>
