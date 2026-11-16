@@ -713,6 +713,48 @@ button{font:inherit;cursor:pointer}
   opacity:1 !important;
 }
 
+
+/* PRODUCT DIMENSIONS — editorial four-level spread */
+.dimensions-slide{background:#efeae7;color:#49352f;overflow:hidden}
+.dimensions-head{position:absolute;left:7%;top:14%;width:43%;z-index:2}
+.dimensions-head .display{font-size:clamp(3rem,5.3vw,6.4rem);line-height:.91;margin:1rem 0}
+.dimensions-head .display em{color:#d9829b;font-style:normal}
+.dimensions-head .lead{max-width:34rem;color:#826b62;font-size:clamp(1rem,1.3vw,1.35rem)}
+.dimensions-grid{position:absolute;left:7%;right:7%;top:48%;bottom:13%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.15rem;z-index:2}
+.dimension-card{position:relative;border-radius:24px;padding:1.45rem 1.25rem 1.3rem;display:flex;flex-direction:column;justify-content:flex-start;box-shadow:0 16px 35px #65483b12;border:1px solid #ae877455;min-width:0}
+.dimension-card.basic{background:#49352f;color:#fff7f1}
+.dimension-card.expected{background:#fffaf6}
+.dimension-card.augmented{background:#f5b0bd;color:#49352f}
+.dimension-card.potential{background:#ae8774;color:#fffaf6}
+.dimension-no{font-family:'Fredoka',sans-serif;font-size:.9rem;opacity:.72}
+.dimension-label{font-size:clamp(.68rem,.9vw,.92rem);letter-spacing:.07em;text-transform:uppercase;margin-top:1.8rem;opacity:.8}
+.dimension-card h3{font-family:'Bagel Fat One',sans-serif;font-size:clamp(1.5rem,2.3vw,2.7rem);line-height:1;margin:.8rem 0}
+.dimension-card p{font-size:clamp(.8rem,1vw,1.05rem);line-height:1.45;margin:0;max-width:20rem}
+.dimension-card small{margin-top:auto;padding-top:1.4rem;font-size:.72rem;letter-spacing:.04em;opacity:.75}
+.floating-product{position:absolute;object-fit:contain;pointer-events:none;filter:drop-shadow(0 20px 24px #49352f26);z-index:4;animation:product-drift 7s ease-in-out infinite}
+.plush-float{width:clamp(110px,15vw,230px);height:clamp(130px,18vw,270px);right:5%;top:7%;transform:rotate(8deg)}
+.tote-float{width:clamp(120px,17vw,245px);height:clamp(170px,23vw,320px);right:5%;top:12%;transform:rotate(7deg)}
+.assortment-products{position:absolute;right:5%;top:12%;width:32%;height:76%;pointer-events:none}
+.calendar-float{width:57%;height:80%;right:42%;top:3%;transform:rotate(-7deg)}
+.stickers-float{width:56%;height:83%;right:0;top:14%;transform:rotate(6deg);animation-delay:-2.2s}
+@keyframes product-drift{0%,100%{translate:0 0}50%{translate:0 -14px}}
+/* make room for product photography without repeating thumbnails */
+.assortment-list{position:relative;z-index:3}
+@media(max-width:800px){
+ .dimensions-head{left:6%;top:12%;width:88%}
+ .dimensions-head .display{font-size:clamp(2.8rem,11vw,4.5rem)}
+ .dimensions-head .lead{max-width:78%;font-size:.95rem}
+ .dimensions-grid{left:6%;right:6%;top:42%;bottom:13%;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+ .dimension-card{padding:1rem;border-radius:17px}
+ .dimension-label{margin-top:.8rem;font-size:.62rem}
+ .dimension-card h3{font-size:1.45rem;margin:.45rem 0}
+ .dimension-card p{font-size:.75rem;line-height:1.32}
+ .dimension-card small{font-size:.6rem;padding-top:.65rem}
+ .plush-float{width:95px;height:115px;right:3%;top:24%;opacity:.96}
+ .tote-float{width:110px;height:145px;right:2%;top:12%}
+ .assortment-products{right:2%;top:24%;width:38%;height:64%}
+}
+
 </style>
 </head>
 <body>
@@ -757,8 +799,26 @@ button{font:inherit;cursor:pointer}
  <div class="bottom"><span>Producto estrella · colecciones ilustradas originales</span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
 </section>
 
+
+<section class="slide dimensions-slide" data-title="Dimensiones del producto">
+ <div class="topline"><span class="brand-mini">postella</span><span>03 — Dimensiones del producto</span></div>
+ <div class="dimensions-head">
+  <div class="eyebrow">Más que un objeto</div>
+  <h2 class="display">Cuatro niveles.<br><em>Una experiencia.</em></h2>
+  <p class="lead">Cada producto responde a una necesidad y suma valor a través del diseño, el servicio y la emoción.</p>
+ </div>
+ <div class="dimensions-grid">
+  <article class="dimension-card basic"><span class="dimension-no">01</span><div class="dimension-label">Producto básico o genérico</div><h3>Lo esencial.</h3><p>Una postal de papel para escribir un mensaje y enviarlo o entregarlo a otra persona.</p><small>Comunicar · escribir · compartir</small></article>
+  <article class="dimension-card expected"><span class="dimension-no">02</span><div class="dimension-label">Producto esperado</div><h3>Lo que esperas.</h3><p>Papel resistente, impresión de calidad, diseño cuidado y espacio para escribir.</p><small>Calidad · funcionalidad · buen acabado</small></article>
+  <article class="dimension-card augmented"><span class="dimension-no">03</span><div class="dimension-label">Producto aumentado</div><h3>Lo que suma.</h3><p>Packaging especial, atención personalizada, venta online y una experiencia de tienda cuidada.</p><small>Servicio · presentación · experiencia</small></article>
+  <article class="dimension-card potential"><span class="dimension-no">04</span><div class="dimension-label">Producto potencial</div><h3>Lo que vendrá.</h3><p>Colecciones exclusivas, personalización, nuevos artículos de papelería y packs de regalo.</p><small>Innovación · colaboraciones · futuro</small></article>
+ </div>
+ <img class="floating-product plush-float" src="product-plush.png" alt="Peluche de diseño de la selección postella">
+ <div class="bottom"><span>Producto básico · esperado · aumentado · potencial</span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
+</section>
+
 <section class="slide identity" data-title="La marca">
- <div class="topline"><span class="brand-mini">postella</span><span>03 — Identidad de marca</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>04 — Identidad de marca</span></div>
  <div class="identity-layout">
   <div class="identity-copy reveal"><div class="eyebrow">Una marca con personalidad</div><h2 class="display">Nostalgia.<br><em>Creatividad.</em><br>Dulzura.</h2><p class="lead" style="color:#77564F">Una identidad cercana y expresiva, con una estética editorial que convierte cada detalle en parte de la experiencia.</p></div>
   <div class="identity-stage"><div class="identity-giant">postella</div><div class="identity-board"><img src="logo-postella-transparent.png" alt="Logotipo original de postella"><div class="swatches"><div class="swatch"><i style="background:#F5B0BD"></i><b>Candy Pink</b></div><div class="swatch"><i style="background:#EFEAE7"></i><b>Egg White</b></div><div class="swatch"><i style="background:#AE8774"></i><b>Café au Lait</b></div></div></div></div>
@@ -767,7 +827,7 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide positioning" data-title="Posicionamiento">
- <div class="topline"><span class="brand-mini">postella</span><span>04 — Posicionamiento</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>05 — Posicionamiento</span></div>
  <div class="position-layout">
   <div class="position-copy reveal">
    <div class="eyebrow">Un lugar propio en el mercado</div>
@@ -794,9 +854,10 @@ button{font:inherit;cursor:pointer}
  <div class="bottom"><span>Ilustración original · valor estético · experiencia cuidada</span><div class="controls"><button data-prev>←</button><button data-next>→</button></div></div>
 </section>
 <section class="slide experience" data-title="La experiencia">
- <div class="topline"><span class="brand-mini">postella</span><span>05 — Merchandising</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>06 — Merchandising</span></div>
  <div class="experience-layout">
   <div class="experience-copy reveal"><div class="eyebrow">El espacio también comunica</div><h2 class="display">Una tienda<br>para <em>sentir.</em></h2><p class="lead">El merchandising convierte la visita en una experiencia que invita a descubrir, tocar y compartir.</p></div>
+  <img class="floating-product tote-float" src="product-tote.png" alt="Bolsa de tela postella">
   <div class="merch-grid">
    <article class="merch-item"><b>Visual</b><span>Cómo se presenta el producto</span><i class="merch-shape"></i></article>
    <article class="merch-item"><b>De gestión</b><span>Cómo se organiza el espacio</span><i class="merch-shape"></i></article>
@@ -808,10 +869,11 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide assortment" data-title="La oferta">
- <div class="topline"><span class="brand-mini">postella</span><span>06 — Oferta comercial</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>07 — Oferta comercial</span></div>
  <div class="assortment-head"><div><h2 class="display">Cinco formas<br>de decir <em>hola.</em></h2></div></div>
  <div class="assortment-visual">
   <div class="assortment-orbit"><div class="orbit-ring"></div><div class="orbit-postcard"><img src="logo-postella-transparent.png" alt=""></div></div>
+  <div class="assortment-products"><img class="floating-product calendar-float" src="product-calendar.png" alt="Calendario de sobremesa 2027"><img class="floating-product stickers-float" src="product-stickerclub.png" alt="Libro de pegatinas Sticker Club"></div>
   <div class="assortment-list">
    <div class="assortment-row"><i>01</i>Postales ilustradas</div>
    <div class="assortment-row"><i>02</i>Papelería creativa</div>
@@ -824,7 +886,7 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide management" data-title="Organización del surtido">
- <div class="topline"><span class="brand-mini">postella</span><span>07 — Organización comercial</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>08 — Organización comercial</span></div>
  <div class="management-layout">
   <div class="management-copy reveal"><div class="eyebrow">Un surtido con estructura</div><h2 class="display">Cada cosa<br>en su <em>sitio.</em></h2><p class="lead">La organización por familias y referencias facilita la identificación, exposición y gestión del producto.</p></div>
   <div class="management-diagram">
@@ -838,7 +900,7 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide abc" data-title="Análisis ABC">
- <div class="topline"><span class="brand-mini">postella</span><span>08 — Gestión del inventario</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>09 — Gestión del inventario</span></div>
  <div class="abc-layout">
   <div class="abc-copy reveal"><div class="eyebrow">Análisis ABC · 16 referencias</div><h2 class="display">Dónde está<br>el <em>valor.</em></h2><div class="abc-total">2.083,53 €<small>Valor total del inventario analizado</small></div></div>
   <div><div class="abc-graphic">
@@ -875,7 +937,7 @@ button{font:inherit;cursor:pointer}
 </section>
 
 <section class="slide wall-slide" data-title="El mural de la clase">
- <div class="topline"><span class="brand-mini">postella</span><span>10 — El mural de la clase</span></div>
+ <div class="topline"><span class="brand-mini">postella</span><span>11 — El mural de la clase</span></div>
  <div class="wall-layout">
   <div class="wall-copy reveal"><div class="eyebrow">Tus postales están llegando</div><h2 class="display">Palabras<br>que se <em>quedan.</em></h2><p class="lead">Cada mensaje que enviáis forma parte del mural de nuestra clase.</p><div class="wall-qr"><img src="postal-wall-qr.png" alt="QR para enviar una postal"><span>Escanea, escribe<br>y haz que llegue 💌</span></div></div>
   <div class="postcard-wall" id="messageWall"><div class="wall-empty">Las postales de la clase aparecerán aquí.</div></div>
